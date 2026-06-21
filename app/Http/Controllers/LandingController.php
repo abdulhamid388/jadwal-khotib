@@ -2,31 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Jadwal;
-use App\Models\Galeri;
-
 
 class LandingController extends Controller
 {
-
     public function index()
     {
-
-        $jadwals = Jadwal::latest()->get();
-
-
-        $galeris = Galeri::latest()->get();
-
+        $jadwals = Jadwal::orderBy('created_at', 'desc')->get();
 
         return view('landing.index', [
-
-            'jadwals' => $jadwals,
-
-            'galeris' => $galeris
-
+            'jadwals' => $jadwals
         ]);
-
     }
-
 }

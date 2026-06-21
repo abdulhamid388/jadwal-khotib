@@ -7,29 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jadwal extends Model
 {
-
     use HasFactory;
-
 
     protected $table = 'jadwals';
 
-
     protected $fillable = [
-
+        'nama_masjid',
         'tanggal',
         'nama_khotib',
-        'tema',
-        'nama_masjid',
-        'jam'
-
+        'foto'
     ];
-
-
 
     protected $casts = [
-
         'tanggal' => 'date'
-
     ];
-
 }
