@@ -23,12 +23,15 @@ class JadwalController extends Controller
 
 
 
+
     public function create()
     {
 
         return view('admin.create');
 
     }
+
+
 
 
 
@@ -52,6 +55,7 @@ class JadwalController extends Controller
 
 
 
+
         $foto = null;
 
 
@@ -59,26 +63,13 @@ class JadwalController extends Controller
         if($request->hasFile('foto')){
 
 
-            $file = $request->file('foto');
-
-
-            $namaFoto = time().'_'.$file->getClientOriginalName();
-
-
-
-            $file->move(
-
-                public_path('uploads'),
-
-                $namaFoto
-
-            );
-
-
-            $foto = $namaFoto;
+            $foto = $request->file('foto')
+                ->store('khotib','public');
 
 
         }
+
+
 
 
 
@@ -100,6 +91,7 @@ class JadwalController extends Controller
 
 
         ]);
+
 
 
 
@@ -168,7 +160,9 @@ class JadwalController extends Controller
 
 
 
+
         $jadwal = Jadwal::findOrFail($id);
+
 
 
 
@@ -194,27 +188,12 @@ class JadwalController extends Controller
 
 
 
+
         if($request->hasFile('foto')){
 
 
-            $file = $request->file('foto');
-
-
-            $namaFoto = time().'_'.$file->getClientOriginalName();
-
-
-
-            $file->move(
-
-                public_path('uploads'),
-
-                $namaFoto
-
-            );
-
-
-
-            $data['foto']=$namaFoto;
+            $data['foto'] = $request->file('foto')
+                ->store('khotib','public');
 
 
         }
@@ -250,6 +229,9 @@ class JadwalController extends Controller
 
 
 
+
+
+
     public function destroy($id)
     {
 
@@ -259,6 +241,7 @@ class JadwalController extends Controller
 
 
         $jadwal->delete();
+
 
 
 

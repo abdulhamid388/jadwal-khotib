@@ -6,6 +6,7 @@
 
 <section id="home">
 
+
 <div id="sliderMasjid" class="carousel slide" data-bs-ride="carousel">
 
 
@@ -14,12 +15,15 @@
 
 <div class="carousel-item active">
 
+
 <img src="{{ asset('landing/img/masjid1.jpg') }}"
 class="d-block w-100"
 alt="Masjid">
 
 
+
 <div class="carousel-caption">
+
 
 <h1>
 Jadwal Khotib Jumat
@@ -38,7 +42,10 @@ Lihat Jadwal
 
 </div>
 
+
 </div>
+
+
 
 
 
@@ -50,6 +57,7 @@ Lihat Jadwal
 <img src="{{ asset('landing/img/masjid2.jpg') }}"
 class="d-block w-100"
 alt="Masjid">
+
 
 
 <div class="carousel-caption">
@@ -82,14 +90,20 @@ Lihat Informasi
 
 
 
+
+
 <button class="carousel-control-prev"
 type="button"
 data-bs-target="#sliderMasjid"
 data-bs-slide="prev">
 
+
 <span class="carousel-control-prev-icon"></span>
 
+
 </button>
+
+
 
 
 
@@ -99,9 +113,12 @@ type="button"
 data-bs-target="#sliderMasjid"
 data-bs-slide="next">
 
+
 <span class="carousel-control-next-icon"></span>
 
+
 </button>
+
 
 
 
@@ -127,6 +144,8 @@ Jadwal Khotib Jumat
 
 
 
+
+
 <div class="cards">
 
 
@@ -147,10 +166,12 @@ Jadwal Khotib Jumat
 </h3>
 
 
+
 <p>
 Tanggal :
 {{ $j->tanggal->format('d-m-Y') }}
 </p>
+
 
 
 
@@ -172,9 +193,11 @@ Khotib :
 @else
 
 
+
 <p>
 Belum ada jadwal khotib
 </p>
+
 
 
 @endif
@@ -203,7 +226,11 @@ Galeri Khotib
 
 
 
+
+
 <div class="cards">
+
+
 
 
 
@@ -211,7 +238,11 @@ Galeri Khotib
 
 
 
+
+
 @foreach($jadwals as $j)
+
+
 
 
 
@@ -219,17 +250,25 @@ Galeri Khotib
 
 
 
+
+
 @if($j->foto)
 
 
 
-<img src="{{ asset('uploads/'.$j->foto) }}"
+
+
+<img src="{{ asset('storage/'.$j->foto) }}"
 class="img-fluid"
 alt="Foto Khotib">
 
 
 
+
+
 @else
+
+
 
 
 
@@ -239,7 +278,13 @@ Foto tidak tersedia
 
 
 
+
+
 @endif
+
+
+
+
 
 
 
@@ -250,9 +295,13 @@ Foto tidak tersedia
 
 
 
+
+
 <p>
 {{ $j->nama_masjid }}
 </p>
+
+
 
 
 
@@ -260,11 +309,18 @@ Foto tidak tersedia
 
 
 
+
+
 @endforeach
 
 
 
+
+
 @else
+
+
+
 
 
 <p>
@@ -272,7 +328,13 @@ Belum ada foto khotib
 </p>
 
 
+
+
+
 @endif
+
+
+
 
 
 
@@ -295,6 +357,7 @@ Belum ada foto khotib
 <h2>
 Tentang Website
 </h2>
+
 
 
 
@@ -325,35 +388,46 @@ Informasi Kegiatan
 
 
 
+
 <div class="cards">
 
 
+
 <div class="card">
+
 
 <h3>
 Kajian Masjid
 </h3>
 
+
 <p>
 Informasi kajian dan kegiatan keagamaan masjid.
 </p>
+
 
 </div>
 
 
 
 
+
+
 <div class="card">
+
 
 <h3>
 Kegiatan Sosial
 </h3>
 
+
 <p>
 Informasi program sosial masjid.
 </p>
 
+
 </div>
+
 
 
 
@@ -361,15 +435,20 @@ Informasi program sosial masjid.
 
 <div class="card">
 
+
 <h3>
 Jumat Rutin
 </h3>
+
 
 <p>
 Informasi imam dan khotib Jumat.
 </p>
 
+
 </div>
+
+
 
 
 </div>
@@ -393,9 +472,12 @@ Kontak Masjid
 </h2>
 
 
+
+
 <p>
 085806203202
 </p>
+
 
 
 <p>
@@ -403,12 +485,16 @@ ah1260794@gmail.com
 </p>
 
 
+
+
 <p>
 Indonesia
 </p>
 
 
+
 </section>
+
 
 
 
