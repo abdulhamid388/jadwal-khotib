@@ -1,14 +1,8 @@
 @extends('landing.layout')
 
-@php
-use Illuminate\Support\Facades\Storage;
-@endphp
-
 
 @section('content')
 
-
-<!-- ================= HERO SLIDER ================= -->
 
 <section id="home">
 
@@ -42,7 +36,6 @@ Lihat Jadwal
 </div>
 
 </div>
-
 
 
 
@@ -97,7 +90,6 @@ data-bs-slide="next">
 </button>
 
 
-
 </div>
 
 </section>
@@ -106,9 +98,6 @@ data-bs-slide="next">
 
 
 
-
-
-<!-- ================= JADWAL ================= -->
 
 
 <section id="jadwal">
@@ -137,19 +126,16 @@ Jadwal Khotib Jumat
 </h3>
 
 
-
 <p>
 Tanggal :
 {{ $j->tanggal->format('d-m-Y') }}
 </p>
 
 
-
 <p>
 Khotib :
 {{ $j->nama_khotib }}
 </p>
-
 
 
 </div>
@@ -169,7 +155,6 @@ Belum ada jadwal khotib
 @endif
 
 
-
 </div>
 
 
@@ -181,9 +166,6 @@ Belum ada jadwal khotib
 
 
 
-
-
-<!-- ================= GALERI KHOTIB ================= -->
 
 
 <section id="galeri">
@@ -204,15 +186,13 @@ Galeri Khotib
 @foreach($jadwals as $j)
 
 
-
 <div class="card">
-
 
 
 @if($j->foto)
 
 
-<img src="{{ Storage::url($j->foto) }}"
+<img src="{{ url('storage/'.$j->foto) }}"
 class="img-fluid"
 alt="Foto Khotib">
 
@@ -230,11 +210,9 @@ Foto tidak tersedia
 
 
 
-
 <h3>
 {{ $j->nama_khotib }}
 </h3>
-
 
 
 <p>
@@ -246,9 +224,7 @@ Foto tidak tersedia
 </div>
 
 
-
 @endforeach
-
 
 
 @else
@@ -276,11 +252,7 @@ Belum ada foto khotib
 
 
 
-<!-- ================= TENTANG ================= -->
-
-
-<section id="tentang"
-class="bg-light">
+<section id="tentang" class="bg-light">
 
 
 <h2>
@@ -306,11 +278,7 @@ jadwal khotib Jumat kepada jamaah.
 
 
 
-<!-- ================= KEGIATAN ================= -->
-
-
-<section id="kegiatan"
-class="bg-light">
+<section id="kegiatan" class="bg-light">
 
 
 <h2>
@@ -349,7 +317,6 @@ Informasi program sosial masjid.
 
 
 
-
 <div class="card">
 
 <h3>
@@ -363,7 +330,6 @@ Informasi imam dan khotib Jumat.
 </div>
 
 
-
 </div>
 
 
@@ -375,8 +341,6 @@ Informasi imam dan khotib Jumat.
 
 
 
-
-<!-- ================= KONTAK ================= -->
 
 
 <section id="kontak">
@@ -403,6 +367,7 @@ Indonesia
 
 
 </section>
+
 
 
 @endsection

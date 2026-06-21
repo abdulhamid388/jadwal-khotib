@@ -1,31 +1,33 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
 
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\JadwalController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Landing Page
-|--------------------------------------------------------------------------
-*/
+Route::get('/', [LandingController::class, 'index']);
 
-Route::get('/', [
-    LandingController::class,
-    'index'
-])->name('landing');
+
+Route::resource('admin', JadwalController::class);
 
 
 
-/*
-|--------------------------------------------------------------------------
-| Admin Jadwal CRUD
-|--------------------------------------------------------------------------
-*/
+Route::get('/storage/{filename}', function ($filename) {
 
-Route::resource(
-    'admin',
-    JadwalController::class
-);
+    $path = storage_path('app/public/'.$filename);
+
+
+    if (!file_exists($path)) {
+
+        abort(404);
+
+    }
+
+
+    return Response::file($path);
+
+
+})->where('filename', '.*');
