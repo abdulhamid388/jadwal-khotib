@@ -13,7 +13,7 @@ Tambah Jadwal Khotib
 <div class="card p-4">
 
 
-<form action="/admin" 
+<form action="{{ route('admin.store') }}"
 method="POST"
 enctype="multipart/form-data">
 
@@ -33,7 +33,8 @@ Nama Masjid
 type="text"
 name="nama_masjid"
 class="form-control"
-required>
+required
+>
 
 
 </div>
@@ -53,7 +54,8 @@ Tanggal
 type="date"
 name="tanggal"
 class="form-control"
-required>
+required
+>
 
 
 </div>
@@ -73,7 +75,8 @@ Nama Khotib
 type="text"
 name="nama_khotib"
 class="form-control"
-required>
+required
+>
 
 
 </div>
@@ -84,19 +87,17 @@ required>
 
 <div class="mb-3">
 
-
 <label>
 Foto Khotib
 </label>
 
 
-<input 
-
+<input
 type="file"
-
 name="foto"
-
-class="form-control">
+class="form-control"
+accept="image/*"
+>
 
 
 </div>
@@ -105,13 +106,11 @@ class="form-control">
 
 
 
-<button 
+<button
 type="submit"
 class="btn btn-orange">
 
-
 Simpan
-
 
 </button>
 
