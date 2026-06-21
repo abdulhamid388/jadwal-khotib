@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 class JadwalController extends Controller
 {
 
-    // tampil data jadwal admin
     public function index()
     {
         $jadwals = Jadwal::latest()->get();
@@ -18,7 +17,6 @@ class JadwalController extends Controller
 
 
 
-    // halaman tambah
     public function create()
     {
         return view('admin.create');
@@ -26,52 +24,51 @@ class JadwalController extends Controller
 
 
 
-    // simpan jadwal
     public function store(Request $request)
     {
 
         $request->validate([
 
+            'nama_masjid' => 'required',
+
             'tanggal' => 'required',
 
             'nama_khotib' => 'required',
 
-            'nama_masjid' => 'required',
-
-            'foto' => 'nullable|image'
+            'foto' => 'nullable|image|max:2048'
 
         ]);
 
 
 
-        $foto = null;
+        $data = [
 
-
-
-        if($request->hasFile('foto')){
-
-            $foto = $request->file('foto')
-                    ->store('khotib','public');
-
-        }
-
-
-
-        Jadwal::create([
+            'nama_masjid' => $request->nama_masjid,
 
             'tanggal' => $request->tanggal,
 
             'nama_khotib' => $request->nama_khotib,
 
-            'nama_masjid' => $request->nama_masjid,
-
-            'foto' => $foto
-
-        ]);
+        ];
 
 
 
-        return redirect('/admin')
+        if($request->hasFile('foto')){
+
+            $data['foto'] = $request
+                ->file('foto')
+                ->store('khotib','public');
+
+        }
+
+
+
+        Jadwal::create($data);
+
+
+
+        return redirect()
+            ->route('admin.index')
             ->with('success','Jadwal berhasil ditambahkan');
 
     }
@@ -79,11 +76,12 @@ class JadwalController extends Controller
 
 
 
-    // edit
+
     public function edit($id)
     {
 
         $jadwal = Jadwal::findOrFail($id);
+
 
         return view('admin.edit', compact('jadwal'));
 
@@ -93,19 +91,18 @@ class JadwalController extends Controller
 
 
 
-    // update
     public function update(Request $request,$id)
     {
 
         $request->validate([
 
+            'nama_masjid'=>'required',
+
             'tanggal'=>'required',
 
             'nama_khotib'=>'required',
 
-            'nama_masjid'=>'required',
-
-            'foto'=>'nullable|image'
+            'foto'=>'nullable|image|max:2048'
 
         ]);
 
@@ -115,34 +112,34 @@ class JadwalController extends Controller
 
 
 
-        $foto = $jadwal->foto;
+        $data = [
 
-
-
-        if($request->hasFile('foto')){
-
-            $foto = $request->file('foto')
-                    ->store('khotib','public');
-
-        }
-
-
-
-        $jadwal->update([
+            'nama_masjid'=>$request->nama_masjid,
 
             'tanggal'=>$request->tanggal,
 
             'nama_khotib'=>$request->nama_khotib,
 
-            'nama_masjid'=>$request->nama_masjid,
-
-            'foto'=>$foto
-
-        ]);
+        ];
 
 
 
-        return redirect('/admin')
+        if($request->hasFile('foto')){
+
+            $data['foto'] = $request
+                ->file('foto')
+                ->store('khotib','public');
+
+        }
+
+
+
+        $jadwal->update($data);
+
+
+
+        return redirect()
+            ->route('admin.index')
             ->with('success','Jadwal berhasil diperbarui');
 
     }
@@ -151,16 +148,18 @@ class JadwalController extends Controller
 
 
 
-    // hapus
     public function destroy($id)
     {
 
         $jadwal = Jadwal::findOrFail($id);
 
+
         $jadwal->delete();
 
 
-        return redirect('/admin')
+
+        return redirect()
+            ->route('admin.index')
             ->with('success','Jadwal berhasil dihapus');
 
     }
