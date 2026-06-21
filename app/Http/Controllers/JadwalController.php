@@ -8,91 +8,35 @@ use Illuminate\Http\Request;
 class JadwalController extends Controller
 {
 
+
     public function index()
     {
+
         $jadwals = Jadwal::latest()->get();
 
+
         return view('admin.index', compact('jadwals'));
+
     }
+
+
 
 
 
     public function create()
     {
+
         return view('admin.create');
+
     }
+
+
 
 
 
     public function store(Request $request)
     {
 
-        $request->validate([
-
-            'nama_masjid' => 'required',
-
-            'tanggal' => 'required',
-
-            'nama_khotib' => 'required',
-
-            'foto' => 'nullable|image|max:2048'
-
-        ]);
-
-
-
-        $data = [
-
-            'nama_masjid' => $request->nama_masjid,
-
-            'tanggal' => $request->tanggal,
-
-            'nama_khotib' => $request->nama_khotib,
-
-        ];
-
-
-
-        if($request->hasFile('foto')){
-
-            $data['foto'] = $request
-                ->file('foto')
-                ->store('khotib','public');
-
-        }
-
-
-
-        Jadwal::create($data);
-
-
-
-        return redirect()
-            ->route('admin.index')
-            ->with('success','Jadwal berhasil ditambahkan');
-
-    }
-
-
-
-
-
-    public function edit($id)
-    {
-
-        $jadwal = Jadwal::findOrFail($id);
-
-
-        return view('admin.edit', compact('jadwal'));
-
-    }
-
-
-
-
-
-    public function update(Request $request,$id)
-    {
 
         $request->validate([
 
@@ -102,9 +46,120 @@ class JadwalController extends Controller
 
             'nama_khotib'=>'required',
 
-            'foto'=>'nullable|image|max:2048'
+            'foto'=>'required|image|max:2048'
 
         ]);
+
+
+
+        $foto = null;
+
+
+
+        if($request->hasFile('foto')){
+
+
+            $file = $request->file('foto');
+
+
+            $namaFoto = time().'_'.$file->getClientOriginalName();
+
+
+
+            $file->move(
+
+                public_path('uploads'),
+
+                $namaFoto
+
+            );
+
+
+
+            $foto = $namaFoto;
+
+
+        }
+
+
+
+
+        Jadwal::create([
+
+
+            'nama_masjid'=>$request->nama_masjid,
+
+
+            'tanggal'=>$request->tanggal,
+
+
+            'nama_khotib'=>$request->nama_khotib,
+
+
+            'foto'=>$foto
+
+
+        ]);
+
+
+
+
+
+        return redirect()
+
+            ->route('admin.index')
+
+            ->with('success','Jadwal berhasil ditambahkan');
+
+
+    }
+
+
+
+
+
+
+
+    public function edit($id)
+    {
+
+
+        $jadwal = Jadwal::findOrFail($id);
+
+
+
+        return view('admin.edit',compact('jadwal'));
+
+
+    }
+
+
+
+
+
+
+
+    public function update(Request $request,$id)
+    {
+
+
+        $request->validate([
+
+
+            'nama_masjid'=>'required',
+
+
+            'tanggal'=>'required',
+
+
+            'nama_khotib'=>'required',
+
+
+            'foto'=>'nullable|image|max:2048'
+
+
+        ]);
+
 
 
 
@@ -112,25 +167,52 @@ class JadwalController extends Controller
 
 
 
+
         $data = [
+
 
             'nama_masjid'=>$request->nama_masjid,
 
+
             'tanggal'=>$request->tanggal,
 
-            'nama_khotib'=>$request->nama_khotib,
+
+            'nama_khotib'=>$request->nama_khotib
+
 
         ];
 
 
 
+
+
         if($request->hasFile('foto')){
 
-            $data['foto'] = $request
-                ->file('foto')
-                ->store('khotib','public');
+
+            $file = $request->file('foto');
+
+
+            $namaFoto = time().'_'.$file->getClientOriginalName();
+
+
+
+            $file->move(
+
+                public_path('uploads'),
+
+                $namaFoto
+
+            );
+
+
+
+            $data['foto']=$namaFoto;
+
 
         }
+
+
+
 
 
 
@@ -138,11 +220,19 @@ class JadwalController extends Controller
 
 
 
+
+
         return redirect()
+
             ->route('admin.index')
+
             ->with('success','Jadwal berhasil diperbarui');
 
+
     }
+
+
+
 
 
 
@@ -151,17 +241,24 @@ class JadwalController extends Controller
     public function destroy($id)
     {
 
+
         $jadwal = Jadwal::findOrFail($id);
+
 
 
         $jadwal->delete();
 
 
 
+
         return redirect()
+
             ->route('admin.index')
+
             ->with('success','Jadwal berhasil dihapus');
 
+
     }
+
 
 }

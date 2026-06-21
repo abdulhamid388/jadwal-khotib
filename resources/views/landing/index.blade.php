@@ -25,21 +25,27 @@ alt="Masjid">
 Jadwal Khotib Jumat
 </h1>
 
+
 <p>
 Informasi jadwal khutbah Jumat terbaru
 </p>
+
 
 <a href="#jadwal">
 Lihat Jadwal
 </a>
 
+
 </div>
 
 </div>
+
+
 
 
 
 <div class="carousel-item">
+
 
 <img src="{{ asset('landing/img/masjid2.jpg') }}"
 class="d-block w-100"
@@ -48,24 +54,31 @@ alt="Masjid">
 
 <div class="carousel-caption">
 
+
 <h1>
 Informasi Masjid
 </h1>
+
 
 <p>
 Kegiatan dan informasi masjid terbaru
 </p>
 
+
 <a href="#jadwal">
 Lihat Informasi
 </a>
 
-</div>
 
 </div>
 
 
 </div>
+
+
+</div>
+
+
 
 
 
@@ -80,6 +93,7 @@ data-bs-slide="prev">
 
 
 
+
 <button class="carousel-control-next"
 type="button"
 data-bs-target="#sliderMasjid"
@@ -90,9 +104,13 @@ data-bs-slide="next">
 </button>
 
 
+
 </div>
 
+
 </section>
+
+
 
 
 
@@ -112,10 +130,13 @@ Jadwal Khotib Jumat
 <div class="cards">
 
 
+
 @if($jadwals->count())
 
 
+
 @foreach($jadwals as $j)
+
 
 
 <div class="card">
@@ -132,16 +153,20 @@ Tanggal :
 </p>
 
 
+
 <p>
 Khotib :
 {{ $j->nama_khotib }}
 </p>
 
 
+
 </div>
 
 
+
 @endforeach
+
 
 
 @else
@@ -153,6 +178,7 @@ Belum ada jadwal khotib
 
 
 @endif
+
 
 
 </div>
@@ -180,19 +206,24 @@ Galeri Khotib
 <div class="cards">
 
 
+
 @if($jadwals->count())
+
 
 
 @foreach($jadwals as $j)
 
 
+
 <div class="card">
+
 
 
 @if($j->foto)
 
 
-<img src="{{ url('storage/'.$j->foto) }}"
+
+<img src="{{ asset('uploads/'.$j->foto) }}"
 class="img-fluid"
 alt="Foto Khotib">
 
@@ -201,18 +232,22 @@ alt="Foto Khotib">
 @else
 
 
+
 <p>
 Foto tidak tersedia
 </p>
+
 
 
 @endif
 
 
 
+
 <h3>
 {{ $j->nama_khotib }}
 </h3>
+
 
 
 <p>
@@ -224,7 +259,9 @@ Foto tidak tersedia
 </div>
 
 
+
 @endforeach
+
 
 
 @else
@@ -260,6 +297,7 @@ Tentang Website
 </h2>
 
 
+
 <p style="text-align:center;">
 
 Website ini dibuat untuk memberikan informasi
@@ -286,6 +324,7 @@ Informasi Kegiatan
 </h2>
 
 
+
 <div class="cards">
 
 
@@ -303,6 +342,7 @@ Informasi kajian dan kegiatan keagamaan masjid.
 
 
 
+
 <div class="card">
 
 <h3>
@@ -314,6 +354,8 @@ Informasi program sosial masjid.
 </p>
 
 </div>
+
+
 
 
 
