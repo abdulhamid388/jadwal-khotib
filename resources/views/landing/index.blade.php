@@ -1,5 +1,10 @@
 @extends('landing.layout')
 
+@php
+use Illuminate\Support\Facades\Storage;
+@endphp
+
+
 @section('content')
 
 
@@ -15,7 +20,7 @@
 
 <div class="carousel-item active">
 
-<img src="{{ asset('landing/img/masjid1.jpg') }}" 
+<img src="{{ asset('landing/img/masjid1.jpg') }}"
 class="d-block w-100"
 alt="Masjid">
 
@@ -30,20 +35,18 @@ Jadwal Khotib Jumat
 Informasi jadwal khutbah Jumat terbaru
 </p>
 
-
 <a href="#jadwal">
 Lihat Jadwal
 </a>
 
-
 </div>
 
 </div>
+
 
 
 
 <div class="carousel-item">
-
 
 <img src="{{ asset('landing/img/masjid2.jpg') }}"
 class="d-block w-100"
@@ -52,24 +55,19 @@ alt="Masjid">
 
 <div class="carousel-caption">
 
-
 <h1>
 Informasi Masjid
 </h1>
-
 
 <p>
 Kegiatan dan informasi masjid terbaru
 </p>
 
-
 <a href="#jadwal">
 Lihat Informasi
 </a>
 
-
 </div>
-
 
 </div>
 
@@ -83,9 +81,7 @@ type="button"
 data-bs-target="#sliderMasjid"
 data-bs-slide="prev">
 
-
 <span class="carousel-control-prev-icon"></span>
-
 
 </button>
 
@@ -96,9 +92,7 @@ type="button"
 data-bs-target="#sliderMasjid"
 data-bs-slide="next">
 
-
 <span class="carousel-control-next-icon"></span>
-
 
 </button>
 
@@ -107,6 +101,8 @@ data-bs-slide="next">
 </div>
 
 </section>
+
+
 
 
 
@@ -131,7 +127,6 @@ Jadwal Khotib Jumat
 
 
 @foreach($jadwals as $j)
-
 
 
 <div class="card">
@@ -160,9 +155,7 @@ Khotib :
 </div>
 
 
-
 @endforeach
-
 
 
 @else
@@ -188,34 +181,6 @@ Belum ada jadwal khotib
 
 
 
-<!-- ================= TENTANG ================= -->
-
-
-<section id="tentang"
-class="bg-light">
-
-
-<h2>
-Tentang Website
-</h2>
-
-
-
-<p style="text-align:center;">
-
-Website ini dibuat untuk memberikan informasi
-jadwal khotib Jumat kepada jamaah.
-
-</p>
-
-
-</section>
-
-
-
-
-
-
 
 
 <!-- ================= GALERI KHOTIB ================= -->
@@ -233,9 +198,7 @@ Galeri Khotib
 <div class="cards">
 
 
-
 @if($jadwals->count())
-
 
 
 @foreach($jadwals as $j)
@@ -249,9 +212,10 @@ Galeri Khotib
 @if($j->foto)
 
 
-<img src="{{ asset('storage/'.$j->foto) }}"
+<img src="{{ Storage::url($j->foto) }}"
 class="img-fluid"
 alt="Foto Khotib">
+
 
 
 @else
@@ -302,8 +266,38 @@ Belum ada foto khotib
 </div>
 
 
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ================= TENTANG ================= -->
+
+
+<section id="tentang"
+class="bg-light">
+
+
+<h2>
+Tentang Website
+</h2>
+
+
+<p style="text-align:center;">
+
+Website ini dibuat untuk memberikan informasi
+jadwal khotib Jumat kepada jamaah.
+
+</p>
+
 
 </section>
+
 
 
 
@@ -324,59 +318,47 @@ Informasi Kegiatan
 </h2>
 
 
-
 <div class="cards">
 
 
 <div class="card">
 
-
 <h3>
 Kajian Masjid
 </h3>
-
 
 <p>
 Informasi kajian dan kegiatan keagamaan masjid.
 </p>
 
-
 </div>
 
 
 
-
 <div class="card">
-
 
 <h3>
 Kegiatan Sosial
 </h3>
 
-
 <p>
 Informasi program sosial masjid.
 </p>
-
 
 </div>
 
 
 
 
-
 <div class="card">
-
 
 <h3>
 Jumat Rutin
 </h3>
 
-
 <p>
 Informasi imam dan khotib Jumat.
 </p>
-
 
 </div>
 
@@ -386,6 +368,7 @@ Informasi imam dan khotib Jumat.
 
 
 </section>
+
 
 
 
@@ -404,11 +387,9 @@ Kontak Masjid
 </h2>
 
 
-
 <p>
 085806203202
 </p>
-
 
 
 <p>
@@ -416,11 +397,9 @@ ah1260794@gmail.com
 </p>
 
 
-
 <p>
 Indonesia
 </p>
-
 
 
 </section>
