@@ -31,7 +31,6 @@ Jadwal Khotib
 <li><a href="#galeri">GALERI</a></li>
 <li><a href="#kegiatan">KEGIATAN</a></li>
 <li><a href="#kontak">KONTAK</a></li>
-<li><a href="/admin">ADMIN</a></li>
 </ul>
 
 </nav>

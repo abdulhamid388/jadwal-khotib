@@ -75,11 +75,11 @@ class JadwalController extends Controller
             );
 
 
-
             $foto = $namaFoto;
 
 
         }
+
 
 
 
@@ -107,12 +107,14 @@ class JadwalController extends Controller
 
         return redirect()
 
-            ->route('admin.index')
+            ->route('admid.index')
 
             ->with('success','Jadwal berhasil ditambahkan');
 
 
     }
+
+
 
 
 
@@ -128,10 +130,12 @@ class JadwalController extends Controller
 
 
 
-        return view('admin.edit',compact('jadwal'));
+        return view('admin.edit', compact('jadwal'));
 
 
     }
+
+
 
 
 
@@ -163,7 +167,9 @@ class JadwalController extends Controller
 
 
 
+
         $jadwal = Jadwal::findOrFail($id);
+
 
 
 
@@ -181,6 +187,8 @@ class JadwalController extends Controller
 
 
         ];
+
+
 
 
 
@@ -216,7 +224,10 @@ class JadwalController extends Controller
 
 
 
+
         $jadwal->update($data);
+
+
 
 
 
@@ -224,12 +235,13 @@ class JadwalController extends Controller
 
         return redirect()
 
-            ->route('admin.index')
+            ->route('admid.index')
 
             ->with('success','Jadwal berhasil diperbarui');
 
 
     }
+
 
 
 
@@ -251,14 +263,17 @@ class JadwalController extends Controller
 
 
 
+
+
         return redirect()
 
-            ->route('admin.index')
+            ->route('admid.index')
 
             ->with('success','Jadwal berhasil dihapus');
 
 
     }
+
 
 
 }

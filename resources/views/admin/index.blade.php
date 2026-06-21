@@ -12,7 +12,8 @@ Jadwal Khotib Jumat
 </h2>
 
 
-<a href="/admin/create" 
+
+<a href="{{ route('admid.create') }}"
 class="btn btn-orange">
 
 + Tambah Jadwal
@@ -20,7 +21,11 @@ class="btn btn-orange">
 </a>
 
 
+
 </div>
+
+
+
 
 
 
@@ -28,13 +33,16 @@ class="btn btn-orange">
 <div class="card p-4">
 
 
+
 <table class="table table-hover">
+
 
 
 <thead>
 
 
 <tr>
+
 
 <th>No</th>
 
@@ -43,6 +51,8 @@ class="btn btn-orange">
 <th>Tanggal</th>
 
 <th>Khotib</th>
+
+<th>Foto</th>
 
 <th>Aksi</th>
 
@@ -55,40 +65,83 @@ class="btn btn-orange">
 
 
 
+
+
+
 <tbody>
+
 
 
 @foreach($jadwals as $j)
 
 
+
 <tr>
 
 
+
 <td>
-{{$loop->iteration}}
+{{ $loop->iteration }}
 </td>
 
 
+
+
 <td>
-{{$j->nama_masjid}}
+{{ $j->nama_masjid }}
 </td>
 
 
+
+
+
 <td>
-{{$j->tanggal}}
+{{ $j->tanggal }}
 </td>
 
 
+
+
+
 <td>
-{{$j->nama_khotib}}
+{{ $j->nama_khotib }}
 </td>
 
 
+
+
+
 <td>
 
 
-<a href="/admin/{{$j->id}}/edit"
+@if($j->foto)
 
+
+<img src="{{ asset('uploads/'.$j->foto) }}"
+width="70"
+class="rounded">
+
+
+@else
+
+Tidak ada foto
+
+@endif
+
+
+</td>
+
+
+
+
+
+
+
+<td>
+
+
+
+<a href="{{ route('admid.edit',$j->id) }}"
 class="btn btn-warning btn-sm">
 
 Edit
@@ -97,10 +150,12 @@ Edit
 
 
 
-<form action="/admin/{{$j->id}}"
 
+
+
+
+<form action="{{ route('admid.destroy',$j->id) }}"
 method="POST"
-
 style="display:inline">
 
 
@@ -109,7 +164,10 @@ style="display:inline">
 @method('DELETE')
 
 
-<button class="btn btn-danger btn-sm">
+
+<button 
+class="btn btn-danger btn-sm"
+onclick="return confirm('Hapus data ini?')">
 
 Hapus
 
@@ -119,6 +177,7 @@ Hapus
 </form>
 
 
+
 </td>
 
 
@@ -126,17 +185,23 @@ Hapus
 </tr>
 
 
+
 @endforeach
+
+
 
 
 
 </tbody>
 
 
+
 </table>
 
 
+
 </div>
+
 
 
 @endsection
