@@ -1,66 +1,20 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Response;
 
-use App\Http\Controllers\LandingController;
-use App\Http\Controllers\JadwalController;
+Route::get('/', function () {
+    return view('welcome');
+});
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-/*
-|--------------------------------------------------------------------------
-| Halaman Publik
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/', [
-    LandingController::class,
-    'index'
-]);
-
-
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Halaman Admin
-|--------------------------------------------------------------------------
-*/
-
-Route::resource(
-    'admid',
-    JadwalController::class
-);
-
-
-
-
-
-/*
-|--------------------------------------------------------------------------
-| Foto Storage
-|--------------------------------------------------------------------------
-*/
-
-Route::get('/storage/{filename}', function ($filename) {
-
-
-    $path = storage_path('app/public/'.$filename);
-
-
-
-    if (!file_exists($path)) {
-
-        abort(404);
-
-    }
-
-
-
-    return Response::file($path);
-
-
-
-})->where('filename','.*');
+require __DIR__.'/auth.php';
