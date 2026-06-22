@@ -4,6 +4,7 @@
 @section('content')
 
 
+
 <section id="home">
 
 
@@ -15,11 +16,8 @@
 
 <div class="carousel-item active">
 
-
 <img src="{{ asset('landing/img/masjid1.jpg') }}"
-class="d-block w-100"
-alt="Masjid">
-
+class="d-block w-100">
 
 
 <div class="carousel-caption">
@@ -34,82 +32,32 @@ Informasi jadwal khutbah Jumat terbaru
 </p>
 
 
-<a href="#jadwal">
-Lihat Jadwal
-</a>
-
-
 </div>
 
-
 </div>
-
-
 
 
 
 <div class="carousel-item">
 
-
 <img src="{{ asset('landing/img/masjid2.jpg') }}"
-class="d-block w-100"
-alt="Masjid">
-
+class="d-block w-100">
 
 
 <div class="carousel-caption">
-
 
 <h1>
 Informasi Masjid
 </h1>
 
 
-<p>
-Kegiatan dan informasi masjid terbaru
-</p>
-
-
-<a href="#jadwal">
-Lihat Informasi
-</a>
-
-
 </div>
-
-
-</div>
-
 
 </div>
 
 
 
-
-
-<button class="carousel-control-prev"
-type="button"
-data-bs-target="#sliderMasjid"
-data-bs-slide="prev">
-
-
-<span class="carousel-control-prev-icon"></span>
-
-
-</button>
-
-
-
-<button class="carousel-control-next"
-type="button"
-data-bs-target="#sliderMasjid"
-data-bs-slide="next">
-
-
-<span class="carousel-control-next-icon"></span>
-
-
-</button>
+</div>
 
 
 
@@ -117,7 +65,6 @@ data-bs-slide="next">
 
 
 </section>
-
 
 
 
@@ -135,30 +82,45 @@ Jadwal Khotib Jumat
 
 
 
-
-<div class="cards">
-
-
-@if($jadwals->count())
+<div class="calendar-wrapper">
 
 
 
-@foreach($jadwals as $j)
 
 
+<!-- KALENDER -->
 
-<div class="card"
-style="cursor:pointer"
-data-bs-toggle="modal"
-data-bs-target="#detail{{ $j->id }}">
 
+<div class="calendar-box"
+id="calendarBox">
 
 
 <h3>
-
-{{ $j->tanggal->format('d-m-Y') }}
-
+Juli 2026
 </h3>
+
+
+
+<div class="calendar-grid">
+
+
+@for($i=1;$i<=31;$i++)
+
+
+<div class="tanggal"
+onclick="bukaJadwal()">
+
+{{ $i }}
+
+</div>
+
+
+@endfor
+
+
+
+</div>
+
 
 
 </div>
@@ -169,176 +131,57 @@ data-bs-target="#detail{{ $j->id }}">
 
 
 
-
-<!-- DETAIL MODAL -->
-
-
-<div class="modal fade"
-id="detail{{ $j->id }}">
+<!-- PANEL DETAIL -->
 
 
-<div class="modal-dialog modal-dialog-centered">
-
-
-<div class="modal-content">
+<div class="detail-area"
+id="detailArea">
 
 
 
-<div class="modal-header">
 
 
-<h5>
-Detail Khotib
-</h5>
+<div class="tabs">
+
+
+@foreach($jadwals->take(11) as $key=>$j)
 
 
 
-<button type="button"
-class="btn-close"
-data-bs-dismiss="modal">
+<button onclick="lihatDetail({{ $key }})">
+
+
+{{ $key+1 }}
+
 
 </button>
 
 
-</div>
-
-
-
-
-
-<div class="modal-body text-center">
-
-
-
-
-
-@if($j->foto)
-
-
-<img src="{{ asset('storage/'.$j->foto) }}"
-class="img-fluid rounded mb-3"
-style="width:200px;height:200px;object-fit:cover">
-
-
-@else
-
-
-<p>
-Foto tidak tersedia
-</p>
-
-
-@endif
-
-
-
-
-
-
-<h3>
-
-{{ $j->nama_khotib }}
-
-</h3>
-
-
-
-
-<p>
-
-Masjid :
-{{ $j->nama_masjid }}
-
-</p>
-
-
-
-
-<p>
-
-Tanggal :
-{{ $j->tanggal->format('d F Y') }}
-
-</p>
-
-
-
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
 
 @endforeach
 
 
-
-@else
-
-
-<p>
-Belum ada jadwal
-</p>
-
-
-@endif
-
-
 </div>
 
 
-</section>
 
 
 
 
 
+@foreach($jadwals->take(11) as $key=>$j)
 
 
 
+<div class="profil"
+id="profil{{ $key }}">
 
-<section id="galeri">
-
-
-<h2>
-Galeri Khotib
-</h2>
-
-
-
-<div class="cards">
-
-
-
-@if($jadwals->count())
-
-
-
-@foreach($jadwals as $j)
-
-
-
-<div class="card">
 
 
 @if($j->foto)
 
 
-<img src="{{ asset('storage/'.$j->foto) }}"
-class="img-fluid"
-style="height:250px;object-fit:cover">
+<img src="{{ asset('storage/'.$j->foto) }}">
 
 
 @endif
@@ -347,19 +190,31 @@ style="height:250px;object-fit:cover">
 
 
 
+<div>
+
+
 <h3>
 
-{{ $j->nama_khotib }}
+{{ $j->nama_masjid }}
 
 </h3>
 
 
+<p>
+
+{{ $j->nama_khotib }}
+
+</p>
+
 
 <p>
 
-{{ $j->nama_masjid }}
+{{ $j->tanggal->format('d-m-Y') }}
 
 </p>
+
+
+</div>
 
 
 
@@ -371,22 +226,20 @@ style="height:250px;object-fit:cover">
 
 
 
-@else
 
 
-<p>
-Belum ada foto khotib
-</p>
+</div>
 
 
-@endif
 
 
 
 </div>
 
 
+
 </section>
+
 
 
 
@@ -404,10 +257,9 @@ Tentang Website
 </h2>
 
 
-
 <p style="text-align:center;">
 
-Website ini dibuat untuk memberikan informasi jadwal khotib Jumat kepada jamaah.
+Website informasi jadwal khotib Jumat.
 
 </p>
 
@@ -420,9 +272,7 @@ Website ini dibuat untuk memberikan informasi jadwal khotib Jumat kepada jamaah.
 
 
 
-
-
-<section id="kegiatan" class="bg-light">
+<section id="kegiatan">
 
 
 <h2>
@@ -436,56 +286,30 @@ Informasi Kegiatan
 
 <div class="card">
 
-
 <h3>
 Kajian Masjid
 </h3>
 
-
 <p>
-Informasi kajian dan kegiatan keagamaan masjid.
+Kegiatan kajian rutin.
 </p>
-
 
 </div>
 
 
 
-
-
 <div class="card">
-
 
 <h3>
 Kegiatan Sosial
 </h3>
 
-
 <p>
-Informasi program sosial masjid.
+Program sosial masjid.
 </p>
-
 
 </div>
 
-
-
-
-
-<div class="card">
-
-
-<h3>
-Jumat Rutin
-</h3>
-
-
-<p>
-Informasi imam dan khotib Jumat.
-</p>
-
-
-</div>
 
 
 </div>
@@ -515,17 +339,63 @@ Kontak Masjid
 
 
 <p>
-ah1260794@gmail.com
-</p>
-
-
-<p>
 Indonesia
 </p>
 
 
 </section>
 
+
+
+
+
+
+<script>
+
+
+function bukaJadwal(){
+
+
+document.getElementById("calendarBox")
+.classList.add("geser");
+
+
+document.getElementById("detailArea")
+.classList.add("muncul");
+
+
+}
+
+
+
+
+function lihatDetail(id){
+
+
+
+let semua=document.querySelectorAll(".profil");
+
+
+semua.forEach(function(data){
+
+
+data.style.display="none";
+
+
+});
+
+
+
+document.getElementById("profil"+id)
+.style.display="flex";
+
+
+
+}
+
+
+
+</script>
 
 
 
