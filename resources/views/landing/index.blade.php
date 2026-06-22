@@ -5,16 +5,12 @@
 
 
 
-<!-- ================= HERO ================= -->
-
-
 <section id="home">
 
 
 <div id="sliderMasjid" 
 class="carousel slide"
 data-bs-ride="carousel">
-
 
 
 <div class="carousel-inner">
@@ -26,7 +22,6 @@ data-bs-ride="carousel">
 
 <img src="{{ asset('landing/img/masjid1.jpg') }}"
 class="d-block w-100">
-
 
 
 <div class="carousel-caption">
@@ -42,13 +37,7 @@ Informasi jadwal khutbah Jumat terbaru
 </p>
 
 
-<a href="#jadwal">
-Lihat Jadwal
-</a>
-
-
 </div>
-
 
 
 </div>
@@ -65,21 +54,6 @@ Lihat Jadwal
 class="d-block w-100">
 
 
-
-<div class="carousel-caption">
-
-
-<h1>
-Informasi Masjid
-</h1>
-
-
-<p>
-Kegiatan dan informasi masjid
-</p>
-
-
-
 </div>
 
 
@@ -87,13 +61,7 @@ Kegiatan dan informasi masjid
 </div>
 
 
-
 </div>
-
-
-
-</div>
-
 
 
 </section>
@@ -103,8 +71,6 @@ Kegiatan dan informasi masjid
 
 
 
-
-<!-- ================= KALENDER ================= -->
 
 
 <section id="jadwal">
@@ -116,6 +82,8 @@ Jadwal Khotib Jumat
 
 
 
+
+
 <div class="jadwal-container">
 
 
@@ -123,6 +91,7 @@ Jadwal Khotib Jumat
 
 
 <!-- KALENDER -->
+
 
 
 <div class="calendar-box"
@@ -138,17 +107,17 @@ Juli 2026
 
 <div class="hari">
 
-
-<span>Minggu</span>
-<span>Senin</span>
-<span>Selasa</span>
-<span>Rabu</span>
-<span>Kamis</span>
-<span>Jumat</span>
-<span>Sabtu</span>
+<span>M</span>
+<span>S</span>
+<span>S</span>
+<span>R</span>
+<span>K</span>
+<span>J</span>
+<span>S</span>
 
 
 </div>
+
 
 
 
@@ -158,13 +127,32 @@ Juli 2026
 
 
 
+@php
+
+$jadwalTanggal = $jadwals->pluck('tanggal')
+->map(function($tgl){
+
+return \Carbon\Carbon::parse($tgl)
+->day;
+
+});
 
 
-<!-- kosong sebelum tanggal 1 -->
+@endphp
+
+
+
+
+
+
+{{-- kosong sebelum tanggal 1 juli 2026 --}}
+
+@for($i=0;$i<3;$i++)
 
 <div></div>
-<div></div>
-<div></div>
+
+@endfor
+
 
 
 
@@ -174,7 +162,10 @@ Juli 2026
 
 
 
-<div class="tanggal"
+@if($jadwalTanggal->contains($i))
+
+
+<div class="tanggal aktif"
 onclick="bukaJadwal()">
 
 
@@ -182,8 +173,26 @@ onclick="bukaJadwal()">
 {{ $i }}
 
 
+</div>
+
+
+
+@else
+
+
+
+<div class="tanggal kosong">
+
+
+{{ $i }}
+
 
 </div>
+
+
+
+@endif
+
 
 
 
@@ -192,9 +201,7 @@ onclick="bukaJadwal()">
 
 
 
-
 </div>
-
 
 
 
@@ -212,6 +219,7 @@ Kembali
 
 
 
+
 </div>
 
 
@@ -222,20 +230,19 @@ Kembali
 
 
 
-<!-- TAB ANGKA -->
+<!-- TAB -->
 
 
 <div class="tab-box"
 id="tabBox">
 
 
-
-@foreach($jadwals->take(11) as $key=>$j)
-
+@foreach($jadwals as $key=>$j)
 
 
 <button
-onclick="lihatDetail({{ $key }})">
+onclick="lihatDetail({{$key}})">
+
 
 
 {{ $key+1 }}
@@ -243,7 +250,6 @@ onclick="lihatDetail({{ $key }})">
 
 
 </button>
-
 
 
 @endforeach
@@ -260,7 +266,8 @@ onclick="lihatDetail({{ $key }})">
 
 
 
-<!-- DETAIL KHOTIB -->
+<!-- DETAIL -->
+
 
 
 <div class="detail-box">
@@ -274,12 +281,14 @@ Detail Khotib
 
 
 
-@foreach($jadwals->take(11) as $key=>$j)
+@foreach($jadwals as $key=>$j)
 
 
 
 <div class="profil"
-id="profil{{ $key }}">
+id="profil{{$key}}">
+
+
 
 
 
@@ -303,15 +312,14 @@ id="profil{{ $key }}">
 
 
 
+
 <div>
 
 
 
 <h3>
 
-
-{{ $j->nama_khotib }}
-
+{{$j->nama_khotib}}
 
 </h3>
 
@@ -320,23 +328,18 @@ id="profil{{ $key }}">
 
 <p>
 
-
-{{ $j->nama_masjid }}
-
+{{$j->nama_masjid}}
 
 </p>
 
 
 
 
-
 </div>
 
 
 
 </div>
-
-
 
 
 
@@ -344,8 +347,6 @@ id="profil{{ $key }}">
 
 
 
-
-
 </div>
 
 
@@ -353,7 +354,6 @@ id="profil{{ $key }}">
 
 
 </div>
-
 
 
 </section>
@@ -366,12 +366,7 @@ id="profil{{ $key }}">
 
 
 
-<!-- ================= GALERI ================= -->
-
-
-
 <section id="galeri">
-
 
 
 <h2>
@@ -381,27 +376,21 @@ Galeri Khotib
 
 
 
-
 <div class="cards">
-
 
 
 @foreach($jadwals as $j)
 
 
 
-<div class="card galeri-card">
-
-
+<div class="card">
 
 
 
 @if($j->foto)
 
 
-
-<img src="{{ asset('storage/'.$j->foto) }}">
-
+<img src="{{asset('storage/'.$j->foto)}}">
 
 
 @endif
@@ -409,12 +398,9 @@ Galeri Khotib
 
 
 
-
 <h3>
 
-
-{{ $j->nama_khotib }}
-
+{{$j->nama_khotib}}
 
 </h3>
 
@@ -431,164 +417,7 @@ Galeri Khotib
 </div>
 
 
-
-
 </section>
-
-
-
-
-
-
-
-
-
-<!-- ================= TENTANG ================= -->
-
-
-<section id="tentang"
-class="bg-light">
-
-
-<h2>
-Tentang Website
-</h2>
-
-
-
-<p style="text-align:center;">
-
-
-Website ini dibuat untuk memberikan informasi jadwal khotib Jumat kepada jamaah.
-
-
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= KEGIATAN ================= -->
-
-
-
-<section id="kegiatan">
-
-
-
-<h2>
-Informasi Kegiatan
-</h2>
-
-
-
-<div class="cards">
-
-
-
-<div class="card">
-
-
-<h3>
-Kajian Masjid
-</h3>
-
-
-<p>
-Kegiatan kajian rutin masjid.
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<h3>
-Kegiatan Sosial
-</h3>
-
-
-<p>
-Program sosial masjid.
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<h3>
-Jumat Rutin
-</h3>
-
-
-<p>
-Informasi khutbah Jumat.
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ================= KONTAK ================= -->
-
-
-<section id="kontak">
-
-
-
-<h2>
-Kontak Masjid
-</h2>
-
-
-
-<p>
-085806203202
-</p>
-
-
-
-<p>
-Indonesia
-</p>
-
-
-
-</section>
-
 
 
 
@@ -604,11 +433,9 @@ Indonesia
 function bukaJadwal(){
 
 
-
 document
 .getElementById("calendarBox")
 .classList.add("geser");
-
 
 
 document
@@ -616,9 +443,7 @@ document
 .classList.add("muncul");
 
 
-
 }
-
 
 
 
@@ -626,28 +451,21 @@ document
 function lihatDetail(id){
 
 
-
-let semua =
-document.querySelectorAll(".profil");
-
-
-
-semua.forEach(function(item){
+document
+.querySelectorAll(".profil")
+.forEach(function(e){
 
 
-item.style.display="none";
+e.style.display="none";
 
 
 });
 
 
 
-
-
 document
 .getElementById("profil"+id)
 .style.display="flex";
-
 
 
 }
@@ -672,27 +490,22 @@ document
 
 
 
-
 document
 .querySelectorAll(".profil")
-.forEach(function(item){
+.forEach(function(e){
 
 
-item.style.display="none";
+e.style.display="none";
 
 
 });
-
 
 
 }
 
 
 
-
 </script>
-
-
 
 
 
