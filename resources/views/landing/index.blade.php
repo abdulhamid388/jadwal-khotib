@@ -4,9 +4,7 @@
 @section('content')
 
 
-
 <section id="home">
-
 
 <div id="sliderMasjid" class="carousel slide" data-bs-ride="carousel">
 
@@ -26,7 +24,6 @@ class="d-block w-100">
 Jadwal Khotib Jumat
 </h1>
 
-
 <p>
 Informasi jadwal khutbah Jumat terbaru
 </p>
@@ -35,6 +32,7 @@ Informasi jadwal khutbah Jumat terbaru
 </div>
 
 </div>
+
 
 
 
@@ -53,12 +51,11 @@ Informasi Masjid
 
 </div>
 
-</div>
-
-
 
 </div>
 
+
+</div>
 
 
 </div>
@@ -70,26 +67,20 @@ Informasi Masjid
 
 
 
-
-
-
 <section id="jadwal">
 
 
 <h2>
-Jadwal Khotib Jumat
+Kalender Jadwal Khotib
 </h2>
 
 
 
-<div class="calendar-wrapper">
-
-
+<div class="jadwal-container">
 
 
 
 <!-- KALENDER -->
-
 
 <div class="calendar-box"
 id="calendarBox">
@@ -100,6 +91,20 @@ Juli 2026
 </h3>
 
 
+<div class="hari">
+
+<span>Min</span>
+<span>Sen</span>
+<span>Sel</span>
+<span>Rab</span>
+<span>Kam</span>
+<span>Jum</span>
+<span>Sab</span>
+
+</div>
+
+
+
 
 <div class="calendar-grid">
 
@@ -108,7 +113,7 @@ Juli 2026
 
 
 <div class="tanggal"
-onclick="bukaJadwal()">
+onclick="bukaTab()">
 
 {{ $i }}
 
@@ -118,7 +123,6 @@ onclick="bukaJadwal()">
 @endfor
 
 
-
 </div>
 
 
@@ -131,31 +135,20 @@ onclick="bukaJadwal()">
 
 
 
-<!-- PANEL DETAIL -->
+<!-- TAB ANGKA -->
+
+<div class="tab-box"
+id="tabBox">
 
 
-<div class="detail-area"
-id="detailArea">
+@foreach($jadwals as $key=>$j)
 
 
-
-
-
-<div class="tabs">
-
-
-@foreach($jadwals->take(11) as $key=>$j)
-
-
-
-<button onclick="lihatDetail({{ $key }})">
-
+<button onclick="detail({{ $key }})">
 
 {{ $key+1 }}
 
-
 </button>
-
 
 
 @endforeach
@@ -169,12 +162,24 @@ id="detailArea">
 
 
 
-@foreach($jadwals->take(11) as $key=>$j)
 
+
+<!-- DETAIL -->
+
+<div class="detail-box">
+
+
+<h3>
+Detail Khotib
+</h3>
+
+
+
+@foreach($jadwals as $key=>$j)
 
 
 <div class="profil"
-id="profil{{ $key }}">
+id="data{{ $key }}">
 
 
 
@@ -184,8 +189,13 @@ id="profil{{ $key }}">
 <img src="{{ asset('storage/'.$j->foto) }}">
 
 
-@endif
+@else
 
+
+<img src="{{ asset('landing/img/default.png') }}">
+
+
+@endif
 
 
 
@@ -207,6 +217,7 @@ id="profil{{ $key }}">
 </p>
 
 
+
 <p>
 
 {{ $j->tanggal->format('d-m-Y') }}
@@ -221,13 +232,10 @@ id="profil{{ $key }}">
 </div>
 
 
-
 @endforeach
 
 
 
-
-
 </div>
 
 
@@ -235,7 +243,6 @@ id="profil{{ $key }}">
 
 
 </div>
-
 
 
 </section>
@@ -248,8 +255,8 @@ id="profil{{ $key }}">
 
 
 
-
-<section id="tentang" class="bg-light">
+<section id="tentang"
+class="bg-light">
 
 
 <h2>
@@ -257,7 +264,7 @@ Tentang Website
 </h2>
 
 
-<p style="text-align:center;">
+<p style="text-align:center">
 
 Website informasi jadwal khotib Jumat.
 
@@ -272,95 +279,21 @@ Website informasi jadwal khotib Jumat.
 
 
 
-<section id="kegiatan">
-
-
-<h2>
-Informasi Kegiatan
-</h2>
-
-
-
-<div class="cards">
-
-
-<div class="card">
-
-<h3>
-Kajian Masjid
-</h3>
-
-<p>
-Kegiatan kajian rutin.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>
-Kegiatan Sosial
-</h3>
-
-<p>
-Program sosial masjid.
-</p>
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<section id="kontak">
-
-
-<h2>
-Kontak Masjid
-</h2>
-
-
-<p>
-085806203202
-</p>
-
-
-<p>
-Indonesia
-</p>
-
-
-</section>
-
-
-
-
 
 
 <script>
 
 
-function bukaJadwal(){
+function bukaTab(){
 
 
-document.getElementById("calendarBox")
+document
+.getElementById("calendarBox")
 .classList.add("geser");
 
 
-document.getElementById("detailArea")
+document
+.getElementById("tabBox")
 .classList.add("muncul");
 
 
@@ -369,27 +302,26 @@ document.getElementById("detailArea")
 
 
 
-function lihatDetail(id){
+function detail(id){
 
 
-
-let semua=document.querySelectorAll(".profil");
-
-
-semua.forEach(function(data){
+let data =
+document.querySelectorAll(".profil");
 
 
-data.style.display="none";
+data.forEach(function(item){
+
+
+item.style.display="none";
 
 
 });
 
 
 
-document.getElementById("profil"+id)
+document
+.getElementById("data"+id)
 .style.display="flex";
-
-
 
 }
 
