@@ -8,7 +8,7 @@
 <section id="home">
 
 
-<div id="sliderMasjid" 
+<div id="sliderMasjid"
 class="carousel slide"
 data-bs-ride="carousel">
 
@@ -22,6 +22,7 @@ data-bs-ride="carousel">
 
 <img src="{{ asset('landing/img/masjid1.jpg') }}"
 class="d-block w-100">
+
 
 
 <div class="carousel-caption">
@@ -46,7 +47,6 @@ Informasi jadwal khutbah Jumat terbaru
 
 
 
-
 <div class="carousel-item">
 
 
@@ -54,7 +54,20 @@ Informasi jadwal khutbah Jumat terbaru
 class="d-block w-100">
 
 
+
+<div class="carousel-caption">
+
+
+<h1>
+Informasi Masjid
+</h1>
+
+
 </div>
+
+
+</div>
+
 
 
 
@@ -65,6 +78,7 @@ class="d-block w-100">
 
 
 </section>
+
 
 
 
@@ -84,13 +98,16 @@ Jadwal Khotib Jumat
 
 
 
+
 <div class="jadwal-container">
 
 
 
 
 
-<!-- KALENDER -->
+
+
+<!-- ================= KALENDER ================= -->
 
 
 
@@ -105,18 +122,22 @@ Juli 2026
 
 
 
+
+
 <div class="hari">
 
-<span>M</span>
-<span>S</span>
-<span>S</span>
-<span>R</span>
-<span>K</span>
-<span>J</span>
-<span>S</span>
+<span>Min</span>
+<span>Sen</span>
+<span>Sel</span>
+<span>Rab</span>
+<span>Kam</span>
+<span>Jum</span>
+<span>Sab</span>
 
 
 </div>
+
+
 
 
 
@@ -127,13 +148,16 @@ Juli 2026
 
 
 
+
+
 @php
 
-$jadwalTanggal = $jadwals->pluck('tanggal')
-->map(function($tgl){
 
-return \Carbon\Carbon::parse($tgl)
-->day;
+$jadwalTanggal = $jadwals->groupBy(function($item){
+
+
+return \Carbon\Carbon::parse($item->tanggal)->day;
+
 
 });
 
@@ -145,35 +169,31 @@ return \Carbon\Carbon::parse($tgl)
 
 
 
-{{-- kosong sebelum tanggal 1 juli 2026 --}}
-
-@for($i=0;$i<3;$i++)
-
-<div></div>
-
-@endfor
-
-
-
-
-
 
 @for($i=1;$i<=31;$i++)
 
 
 
-@if($jadwalTanggal->contains($i))
+
+
+@if(isset($jadwalTanggal[$i]))
+
+
+
 
 
 <div class="tanggal aktif"
-onclick="bukaJadwal()">
+onclick="bukaJadwal({{$i}})">
 
 
 
-{{ $i }}
+{{$i}}
+
 
 
 </div>
+
+
 
 
 
@@ -181,13 +201,17 @@ onclick="bukaJadwal()">
 
 
 
+
+
 <div class="tanggal kosong">
 
 
-{{ $i }}
+{{$i}}
 
 
 </div>
+
+
 
 
 
@@ -196,7 +220,10 @@ onclick="bukaJadwal()">
 
 
 
+
+
 @endfor
+
 
 
 
@@ -207,12 +234,15 @@ onclick="bukaJadwal()">
 
 
 
-<button
-onclick="resetKalender()"
-class="btn-reset">
+
+
+<button class="btn-reset"
+onclick="resetKalender()">
+
 
 
 Kembali
+
 
 
 </button>
@@ -220,6 +250,8 @@ Kembali
 
 
 
+
+
 </div>
 
 
@@ -230,31 +262,17 @@ Kembali
 
 
 
-<!-- TAB -->
+
+
+
+<!-- ================= TAB ================= -->
+
 
 
 <div class="tab-box"
 id="tabBox">
 
 
-@foreach($jadwals as $key=>$j)
-
-
-<button
-onclick="lihatDetail({{$key}})">
-
-
-
-{{ $key+1 }}
-
-
-
-</button>
-
-
-@endforeach
-
-
 
 </div>
 
@@ -266,7 +284,10 @@ onclick="lihatDetail({{$key}})">
 
 
 
-<!-- DETAIL -->
+
+
+
+<!-- ================= DETAIL ================= -->
 
 
 
@@ -281,18 +302,80 @@ Detail Khotib
 
 
 
-@foreach($jadwals as $key=>$j)
+
+<div id="isiDetail">
+
+
+<p>
+Pilih tanggal terlebih dahulu
+</p>
+
+
+</div>
 
 
 
-<div class="profil"
-id="profil{{$key}}">
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ================= GALERI ================= -->
+
+
+
+<section id="galeri">
+
+
+<h2>
+Galeri Khotib
+</h2>
+
+
+
+
+
+<div class="cards">
+
+
+
+
+
+@foreach($jadwals as $j)
+
+
+
+<div class="card">
 
 
 
 
 
 @if($j->foto)
+
 
 
 <img src="{{ asset('storage/'.$j->foto) }}">
@@ -313,10 +396,6 @@ id="profil{{$key}}">
 
 
 
-<div>
-
-
-
 <h3>
 
 {{$j->nama_khotib}}
@@ -326,20 +405,10 @@ id="profil{{$key}}">
 
 
 
-<p>
-
-{{$j->nama_masjid}}
-
-</p>
-
-
-
 
 </div>
 
 
-
-</div>
 
 
 
@@ -347,13 +416,11 @@ id="profil{{$key}}">
 
 
 
-</div>
-
-
-
 
 
 </div>
+
+
 
 
 </section>
@@ -366,11 +433,49 @@ id="profil{{$key}}">
 
 
 
-<section id="galeri">
+
+
+
+
+
+<section id="tentang"
+class="bg-light">
+
 
 
 <h2>
-Galeri Khotib
+Tentang Website
+</h2>
+
+
+<p style="text-align:center;">
+
+
+Website informasi jadwal khotib Jumat.
+
+
+</p>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="kegiatan">
+
+
+
+<h2>
+Informasi Kegiatan
 </h2>
 
 
@@ -379,38 +484,61 @@ Galeri Khotib
 <div class="cards">
 
 
-@foreach($jadwals as $j)
-
-
 
 <div class="card">
 
 
-
-@if($j->foto)
-
-
-<img src="{{asset('storage/'.$j->foto)}}">
-
-
-@endif
-
-
-
-
 <h3>
-
-{{$j->nama_khotib}}
-
+Kajian Masjid
 </h3>
 
+
+<p>
+Kegiatan kajian rutin masjid
+</p>
 
 
 </div>
 
 
 
-@endforeach
+
+
+
+<div class="card">
+
+
+<h3>
+Kegiatan Sosial
+</h3>
+
+
+<p>
+Program sosial masjid
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h3>
+Jumat Rutin
+</h3>
+
+
+<p>
+Informasi Jumat
+</p>
+
+
+</div>
+
 
 
 
@@ -418,6 +546,43 @@ Galeri Khotib
 
 
 </section>
+
+
+
+
+
+
+
+
+
+<section id="kontak">
+
+
+
+<h2>
+Kontak Masjid
+</h2>
+
+
+
+<p>
+085806203202
+</p>
+
+
+<p>
+Indonesia
+</p>
+
+
+
+</section>
+
+
+
+
+
+
 
 
 
@@ -430,7 +595,16 @@ Galeri Khotib
 
 
 
-function bukaJadwal(){
+let semuaJadwal = @json($jadwals);
+
+
+
+
+
+function bukaJadwal(tanggal){
+
+
+
 
 
 document
@@ -438,9 +612,174 @@ document
 .classList.add("geser");
 
 
+
 document
 .getElementById("tabBox")
 .classList.add("muncul");
+
+
+
+
+
+
+
+let dataTanggal = semuaJadwal.filter(function(item){
+
+
+
+
+
+let tgl = new Date(item.tanggal)
+.getDate();
+
+
+
+
+return tgl == tanggal;
+
+
+
+
+
+});
+
+
+
+
+
+
+let tab = "";
+
+let detail = "";
+
+
+
+
+
+
+
+
+dataTanggal.forEach(function(item,index){
+
+
+
+
+
+tab += `
+
+
+<button onclick="lihatDetail(${index})">
+
+
+${index+1}
+
+
+</button>
+
+
+
+`;
+
+
+
+
+
+
+
+let foto = item.foto 
+? "/storage/"+item.foto
+: "/landing/img/default.png";
+
+
+
+
+
+
+detail += `
+
+
+
+<div class="profil"
+id="profil${index}">
+
+
+
+
+
+<img src="${foto}">
+
+
+
+
+
+<div>
+
+
+<h3>
+
+${item.nama_khotib}
+
+</h3>
+
+
+
+<p>
+
+${item.nama_masjid}
+
+</p>
+
+
+
+<p>
+
+${item.tanggal}
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+`;
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+document
+.getElementById("tabBox")
+.innerHTML = tab;
+
+
+
+
+
+document
+.getElementById("isiDetail")
+.innerHTML = detail;
+
+
+
 
 
 }
@@ -448,18 +787,34 @@ document
 
 
 
+
+
+
+
+
+
+
+
 function lihatDetail(id){
+
+
+
 
 
 document
 .querySelectorAll(".profil")
-.forEach(function(e){
+.forEach(function(item){
 
 
-e.style.display="none";
+
+item.style.display="none";
+
 
 
 });
+
+
+
 
 
 
@@ -468,7 +823,15 @@ document
 .style.display="flex";
 
 
+
+
+
+
 }
+
+
+
+
 
 
 
@@ -478,9 +841,12 @@ function resetKalender(){
 
 
 
+
+
 document
 .getElementById("calendarBox")
 .classList.remove("geser");
+
 
 
 
@@ -490,22 +856,33 @@ document
 
 
 
+
+
 document
-.querySelectorAll(".profil")
-.forEach(function(e){
+.getElementById("tabBox")
+.innerHTML="";
 
 
-e.style.display="none";
 
 
-});
+
+document
+.getElementById("isiDetail")
+.innerHTML="Pilih tanggal terlebih dahulu";
+
+
+
+
 
 
 }
 
 
 
+
+
 </script>
+
 
 
 
