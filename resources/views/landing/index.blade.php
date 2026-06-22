@@ -49,8 +49,6 @@ Lihat Jadwal
 
 
 
-
-
 <div class="carousel-item">
 
 
@@ -90,8 +88,6 @@ Lihat Informasi
 
 
 
-
-
 <button class="carousel-control-prev"
 type="button"
 data-bs-target="#sliderMasjid"
@@ -107,7 +103,6 @@ data-bs-slide="prev">
 
 
 
-
 <button class="carousel-control-next"
 type="button"
 data-bs-target="#sliderMasjid"
@@ -118,7 +113,6 @@ data-bs-slide="next">
 
 
 </button>
-
 
 
 
@@ -145,7 +139,6 @@ Jadwal Khotib Jumat
 
 
 
-
 <div class="cards">
 
 
@@ -158,27 +151,18 @@ Jadwal Khotib Jumat
 
 
 
-<div class="card">
+<div class="card"
+style="cursor:pointer"
+data-bs-toggle="modal"
+data-bs-target="#detail{{ $j->id }}">
+
 
 
 <h3>
-{{ $j->nama_masjid }}
-</h3>
 
-
-
-<p>
-Tanggal :
 {{ $j->tanggal->format('d-m-Y') }}
-</p>
 
-
-
-
-<p>
-Khotib :
-{{ $j->nama_khotib }}
-</p>
+</h3>
 
 
 
@@ -186,18 +170,131 @@ Khotib :
 
 
 
+
+
+<!-- MODAL DETAIL -->
+
+<div class="modal fade"
+id="detail{{ $j->id }}"
+tabindex="-1">
+
+
+
+<div class="modal-dialog modal-dialog-centered">
+
+
+
+<div class="modal-content">
+
+
+
+
+
+<div class="modal-header">
+
+
+<h5 class="modal-title">
+
+Detail Jadwal Khotib
+
+</h5>
+
+
+
+<button type="button"
+class="btn-close"
+data-bs-dismiss="modal">
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+<div class="modal-body text-center">
+
+
+
+
+
+@if($j->foto)
+
+
+<img src="{{ asset('storage/'.$j->foto) }}"
+class="img-fluid rounded mb-3"
+style="max-height:250px">
+
+
+
+@endif
+
+
+
+
+
+<h3>
+
+{{ $j->nama_khotib }}
+
+</h3>
+
+
+
+
+<p>
+
+Masjid :
+{{ $j->nama_masjid }}
+
+</p>
+
+
+
+
+<p>
+
+Tanggal :
+{{ $j->tanggal->format('d F Y') }}
+
+</p>
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
 @endforeach
+
 
 
 
 @else
 
 
-
 <p>
 Belum ada jadwal khotib
 </p>
-
 
 
 @endif
@@ -217,6 +314,9 @@ Belum ada jadwal khotib
 
 
 
+
+
+
 <section id="galeri">
 
 
@@ -227,10 +327,7 @@ Galeri Khotib
 
 
 
-
 <div class="cards">
-
-
 
 
 
@@ -238,11 +335,7 @@ Galeri Khotib
 
 
 
-
-
 @foreach($jadwals as $j)
-
-
 
 
 
@@ -250,11 +343,7 @@ Galeri Khotib
 
 
 
-
-
 @if($j->foto)
-
-
 
 
 
@@ -264,43 +353,26 @@ alt="Foto Khotib">
 
 
 
-
-
-@else
-
-
-
-
-
-<p>
-Foto tidak tersedia
-</p>
-
-
-
-
-
 @endif
 
 
 
 
 
-
-
-
 <h3>
+
 {{ $j->nama_khotib }}
+
 </h3>
 
 
 
 
-
 <p>
-{{ $j->nama_masjid }}
-</p>
 
+{{ $j->nama_masjid }}
+
+</p>
 
 
 
@@ -310,17 +382,11 @@ Foto tidak tersedia
 
 
 
-
 @endforeach
 
 
 
-
-
 @else
-
-
-
 
 
 <p>
@@ -328,13 +394,7 @@ Belum ada foto khotib
 </p>
 
 
-
-
-
 @endif
-
-
-
 
 
 
@@ -357,7 +417,6 @@ Belum ada foto khotib
 <h2>
 Tentang Website
 </h2>
-
 
 
 
@@ -412,7 +471,6 @@ Informasi kajian dan kegiatan keagamaan masjid.
 
 
 
-
 <div class="card">
 
 
@@ -432,7 +490,6 @@ Informasi program sosial masjid.
 
 
 
-
 <div class="card">
 
 
@@ -447,7 +504,6 @@ Informasi imam dan khotib Jumat.
 
 
 </div>
-
 
 
 
@@ -494,6 +550,7 @@ Indonesia
 
 
 </section>
+
 
 
 
