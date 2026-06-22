@@ -24,7 +24,6 @@ alt="Masjid">
 
 <div class="carousel-caption">
 
-
 <h1>
 Jadwal Khotib Jumat
 </h1>
@@ -101,8 +100,6 @@ data-bs-slide="prev">
 
 
 
-
-
 <button class="carousel-control-next"
 type="button"
 data-bs-target="#sliderMasjid"
@@ -142,7 +139,6 @@ Jadwal Khotib Jumat
 <div class="cards">
 
 
-
 @if($jadwals->count())
 
 
@@ -165,38 +161,34 @@ data-bs-target="#detail{{ $j->id }}">
 </h3>
 
 
-
 </div>
 
 
 
 
 
-<!-- MODAL DETAIL -->
+
+
+
+<!-- DETAIL MODAL -->
+
 
 <div class="modal fade"
-id="detail{{ $j->id }}"
-tabindex="-1">
-
+id="detail{{ $j->id }}">
 
 
 <div class="modal-dialog modal-dialog-centered">
-
 
 
 <div class="modal-content">
 
 
 
-
-
 <div class="modal-header">
 
 
-<h5 class="modal-title">
-
-Detail Jadwal Khotib
-
+<h5>
+Detail Khotib
 </h5>
 
 
@@ -214,7 +206,6 @@ data-bs-dismiss="modal">
 
 
 
-
 <div class="modal-body text-center">
 
 
@@ -226,11 +217,19 @@ data-bs-dismiss="modal">
 
 <img src="{{ asset('storage/'.$j->foto) }}"
 class="img-fluid rounded mb-3"
-style="max-height:250px">
+style="width:200px;height:200px;object-fit:cover">
 
+
+@else
+
+
+<p>
+Foto tidak tersedia
+</p>
 
 
 @endif
+
 
 
 
@@ -269,16 +268,14 @@ Tanggal :
 </div>
 
 
-
-
 </div>
-
 
 
 </div>
 
 
 </div>
+
 
 
 
@@ -288,26 +285,21 @@ Tanggal :
 
 
 
-
 @else
 
 
 <p>
-Belum ada jadwal khotib
+Belum ada jadwal
 </p>
 
 
 @endif
 
 
-
 </div>
 
 
 </section>
-
-
-
 
 
 
@@ -326,7 +318,6 @@ Galeri Khotib
 
 
 
-
 <div class="cards">
 
 
@@ -342,15 +333,12 @@ Galeri Khotib
 <div class="card">
 
 
-
 @if($j->foto)
-
 
 
 <img src="{{ asset('storage/'.$j->foto) }}"
 class="img-fluid"
-alt="Foto Khotib">
-
+style="height:250px;object-fit:cover">
 
 
 @endif
@@ -367,7 +355,6 @@ alt="Foto Khotib">
 
 
 
-
 <p>
 
 {{ $j->nama_masjid }}
@@ -376,9 +363,7 @@ alt="Foto Khotib">
 
 
 
-
 </div>
-
 
 
 
@@ -422,8 +407,7 @@ Tentang Website
 
 <p style="text-align:center;">
 
-Website ini dibuat untuk memberikan informasi
-jadwal khotib Jumat kepada jamaah.
+Website ini dibuat untuk memberikan informasi jadwal khotib Jumat kepada jamaah.
 
 </p>
 
@@ -447,9 +431,7 @@ Informasi Kegiatan
 
 
 
-
 <div class="cards">
-
 
 
 <div class="card">
@@ -506,7 +488,6 @@ Informasi imam dan khotib Jumat.
 </div>
 
 
-
 </div>
 
 
@@ -528,12 +509,9 @@ Kontak Masjid
 </h2>
 
 
-
-
 <p>
 085806203202
 </p>
-
 
 
 <p>
@@ -541,16 +519,12 @@ ah1260794@gmail.com
 </p>
 
 
-
-
 <p>
 Indonesia
 </p>
 
 
-
 </section>
-
 
 
 
