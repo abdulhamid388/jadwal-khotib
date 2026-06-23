@@ -13,7 +13,9 @@ class="carousel slide"
 data-bs-ride="carousel">
 
 
+
 <div class="carousel-inner">
+
 
 
 <div class="carousel-item active">
@@ -37,10 +39,19 @@ Informasi jadwal khutbah Jumat terbaru
 </p>
 
 
-</div>
+<a href="#jadwal">
+Lihat Jadwal
+</a>
 
 
 </div>
+
+
+
+</div>
+
+
+
 
 
 
@@ -62,10 +73,24 @@ Informasi Masjid
 </h1>
 
 
-</div>
+<p>
+Kegiatan dan informasi masjid terbaru
+</p>
+
+
+<a href="#jadwal">
+Lihat Jadwal
+</a>
 
 
 </div>
+
+
+
+</div>
+
+
+
 
 
 </div>
@@ -75,6 +100,10 @@ Informasi Masjid
 
 
 </section>
+
+
+
+
 
 
 
@@ -101,8 +130,6 @@ Jadwal Khotib Jumat
 
 
 
-<!-- ================= KALENDER ================= -->
-
 
 
 <div class="calendar-box"
@@ -113,6 +140,7 @@ id="calendarBox">
 <h3>
 Juli 2026
 </h3>
+
 
 
 
@@ -161,6 +189,7 @@ $jumlahHari = $bulan->daysInMonth;
 
 
 
+
 $jadwalTanggal = $jadwals->groupBy(function($item){
 
 
@@ -170,15 +199,12 @@ return Carbon::parse($item->tanggal)->day;
 });
 
 
+
 @endphp
 
 
 
 
-
-
-
-{{-- kotak kosong sebelum tanggal 1 --}}
 
 
 @for($i=0;$i<$awal;$i++)
@@ -193,9 +219,6 @@ return Carbon::parse($item->tanggal)->day;
 
 
 
-
-
-{{-- tanggal asli --}}
 
 
 @for($i=1;$i<=$jumlahHari;$i++)
@@ -221,6 +244,7 @@ onclick="bukaJadwal({{$i}})">
 
 
 
+
 @else
 
 
@@ -235,7 +259,9 @@ onclick="bukaJadwal({{$i}})">
 
 
 
+
 @endif
+
 
 
 
@@ -256,10 +282,8 @@ onclick="bukaJadwal({{$i}})">
 
 
 
-
 <button class="btn-reset"
 onclick="resetKalender()">
-
 
 
 Kembali
@@ -270,6 +294,8 @@ Kembali
 
 
 
+
+
 </div>
 
 
@@ -282,7 +308,6 @@ Kembali
 
 
 
-<!-- ================= TAB ================= -->
 
 
 
@@ -290,7 +315,6 @@ Kembali
 id="tabBox">
 
 
-
 </div>
 
 
@@ -301,7 +325,7 @@ id="tabBox">
 
 
 
-<!-- ================= DETAIL ================= -->
+
 
 
 
@@ -315,7 +339,6 @@ Detail Khotib
 
 
 
-
 <div id="isiDetail">
 
 
@@ -324,13 +347,14 @@ Klik tanggal yang tersedia
 </p>
 
 
+</div>
+
+
 
 </div>
 
 
 
-
-</div>
 
 
 
@@ -376,7 +400,10 @@ Galeri Khotib
 
 
 
+
 <div class="card">
+
+
 
 
 
@@ -390,7 +417,7 @@ Galeri Khotib
 @else
 
 
-<img src="{{asset('landing/img/default.png')}}">
+<img src="{{ asset('landing/img/default.png') }}">
 
 
 
@@ -400,15 +427,18 @@ Galeri Khotib
 
 
 
+
 <h3>
 
-{{$j->nama_khotib}}
+{{ $j->nama_khotib }}
 
 </h3>
 
 
 
+
 </div>
+
 
 
 
@@ -432,8 +462,14 @@ Galeri Khotib
 
 
 
+
+
+
+
+
 <section id="tentang"
 class="bg-light">
+
 
 
 <h2>
@@ -442,10 +478,30 @@ Tentang Website
 
 
 
-<p style="text-align:center;">
 
 
-Website informasi jadwal khotib Jumat.
+<p style="text-align:center; line-height:2;">
+
+
+Website Jadwal Khotib Jumat dibuat untuk membantu
+jamaah mendapatkan informasi khutbah Jumat dengan
+lebih mudah dan cepat.
+
+<br><br>
+
+
+Melalui website ini, jamaah dapat melihat jadwal khotib,
+nama masjid, serta foto khotib yang bertugas pada setiap
+tanggal Jumat.
+
+
+<br><br>
+
+
+Informasi jadwal diperbarui oleh admin masjid sehingga
+jamaah dapat mengetahui jadwal terbaru sebelum
+melaksanakan ibadah Jumat.
+
 
 
 </p>
@@ -453,6 +509,9 @@ Website informasi jadwal khotib Jumat.
 
 
 </section>
+
+
+
 
 
 
@@ -468,13 +527,20 @@ Website informasi jadwal khotib Jumat.
 
 
 <h2>
-Informasi Kegiatan
+Informasi Kegiatan Masjid
 </h2>
 
 
 
 
+
 <div class="cards">
+
+
+
+
+
+
 
 
 <div class="card">
@@ -486,11 +552,22 @@ Kajian Masjid
 
 
 <p>
-Kegiatan kajian rutin
+
+
+Kegiatan kajian rutin yang diadakan oleh masjid
+untuk meningkatkan pengetahuan agama,
+mempererat silaturahmi jamaah, dan menambah
+wawasan keislaman.
+
+
 </p>
 
 
 </div>
+
+
+
+
 
 
 
@@ -505,11 +582,48 @@ Kegiatan Sosial
 
 
 <p>
-Program sosial masjid
+
+
+Program sosial masjid seperti berbagi kepada
+masyarakat, bantuan jamaah yang membutuhkan,
+kegiatan amal, dan kepedulian lingkungan sekitar.
+
+
 </p>
 
 
 </div>
+
+
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h3>
+Jumat Rutin
+</h3>
+
+
+<p>
+
+
+Kegiatan rutin setiap hari Jumat seperti pelaksanaan
+shalat Jumat, informasi imam, khotib, serta kegiatan
+keagamaan lainnya.
+
+
+</p>
+
+
+</div>
+
+
 
 
 
@@ -519,6 +633,10 @@ Program sosial masjid
 
 
 </section>
+
+
+
+
 
 
 
@@ -532,9 +650,11 @@ Program sosial masjid
 <section id="kontak">
 
 
+
 <h2>
 Kontak Masjid
 </h2>
+
 
 
 
@@ -543,13 +663,28 @@ Kontak Masjid
 </p>
 
 
+
+<p>
+ah1260794@gmail.com
+</p>
+
+
+
+
 <p>
 Indonesia
 </p>
 
 
 
+
 </section>
+
+
+
+
+
+
 
 
 
@@ -572,6 +707,8 @@ let semuaJadwal = @json($jadwals);
 
 
 function bukaJadwal(tanggal){
+
+
 
 
 
@@ -619,13 +756,17 @@ let detail="";
 
 
 
+
+
 dataTanggal.forEach(function(item,index){
 
 
 
 
 
+
 tab += `
+
 
 <button onclick="lihatDetail(${index})">
 
@@ -635,6 +776,8 @@ ${index+1}
 
 </button>
 
+
+
 `;
 
 
@@ -642,9 +785,15 @@ ${index+1}
 
 
 
+
+
 let foto = item.foto
+
 ? "/storage/"+item.foto
+
 : "/landing/img/default.png";
+
+
 
 
 
@@ -654,12 +803,17 @@ let foto = item.foto
 detail += `
 
 
+
 <div class="profil"
 id="profil${index}">
 
 
 
+
+
 <img src="${foto}">
+
+
 
 
 
@@ -673,8 +827,10 @@ ${item.nama_khotib}
 </h3>
 
 
+
 <p>
 
+Masjid :
 ${item.nama_masjid}
 
 </p>
@@ -683,20 +839,27 @@ ${item.nama_masjid}
 
 <p>
 
+Tanggal :
 ${item.tanggal}
 
 </p>
 
 
 
+
+</div>
+
+
+
 </div>
 
 
-
-</div>
 
 
 `;
+
+
+
 
 
 
@@ -732,8 +895,9 @@ document
 
 
 
-
 function lihatDetail(id){
+
+
 
 
 
@@ -742,10 +906,16 @@ document
 .forEach(function(item){
 
 
+
 item.style.display="none";
 
 
+
 });
+
+
+
+
 
 
 
