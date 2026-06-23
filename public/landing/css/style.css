@@ -17,6 +17,8 @@ font-family:'Poppins',sans-serif;
 
 color:#555;
 
+overflow-x:hidden;
+
 }
 
 
@@ -29,19 +31,18 @@ padding:90px 8%;
 
 
 
-section h2{
+h2{
 
 text-align:center;
 
-font-size:34px;
-
-font-weight:700;
-
-color:#222;
+font-size:35px;
 
 margin-bottom:50px;
 
+color:#222;
+
 }
+
 
 
 
@@ -62,13 +63,11 @@ padding:0;
 
 .carousel-item img{
 
-
 height:100vh;
 
 object-fit:cover;
 
 filter:brightness(50%);
-
 
 }
 
@@ -78,11 +77,11 @@ filter:brightness(50%);
 
 top:50%;
 
-left:8%;
-
 transform:translateY(-50%);
 
 text-align:left;
+
+left:8%;
 
 }
 
@@ -91,7 +90,7 @@ text-align:left;
 .carousel-caption h1{
 
 
-font-size:60px;
+font-size:55px;
 
 font-weight:700;
 
@@ -99,15 +98,41 @@ font-weight:700;
 
 
 
+.carousel-caption a{
+
+padding:12px 30px;
+
+border:2px solid white;
+
+color:white;
+
+text-decoration:none;
+
+display:inline-block;
+
+margin-top:20px;
+
+}
+
+
+
+
+
+
+
+
+
 
 /* KALENDER */
 
 
+
 #jadwal{
 
-background:#f7faff;
+background:#f5f9ff;
 
 }
+
 
 
 
@@ -116,14 +141,17 @@ background:#f7faff;
 
 display:flex;
 
+
 gap:25px;
+
 
 align-items:flex-start;
 
 
+transition:.5s;
+
+
 }
-
-
 
 
 
@@ -137,7 +165,7 @@ width:330px;
 background:white;
 
 
-padding:18px;
+padding:20px;
 
 
 border-radius:20px;
@@ -151,29 +179,17 @@ box-shadow:0 15px 35px #0002;
 
 
 
-
-
 .navigator{
 
 
 display:flex;
 
-justify-content:center;
+
+justify-content:space-between;
+
 
 align-items:center;
 
-gap:15px;
-
-
-}
-
-
-
-.navigator h3{
-
-color:#0066ff;
-
-font-size:18px;
 
 }
 
@@ -182,15 +198,7 @@ font-size:18px;
 .navigator button{
 
 
-width:32px;
-
-height:32px;
-
-
 border:none;
-
-
-border-radius:50%;
 
 
 background:#0066ff;
@@ -199,15 +207,37 @@ background:#0066ff;
 color:white;
 
 
+width:35px;
+
+
+height:35px;
+
+
+border-radius:50%;
+
+
+}
+
+
+
+
+.navigator h3{
+
+
+font-size:18px;
+
+
+color:#0066ff;
+
+
 }
 
 
 
 
 
+
 .hari,
-
-
 .tanggal-grid{
 
 
@@ -217,7 +247,7 @@ display:grid;
 grid-template-columns:repeat(7,1fr);
 
 
-gap:7px;
+gap:8px;
 
 
 margin-top:15px;
@@ -228,15 +258,14 @@ margin-top:15px;
 
 
 
-
 .hari span{
 
 
 text-align:center;
 
-font-size:11px;
 
-font-weight:600;
+font-size:12px;
+
 
 }
 
@@ -247,13 +276,7 @@ font-weight:600;
 .tanggal{
 
 
-height:34px;
-
-
-background:#edf3ff;
-
-
-border-radius:8px;
+height:35px;
 
 
 display:flex;
@@ -265,16 +288,23 @@ align-items:center;
 justify-content:center;
 
 
+background:#edf3ff;
+
+
+border-radius:8px;
+
+
 cursor:pointer;
 
 
-font-size:12px;
+font-size:13px;
 
 
 transition:.3s;
 
 
 }
+
 
 
 
@@ -298,7 +328,9 @@ transform:scale(1.1);
 
 
 
+
 /* DETAIL */
+
 
 
 .detail-box{
@@ -312,20 +344,31 @@ display:none;
 
 
 
-
 .kalender-wrapper.aktif .detail-box{
 
 
-display:flex;
+display:block;
 
 
-flex-direction:column;
+width:650px;
 
 
-gap:10px;
+}
 
 
-width:430px;
+
+
+
+.tanggal-detail{
+
+
+display:grid;
+
+
+grid-template-columns:repeat(4,1fr);
+
+
+gap:12px;
 
 
 }
@@ -338,13 +381,13 @@ width:430px;
 .detail-item{
 
 
-height:85px;
+height:90px;
 
 
 background:white;
 
 
-border-radius:18px;
+border-radius:15px;
 
 
 display:flex;
@@ -353,37 +396,16 @@ display:flex;
 align-items:center;
 
 
-padding:12px;
+padding:10px;
 
 
 box-shadow:0 10px 25px #0002;
-
-
-animation:muncul .4s;
 
 
 position:relative;
 
 
 }
-
-
-
-
-@keyframes muncul{
-
-
-from{
-
-opacity:0;
-
-transform:translateX(30px);
-
-}
-
-}
-
-
 
 
 
@@ -395,10 +417,16 @@ transform:translateX(30px);
 position:absolute;
 
 
-top:8px;
+top:7px;
 
 
-left:8px;
+left:7px;
+
+
+background:#0066ff;
+
+
+color:white;
 
 
 width:22px;
@@ -408,12 +436,6 @@ height:22px;
 
 
 border-radius:50%;
-
-
-background:#0066ff;
-
-
-color:white;
 
 
 font-size:11px;
@@ -451,21 +473,23 @@ object-fit:cover;
 margin-left:25px;
 
 
-margin-right:15px;
+margin-right:10px;
 
 
 }
 
 
 
+
+
 .detail-item h4{
 
 
+font-size:13px;
+
 color:#0066ff;
 
-
-font-size:14px;
-
+margin:0;
 
 }
 
@@ -474,8 +498,9 @@ font-size:14px;
 .detail-item p{
 
 
-font-size:12px;
+font-size:11px;
 
+margin:2px;
 
 }
 
@@ -506,6 +531,7 @@ gap:30px;
 
 
 
+
 .card{
 
 
@@ -515,17 +541,16 @@ background:white;
 padding:25px;
 
 
-border-radius:18px;
+border-radius:20px;
 
 
-box-shadow:0 15px 35px #0001;
+box-shadow:0 15px 35px #0002;
 
 
 transition:.4s;
 
 
 }
-
 
 
 
@@ -539,6 +564,7 @@ transform:translateY(-10px);
 
 
 
+
 .card h3{
 
 
@@ -546,6 +572,8 @@ color:#0066ff;
 
 
 }
+
+
 
 
 
@@ -570,14 +598,19 @@ border-radius:15px;
 
 
 
+
+
 #tentang{
+
+
+text-align:center;
 
 
 background:#f7f7f7;
 
-text-align:center;
 
 }
+
 
 
 
@@ -586,10 +619,11 @@ text-align:center;
 
 line-height:2;
 
-font-size:16px;
-
 
 }
+
+
+
 
 
 
@@ -599,9 +633,12 @@ font-size:16px;
 @media(max-width:900px){
 
 
+
 .kalender-wrapper{
 
+
 flex-direction:column;
+
 
 }
 
@@ -621,6 +658,7 @@ width:100%!important;
 
 
 grid-template-columns:1fr;
+
 
 }
 
