@@ -1,128 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
 *{
 
 margin:0;
 padding:0;
 box-sizing:border-box;
 
-font-family:'Poppins',sans-serif;
-
 }
-
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
 
 
 body{
 
-color:#333;
+font-family:'Poppins',sans-serif;
 
-background:#f8fafc;
-
-}
-
-
-
-
-/* NAVBAR */
-
-
-nav{
-
-position:absolute;
-
-top:0;
-
-left:0;
-
-width:100%;
-
-height:90px;
-
-padding:0 8%;
-
-display:flex;
-
-align-items:center;
-
-justify-content:space-between;
-
-z-index:999;
-
+color:#555;
 
 }
 
 
 
-.logo{
 
 
-font-size:28px;
+section{
 
-font-weight:700;
-
-color:white;
+padding:90px 8%;
 
 }
 
 
 
-nav ul{
+h2{
 
+text-align:center;
 
-display:flex;
+font-size:34px;
 
-gap:35px;
+margin-bottom:50px;
 
-list-style:none;
-
-margin:0;
-
-padding:0;
-
+color:#1e293b;
 
 }
-
-
-
-nav ul li{
-
-
-list-style:none;
-
-
-}
-
-
-
-nav ul li a{
-
-
-color:white;
-
-text-decoration:none;
-
-font-weight:600;
-
-font-size:15px;
-
-
-}
-
-
-
-nav ul li a:hover{
-
-
-color:#2196f3;
-
-
-}
-
 
 
 
@@ -134,11 +52,9 @@ color:#2196f3;
 
 #home{
 
-
 height:100vh;
 
 padding:0;
-
 
 }
 
@@ -148,8 +64,6 @@ padding:0;
 
 
 height:100vh;
-
-width:100%;
 
 object-fit:cover;
 
@@ -167,6 +81,10 @@ top:50%;
 
 transform:translateY(-50%);
 
+text-align:left;
+
+left:8%;
+
 
 }
 
@@ -174,20 +92,9 @@ transform:translateY(-50%);
 
 .carousel-caption h1{
 
-
-font-size:60px;
+font-size:55px;
 
 font-weight:700;
-
-
-}
-
-
-
-.carousel-caption p{
-
-
-font-size:20px;
 
 
 }
@@ -201,11 +108,11 @@ display:inline-block;
 
 margin-top:25px;
 
-background:#1976d2;
-
-padding:15px 40px;
+padding:12px 35px;
 
 border-radius:30px;
+
+background:#0066ff;
 
 color:white;
 
@@ -221,50 +128,177 @@ text-decoration:none;
 
 
 
-/* SECTION */
 
-
-section{
-
-
-padding:100px 8%;
-
-
-}
-
-
-
-section h2{
-
-
-text-align:center;
-
-font-size:36px;
-
-margin-bottom:50px;
-
-color:#222;
-
-
-}
-
-
-
-
-
-
-
-
-/* JADWAL JANGAN DI RUSAK */
+/* KALENDER */
 
 
 #jadwal{
 
+background:#f4f8ff;
 
-background:#f5f7fb;
+}
+
+
+
+.kalender-wrapper{
+
+
+display:flex;
+
+gap:30px;
+
+align-items:flex-start;
 
 
 }
+
+
+
+
+.kalender-box{
+
+
+width:320px;
+
+background:white;
+
+padding:18px;
+
+border-radius:20px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+
+}
+
+
+
+
+.navigator{
+
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+
+}
+
+
+
+.navigator h3{
+
+
+font-size:17px;
+
+color:#0066ff;
+
+
+}
+
+
+
+
+.navigator button{
+
+
+border:0;
+
+background:#0066ff;
+
+color:white;
+
+width:35px;
+
+height:35px;
+
+border-radius:50%;
+
+font-size:20px;
+
+}
+
+
+
+
+
+.hari,
+.tanggal-grid{
+
+
+display:grid;
+
+grid-template-columns:repeat(7,1fr);
+
+gap:8px;
+
+margin-top:15px;
+
+
+}
+
+
+
+
+.hari span{
+
+
+text-align:center;
+
+font-size:11px;
+
+font-weight:600;
+
+
+}
+
+
+
+
+.tanggal{
+
+
+height:38px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+background:#eef5ff;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-size:13px;
+
+transition:.3s;
+
+
+}
+
+
+
+.tanggal:hover{
+
+
+background:#0066ff;
+
+color:white;
+
+transform:scale(1.1);
+
+
+}
+
+
+
+
+
 
 
 
@@ -273,22 +307,124 @@ background:#f5f7fb;
 /* DETAIL */
 
 
-.profil{
+.detail-box{
+
+
+display:none;
+
+}
+
+
+
+.kalender-wrapper.aktif .detail-box{
+
+
+display:block;
+
+width:650px;
+
+
+}
+
+
+
+.detail-header{
+
+
+font-weight:600;
+
+font-size:18px;
+
+margin-bottom:15px;
+
+color:#0066ff;
+
+}
+
+
+
+
+
+.tanggal-detail{
+
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:15px;
+
+
+}
+
+
+
+
+
+.detail-item{
 
 
 background:white;
 
-border-radius:18px;
+height:100px;
 
-padding:15px;
+border-radius:18px;
 
 display:flex;
 
 align-items:center;
 
-gap:20px;
+padding:12px;
 
-box-shadow:0 10px 25px rgba(0,0,0,.1);
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+
+position:relative;
+
+transition:.3s;
+
+
+}
+
+
+
+.detail-item:hover{
+
+transform:translateY(-5px);
+
+}
+
+
+
+
+
+.nomor{
+
+
+position:absolute;
+
+top:8px;
+
+left:8px;
+
+
+background:#0066ff;
+
+color:white;
+
+width:23px;
+
+height:23px;
+
+border-radius:50%;
+
+
+font-size:11px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
 
 
 }
@@ -296,29 +432,21 @@ box-shadow:0 10px 25px rgba(0,0,0,.1);
 
 
 
-.profil img{
+
+.detail-item img{
 
 
-width:70px;
+width:55px;
 
-height:70px;
+height:55px;
 
 border-radius:50%;
 
 object-fit:cover;
 
+margin-left:20px;
 
-}
-
-
-
-
-.profil h3{
-
-
-color:#1976d2;
-
-font-size:17px;
+margin-right:12px;
 
 
 }
@@ -327,10 +455,53 @@ font-size:17px;
 
 
 
+.detail-text h4{
+
+
+font-size:13px;
+
+color:#0066ff;
+
+margin:0;
+
+
+}
 
 
 
-/* GALERI */
+
+.detail-text p{
+
+
+font-size:11px;
+
+margin:3px 0;
+
+
+}
+
+
+
+.detail-text span{
+
+
+font-size:10px;
+
+color:#777;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* CARD */
+
 
 .cards{
 
@@ -352,11 +523,11 @@ gap:30px;
 
 background:white;
 
-padding:30px;
+padding:25px;
 
 border-radius:20px;
 
-box-shadow:0 10px 30px rgba(0,0,0,.1);
+box-shadow:0 15px 35px rgba(0,0,0,.1);
 
 transition:.3s;
 
@@ -370,16 +541,15 @@ transition:.3s;
 
 transform:translateY(-10px);
 
-
 }
+
 
 
 
 .card h3{
 
 
-color:#1976d2;
-
+color:#0066ff;
 
 }
 
@@ -391,6 +561,10 @@ color:#1976d2;
 
 width:100%;
 
+height:230px;
+
+object-fit:cover;
+
 border-radius:15px;
 
 
@@ -400,13 +574,7 @@ border-radius:15px;
 
 
 
-
-
-
-/* KONTAK */
-
-
-#kontak{
+#tentang{
 
 
 text-align:center;
@@ -416,48 +584,13 @@ text-align:center;
 
 
 
-#kontak p{
+
+#tentang p{
 
 
-font-size:18px;
-
-
-}
-
-
-
-
-
-
-
-/* FOOTER */
-
-
-footer{
-
-
-background:#111827;
-
-color:white;
-
-text-align:center;
-
-padding:50px;
-
+line-height:2;
 
 }
-
-
-
-footer h3{
-
-
-font-size:28px;
-
-
-}
-
-
 
 
 
@@ -466,30 +599,34 @@ font-size:28px;
 @media(max-width:900px){
 
 
-.cards{
+.kalender-wrapper{
 
+flex-direction:column;
+
+}
+
+
+
+.detail-box{
+
+
+width:100%!important;
+
+}
+
+
+
+.tanggal-detail{
 
 grid-template-columns:1fr;
 
-
-}
-
-
-.carousel-caption h1{
-
-
-font-size:35px;
-
-
 }
 
 
 
-nav ul{
+.cards{
 
-
-gap:10px;
-
+grid-template-columns:1fr;
 
 }
 
