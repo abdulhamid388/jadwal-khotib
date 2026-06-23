@@ -1,47 +1,131 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-
 *{
 
 margin:0;
 padding:0;
 box-sizing:border-box;
 
+font-family:'Poppins',sans-serif;
+
 }
+
+
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
 
 
 body{
 
-font-family:'Poppins',sans-serif;
+background:#f8fafc;
 
-color:#555;
+color:#333;
 
-}
-
-
-
-
-
-section{
-
-padding:90px 8%;
+overflow-x:hidden;
 
 }
 
 
 
-h2{
 
-text-align:center;
+/* NAVBAR */
 
-font-size:34px;
 
-margin-bottom:50px;
+nav{
 
-color:#1e293b;
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:90px;
+
+padding:0 8%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+z-index:9999;
+
 
 }
 
+
+
+.logo{
+
+font-size:28px;
+
+font-weight:700;
+
+color:white;
+
+letter-spacing:1px;
+
+}
+
+
+
+nav ul{
+
+
+display:flex;
+
+gap:30px;
+
+list-style:none;
+
+margin:0;
+
+padding:0;
+
+
+}
+
+
+
+nav ul li{
+
+list-style:none;
+
+}
+
+
+
+nav ul li a{
+
+
+color:white;
+
+text-decoration:none;
+
+font-size:15px;
+
+font-weight:500;
+
+transition:.3s;
+
+
+}
+
+
+
+nav ul li a:hover{
+
+
+color:#2196f3;
+
+
+}
 
 
 
@@ -65,6 +149,8 @@ padding:0;
 
 height:100vh;
 
+width:100%;
+
 object-fit:cover;
 
 filter:brightness(45%);
@@ -81,16 +167,12 @@ top:50%;
 
 transform:translateY(-50%);
 
-text-align:left;
-
-left:8%;
-
-
 }
 
 
 
 .carousel-caption h1{
+
 
 font-size:55px;
 
@@ -101,23 +183,44 @@ font-weight:700;
 
 
 
+.carousel-caption p{
+
+
+font-size:20px;
+
+
+}
+
+
+
+.carousel-caption button,
 .carousel-caption a{
 
 
-display:inline-block;
+background:#1976d2;
 
-margin-top:25px;
-
-padding:12px 35px;
+padding:15px 35px;
 
 border-radius:30px;
-
-background:#0066ff;
 
 color:white;
 
 text-decoration:none;
 
+border:none;
+
+transition:.3s;
+
+
+}
+
+
+
+.carousel-caption a:hover{
+
+
+background:#0d47a1;
+
 
 }
 
@@ -125,172 +228,31 @@ text-decoration:none;
 
 
 
+/* SECTION */
 
 
+section{
 
 
-/* KALENDER */
-
-
-#jadwal{
-
-background:#f4f8ff;
-
-}
-
-
-
-.kalender-wrapper{
-
-
-display:flex;
-
-gap:30px;
-
-align-items:flex-start;
+padding:90px 8%;
 
 
 }
 
 
 
-
-.kalender-box{
-
-
-width:320px;
-
-background:white;
-
-padding:18px;
-
-border-radius:20px;
-
-box-shadow:0 15px 35px rgba(0,0,0,.12);
-
-
-}
-
-
-
-
-.navigator{
-
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-
-}
-
-
-
-.navigator h3{
-
-
-font-size:17px;
-
-color:#0066ff;
-
-
-}
-
-
-
-
-.navigator button{
-
-
-border:0;
-
-background:#0066ff;
-
-color:white;
-
-width:35px;
-
-height:35px;
-
-border-radius:50%;
-
-font-size:20px;
-
-}
-
-
-
-
-
-.hari,
-.tanggal-grid{
-
-
-display:grid;
-
-grid-template-columns:repeat(7,1fr);
-
-gap:8px;
-
-margin-top:15px;
-
-
-}
-
-
-
-
-.hari span{
+section h2{
 
 
 text-align:center;
 
-font-size:11px;
+font-size:36px;
 
-font-weight:600;
+font-weight:700;
 
+color:#222;
 
-}
-
-
-
-
-.tanggal{
-
-
-height:38px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:#eef5ff;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-size:13px;
-
-transition:.3s;
-
-
-}
-
-
-
-.tanggal:hover{
-
-
-background:#0066ff;
-
-color:white;
-
-transform:scale(1.1);
+margin-bottom:50px;
 
 
 }
@@ -299,45 +261,13 @@ transform:scale(1.1);
 
 
 
+/* JADWAL AREA */
 
 
+#jadwal{
 
 
-
-/* DETAIL */
-
-
-.detail-box{
-
-
-display:none;
-
-}
-
-
-
-.kalender-wrapper.aktif .detail-box{
-
-
-display:block;
-
-width:650px;
-
-
-}
-
-
-
-.detail-header{
-
-
-font-weight:600;
-
-font-size:18px;
-
-margin-bottom:15px;
-
-color:#0066ff;
+background:#f1f5f9;
 
 }
 
@@ -345,86 +275,25 @@ color:#0066ff;
 
 
 
-.tanggal-detail{
+/* DETAIL CARD */
 
 
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:15px;
-
-
-}
-
-
-
-
-
-.detail-item{
+.profil{
 
 
 background:white;
 
-height:100px;
+border-radius:20px;
 
-border-radius:18px;
-
-display:flex;
-
-align-items:center;
-
-padding:12px;
-
-box-shadow:0 10px 25px rgba(0,0,0,.12);
-
-position:relative;
-
-transition:.3s;
-
-
-}
-
-
-
-.detail-item:hover{
-
-transform:translateY(-5px);
-
-}
-
-
-
-
-
-.nomor{
-
-
-position:absolute;
-
-top:8px;
-
-left:8px;
-
-
-background:#0066ff;
-
-color:white;
-
-width:23px;
-
-height:23px;
-
-border-radius:50%;
-
-
-font-size:11px;
+padding:15px 20px;
 
 display:flex;
 
 align-items:center;
 
-justify-content:center;
+gap:20px;
+
+box-shadow:0 15px 35px rgba(0,0,0,.1);
 
 
 }
@@ -432,21 +301,29 @@ justify-content:center;
 
 
 
+.profil img{
 
-.detail-item img{
 
+width:70px;
 
-width:55px;
-
-height:55px;
+height:70px;
 
 border-radius:50%;
 
 object-fit:cover;
 
-margin-left:20px;
 
-margin-right:12px;
+}
+
+
+
+
+.profil h3{
+
+
+font-size:17px;
+
+color:#1976d2;
 
 
 }
@@ -454,53 +331,7 @@ margin-right:12px;
 
 
 
-
-.detail-text h4{
-
-
-font-size:13px;
-
-color:#0066ff;
-
-margin:0;
-
-
-}
-
-
-
-
-.detail-text p{
-
-
-font-size:11px;
-
-margin:3px 0;
-
-
-}
-
-
-
-.detail-text span{
-
-
-font-size:10px;
-
-color:#777;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* CARD */
+/* CARD UMUM */
 
 
 .cards{
@@ -517,19 +348,18 @@ gap:30px;
 
 
 
-
 .card{
 
 
 background:white;
 
-padding:25px;
+padding:30px;
 
 border-radius:20px;
 
-box-shadow:0 15px 35px rgba(0,0,0,.1);
+box-shadow:0 15px 30px rgba(0,0,0,.08);
 
-transition:.3s;
+transition:.4s;
 
 
 }
@@ -541,18 +371,20 @@ transition:.3s;
 
 transform:translateY(-10px);
 
-}
+box-shadow:0 20px 40px rgba(0,0,0,.15);
 
+
+}
 
 
 
 .card h3{
 
 
-color:#0066ff;
+color:#1976d2;
+
 
 }
-
 
 
 
@@ -560,10 +392,6 @@ color:#0066ff;
 
 
 width:100%;
-
-height:230px;
-
-object-fit:cover;
 
 border-radius:15px;
 
@@ -573,24 +401,106 @@ border-radius:15px;
 
 
 
+/* TENTANG */
+
 
 #tentang{
 
 
-text-align:center;
+background:#fff;
 
 
 }
-
 
 
 
 #tentang p{
 
 
+text-align:center;
+
+font-size:18px;
+
 line-height:2;
 
+
 }
+
+
+
+
+
+
+
+/* KONTAK */
+
+
+#kontak{
+
+
+text-align:center;
+
+background:#f8fafc;
+
+
+}
+
+
+
+#kontak p{
+
+
+font-size:18px;
+
+margin:10px;
+
+
+}
+
+
+
+
+
+
+/* FOOTER */
+
+
+footer{
+
+
+background:#111827;
+
+color:white;
+
+text-align:center;
+
+padding:40px;
+
+
+}
+
+
+
+footer h3{
+
+
+font-size:26px;
+
+
+}
+
+
+
+
+footer p{
+
+
+opacity:.8;
+
+
+}
+
+
 
 
 
@@ -599,26 +509,22 @@ line-height:2;
 @media(max-width:900px){
 
 
-.kalender-wrapper{
 
-flex-direction:column;
+nav ul{
+
+
+gap:10px;
+
 
 }
 
 
 
-.detail-box{
+.carousel-caption h1{
 
 
-width:100%!important;
+font-size:35px;
 
-}
-
-
-
-.tanggal-detail{
-
-grid-template-columns:1fr;
 
 }
 
@@ -626,7 +532,9 @@ grid-template-columns:1fr;
 
 .cards{
 
+
 grid-template-columns:1fr;
+
 
 }
 
