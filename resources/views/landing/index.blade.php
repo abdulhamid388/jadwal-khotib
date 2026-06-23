@@ -39,15 +39,11 @@ Informasi jadwal khutbah Jumat terbaru
 </p>
 
 
-<a href="#jadwal">
-Lihat Jadwal
-</a>
-
-
 </div>
 
 
 </div>
+
 
 
 
@@ -70,15 +66,10 @@ Informasi Masjid
 
 
 <p>
-Kegiatan dan informasi masjid terbaru
+Kegiatan dan informasi masjid
 </p>
 
 
-<a href="#jadwal">
-Lihat Jadwal
-</a>
-
-
 </div>
 
 
@@ -87,6 +78,7 @@ Lihat Jadwal
 
 
 </div>
+
 
 
 </div>
@@ -121,38 +113,11 @@ Jadwal Khotib Jumat
 
 
 
-<div class="calendar-box"
-id="calendarBox">
+<!-- ================= KALENDER ================= -->
 
 
 
-<h3>
-Juli 2026
-</h3>
-
-
-
-
-<div class="hari">
-
-
-<span>Min</span>
-<span>Sen</span>
-<span>Sel</span>
-<span>Rab</span>
-<span>Kam</span>
-<span>Jum</span>
-<span>Sab</span>
-
-
-</div>
-
-
-
-
-
-
-<div class="calendar-grid">
+<div class="calendar-box">
 
 
 
@@ -162,23 +127,43 @@ Juli 2026
 use Carbon\Carbon;
 
 
-$bulan = Carbon::create(2026,7,1);
-
-
-$awal = $bulan->dayOfWeek;
-
-
-$jumlahHari = $bulan->daysInMonth;
-
-
-
 $jadwalTanggal = $jadwals->groupBy(function($item){
 
 
-return Carbon::parse($item->tanggal)->day;
+return Carbon::parse($item->tanggal)
+->format('Y-m-d');
 
 
 });
+
+
+@endphp
+
+
+
+
+
+
+
+@for($bulan=1;$bulan<=12;$bulan++)
+
+
+
+@php
+
+
+$awalBulan =
+Carbon::create(2026,$bulan,1);
+
+
+
+$jumlahHari =
+$awalBulan->daysInMonth;
+
+
+
+$awalHari =
+$awalBulan->dayOfWeek;
 
 
 
@@ -191,7 +176,51 @@ return Carbon::parse($item->tanggal)->day;
 
 
 
-@for($i=0;$i<$awal;$i++)
+<div class="bulan">
+
+
+
+<h3>
+
+{{ $awalBulan->translatedFormat('F Y') }}
+
+</h3>
+
+
+
+
+
+
+
+<div class="hari">
+
+
+<span>M</span>
+<span>S</span>
+<span>S</span>
+<span>R</span>
+<span>K</span>
+<span>J</span>
+<span>S</span>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="calendar-grid">
+
+
+
+
+
+
+@for($i=0;$i<$awalHari;$i++)
 
 <div></div>
 
@@ -203,19 +232,41 @@ return Carbon::parse($item->tanggal)->day;
 
 
 
-
-@for($i=1;$i<=$jumlahHari;$i++)
-
+@for($hari=1;$hari<=$jumlahHari;$hari++)
 
 
-@if(isset($jadwalTanggal[$i]))
+
+@php
+
+
+$tanggalFix =
+Carbon::create(
+2026,
+$bulan,
+$hari
+)->format('Y-m-d');
+
+
+
+@endphp
+
+
+
+
+
+
+
+@if(isset($jadwalTanggal[$tanggalFix]))
 
 
 
 <div class="tanggal aktif"
-onclick="bukaJadwal({{$i}})">
 
-{{$i}}
+onclick="lihatJadwal('{{ $tanggalFix }}')">
+
+
+{{ $hari }}
+
 
 </div>
 
@@ -224,14 +275,39 @@ onclick="bukaJadwal({{$i}})">
 @else
 
 
-<div class="tanggal kosong">
+<div class="tanggal">
 
-{{$i}}
+
+{{ $hari }}
+
 
 </div>
 
 
+
 @endif
+
+
+
+
+
+
+@endfor
+
+
+
+
+
+
+</div>
+
+
+
+
+</div>
+
+
+
 
 
 
@@ -250,18 +326,6 @@ onclick="bukaJadwal({{$i}})">
 
 
 
-<button class="btn-reset"
-onclick="resetKalender()">
-
-Kembali
-
-</button>
-
-
-
-
-
-</div>
 
 
 
@@ -269,52 +333,25 @@ Kembali
 
 
 
+<!-- ================= DETAIL ================= -->
 
 
 
+<div class="detail-container"
+id="detailContainer">
 
 
 
-<div class="tab-box"
-id="tabBox">
-
-</div>
+<div class="kosong">
 
 
-
-
-
-
-
-
-
-
-
-
-<div class="detail-box">
-
-
-
-<h3>
-Detail Khotib
-</h3>
-
-
-
-<div id="isiDetail">
-
-
-<p>
-Klik tanggal yang tersedia
-</p>
-
+Klik tanggal yang berwarna biru
 
 </div>
 
 
 
 </div>
-
 
 
 
@@ -327,6 +364,10 @@ Klik tanggal yang tersedia
 
 
 </section>
+
+
+
+
 
 
 
@@ -378,11 +419,15 @@ Galeri Khotib
 
 
 
+
+
 <h3>
 
 {{ $j->nama_khotib }}
 
 </h3>
+
+
 
 
 
@@ -398,7 +443,12 @@ Galeri Khotib
 </div>
 
 
+
 </section>
+
+
+
+
 
 
 
@@ -412,40 +462,28 @@ Galeri Khotib
 class="bg-light">
 
 
-
 <h2>
 Tentang Website
 </h2>
 
 
 
-
-
-<p style="text-align:center;line-height:2;">
+<p>
 
 
 Website Jadwal Khotib Jumat dibuat untuk memberikan
-informasi jadwal khutbah Jumat kepada jamaah dengan
-lebih mudah dan cepat.
+informasi jadwal khutbah Jumat secara mudah.
 
 
 <br><br>
 
 
 Jamaah dapat melihat jadwal berdasarkan tanggal,
-nama khotib, nama masjid, serta foto khotib yang bertugas.
-
-
-<br><br>
-
-
-Data jadwal diperbarui oleh admin agar informasi yang
-ditampilkan selalu terbaru.
+nama khotib, masjid, dan foto khotib.
 
 
 
 </p>
-
 
 
 </section>
@@ -468,7 +506,9 @@ Informasi Kegiatan Masjid
 
 
 
+
 <div class="cards">
+
 
 
 
@@ -484,11 +524,12 @@ Kajian Masjid
 
 <p>
 
-Kegiatan kajian rutin masjid yang bertujuan untuk
-menambah wawasan agama, mempererat silaturahmi
-antar jamaah, dan meningkatkan pemahaman Islam.
+Kajian rutin untuk menambah wawasan agama,
+mempererat hubungan jamaah, dan meningkatkan
+pengetahuan keislaman.
 
 </p>
+
 
 
 </div>
@@ -509,11 +550,11 @@ Kegiatan Sosial
 
 <p>
 
-Kegiatan sosial seperti berbagi kepada masyarakat,
-bantuan jamaah, program amal, dan kegiatan
-kepedulian lingkungan sekitar masjid.
+Kegiatan sosial seperti bantuan masyarakat,
+program berbagi, dan kegiatan kepedulian sosial.
 
 </p>
+
 
 
 </div>
@@ -535,19 +576,21 @@ Jumat Rutin
 
 <p>
 
-Informasi kegiatan rutin hari Jumat seperti jadwal
-khotib, imam, dan kegiatan keagamaan sebelum
-pelaksanaan shalat Jumat.
+Informasi jadwal khotib Jumat,
+imam, dan kegiatan rutin setiap hari Jumat.
 
 </p>
 
 
-</div>
-
-
-
 
 </div>
+
+
+
+
+
+</div>
+
 
 
 </section>
@@ -568,20 +611,15 @@ Kontak Masjid
 </h2>
 
 
+
 <p>
 085806203202
 </p>
 
 
 <p>
-ah1260794@gmail.com
-</p>
-
-
-<p>
 Indonesia
 </p>
-
 
 
 </section>
@@ -597,8 +635,8 @@ Indonesia
 <script>
 
 
-let semuaJadwal = @json($jadwals);
-
+let semuaJadwal =
+@json($jadwals);
 
 
 
@@ -607,25 +645,32 @@ let semuaJadwal = @json($jadwals);
 function formatTanggal(tanggal){
 
 
-let t = new Date(tanggal);
+
+let d =
+new Date(tanggal);
 
 
 
-let hari = String(t.getDate())
-.padStart(2,'0');
+return String(d.getDate())
+.padStart(2,'0')
 
++
 
+"-"
 
-let bulan = String(t.getMonth()+1)
-.padStart(2,'0');
++
 
+String(d.getMonth()+1)
+.padStart(2,'0')
 
++
 
-let tahun = t.getFullYear();
+"-"
 
++
 
+d.getFullYear();
 
-return hari+"-"+bulan+"-"+tahun;
 
 
 }
@@ -638,34 +683,18 @@ return hari+"-"+bulan+"-"+tahun;
 
 
 
-function bukaJadwal(tanggal){
-
-
-
-document
-.getElementById("calendarBox")
-.classList.add("geser");
-
-
-
-document
-.getElementById("tabBox")
-.classList.add("muncul");
+function lihatJadwal(tanggal){
 
 
 
 
 
-let dataTanggal = semuaJadwal.filter(function(item){
+let data =
+semuaJadwal.filter(function(item){
 
 
 
-let tgl = new Date(item.tanggal)
-.getDate();
-
-
-
-return tgl == tanggal;
+return item.tanggal.startsWith(tanggal);
 
 
 
@@ -676,58 +705,49 @@ return tgl == tanggal;
 
 
 
-let tab = "";
 
-let detail = "";
-
+let html = "";
 
 
 
 
 
 
-dataTanggal.forEach(function(item,index){
+data.forEach(function(item,index){
 
 
 
 
 
-tab += `
+let foto =
+item.foto
+
+?
+
+"/storage/"+item.foto
+
+:
+
+"/landing/img/default.png";
 
 
-<button onclick="lihatDetail(${index})">
+
+
+
+
+
+html += `
+
+
+<div class="detail-card">
+
+
+
+<div class="nomor">
 
 ${index+1}
 
-</button>
-
-
-`;
-
-
-
-
-
-
-
-let foto = item.foto
-
-? "/storage/"+item.foto
-
-: "/landing/img/default.png";
-
-
-
-
-
-
-
-detail += `
-
-
-<div class="profil"
-id="profil${index}">
-
+</div>
 
 
 
@@ -738,7 +758,9 @@ id="profil${index}">
 
 
 
+
 <div>
+
 
 
 <h3>
@@ -751,24 +773,23 @@ ${item.nama_khotib}
 
 <p>
 
-Masjid :
 ${item.nama_masjid}
 
 </p>
 
 
 
-
 <p>
 
-Tanggal :
 ${formatTanggal(item.tanggal)}
 
 </p>
 
 
 
+
 </div>
+
 
 
 
@@ -780,8 +801,6 @@ ${formatTanggal(item.tanggal)}
 
 
 
-
-
 });
 
 
@@ -791,88 +810,14 @@ ${formatTanggal(item.tanggal)}
 
 
 document
-.getElementById("tabBox")
-.innerHTML = tab;
-
-
-
-document
-.getElementById("isiDetail")
-.innerHTML = detail;
+.getElementById("detailContainer")
+.innerHTML =
+html;
 
 
 
 }
 
-
-
-
-
-
-
-
-
-function lihatDetail(id){
-
-
-
-document
-.querySelectorAll(".profil")
-.forEach(function(item){
-
-
-item.style.display="none";
-
-
-});
-
-
-
-
-
-document
-.getElementById("profil"+id)
-.style.display="flex";
-
-
-
-}
-
-
-
-
-
-
-
-
-function resetKalender(){
-
-
-
-document
-.getElementById("calendarBox")
-.classList.remove("geser");
-
-
-
-document
-.getElementById("tabBox")
-.classList.remove("muncul");
-
-
-
-document
-.getElementById("tabBox")
-.innerHTML="";
-
-
-
-document
-.getElementById("isiDetail")
-.innerHTML="Klik tanggal yang tersedia";
-
-
-}
 
 
 
