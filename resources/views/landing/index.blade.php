@@ -47,11 +47,7 @@ Lihat Jadwal
 </div>
 
 
-
 </div>
-
-
-
 
 
 
@@ -86,10 +82,7 @@ Lihat Jadwal
 </div>
 
 
-
 </div>
-
-
 
 
 
@@ -100,10 +93,6 @@ Lihat Jadwal
 
 
 </section>
-
-
-
-
 
 
 
@@ -144,8 +133,6 @@ Juli 2026
 
 
 
-
-
 <div class="hari">
 
 
@@ -165,11 +152,7 @@ Juli 2026
 
 
 
-
-
 <div class="calendar-grid">
-
-
 
 
 
@@ -186,7 +169,6 @@ $awal = $bulan->dayOfWeek;
 
 
 $jumlahHari = $bulan->daysInMonth;
-
 
 
 
@@ -207,13 +189,14 @@ return Carbon::parse($item->tanggal)->day;
 
 
 
-@for($i=0;$i<$awal;$i++)
 
+
+@for($i=0;$i<$awal;$i++)
 
 <div></div>
 
-
 @endfor
+
 
 
 
@@ -225,8 +208,6 @@ return Carbon::parse($item->tanggal)->day;
 
 
 
-
-
 @if(isset($jadwalTanggal[$i]))
 
 
@@ -234,35 +215,23 @@ return Carbon::parse($item->tanggal)->day;
 <div class="tanggal aktif"
 onclick="bukaJadwal({{$i}})">
 
-
-
 {{$i}}
 
-
-
 </div>
-
 
 
 
 @else
 
 
-
 <div class="tanggal kosong">
 
-
 {{$i}}
-
 
 </div>
 
 
-
-
 @endif
-
-
 
 
 
@@ -281,13 +250,10 @@ onclick="bukaJadwal({{$i}})">
 
 
 
-
 <button class="btn-reset"
 onclick="resetKalender()">
 
-
 Kembali
-
 
 </button>
 
@@ -295,9 +261,7 @@ Kembali
 
 
 
-
 </div>
-
 
 
 
@@ -314,9 +278,7 @@ Kembali
 <div class="tab-box"
 id="tabBox">
 
-
 </div>
-
 
 
 
@@ -360,16 +322,11 @@ Klik tanggal yang tersedia
 
 
 
-
 </div>
 
 
 
 </section>
-
-
-
-
 
 
 
@@ -394,10 +351,7 @@ Galeri Khotib
 
 
 
-
-
 @foreach($jadwals as $j)
-
 
 
 
@@ -413,17 +367,13 @@ Galeri Khotib
 <img src="{{ asset('storage/'.$j->foto) }}">
 
 
-
 @else
 
 
 <img src="{{ asset('landing/img/default.png') }}">
 
 
-
 @endif
-
-
 
 
 
@@ -436,9 +386,7 @@ Galeri Khotib
 
 
 
-
 </div>
-
 
 
 
@@ -447,17 +395,10 @@ Galeri Khotib
 
 
 
-
 </div>
 
 
-
 </section>
-
-
-
-
-
 
 
 
@@ -480,27 +421,26 @@ Tentang Website
 
 
 
-<p style="text-align:center; line-height:2;">
+<p style="text-align:center;line-height:2;">
 
 
-Website Jadwal Khotib Jumat dibuat untuk membantu
-jamaah mendapatkan informasi khutbah Jumat dengan
+Website Jadwal Khotib Jumat dibuat untuk memberikan
+informasi jadwal khutbah Jumat kepada jamaah dengan
 lebih mudah dan cepat.
 
-<br><br>
-
-
-Melalui website ini, jamaah dapat melihat jadwal khotib,
-nama masjid, serta foto khotib yang bertugas pada setiap
-tanggal Jumat.
-
 
 <br><br>
 
 
-Informasi jadwal diperbarui oleh admin masjid sehingga
-jamaah dapat mengetahui jadwal terbaru sebelum
-melaksanakan ibadah Jumat.
+Jamaah dapat melihat jadwal berdasarkan tanggal,
+nama khotib, nama masjid, serta foto khotib yang bertugas.
+
+
+<br><br>
+
+
+Data jadwal diperbarui oleh admin agar informasi yang
+ditampilkan selalu terbaru.
 
 
 
@@ -518,12 +458,7 @@ melaksanakan ibadah Jumat.
 
 
 
-
-
-
-
 <section id="kegiatan">
-
 
 
 <h2>
@@ -533,11 +468,7 @@ Informasi Kegiatan Masjid
 
 
 
-
 <div class="cards">
-
-
-
 
 
 
@@ -553,19 +484,14 @@ Kajian Masjid
 
 <p>
 
-
-Kegiatan kajian rutin yang diadakan oleh masjid
-untuk meningkatkan pengetahuan agama,
-mempererat silaturahmi jamaah, dan menambah
-wawasan keislaman.
-
+Kegiatan kajian rutin masjid yang bertujuan untuk
+menambah wawasan agama, mempererat silaturahmi
+antar jamaah, dan meningkatkan pemahaman Islam.
 
 </p>
 
 
 </div>
-
-
 
 
 
@@ -583,17 +509,14 @@ Kegiatan Sosial
 
 <p>
 
-
-Program sosial masjid seperti berbagi kepada
-masyarakat, bantuan jamaah yang membutuhkan,
-kegiatan amal, dan kepedulian lingkungan sekitar.
-
+Kegiatan sosial seperti berbagi kepada masyarakat,
+bantuan jamaah, program amal, dan kegiatan
+kepedulian lingkungan sekitar masjid.
 
 </p>
 
 
 </div>
-
 
 
 
@@ -612,11 +535,9 @@ Jumat Rutin
 
 <p>
 
-
-Kegiatan rutin setiap hari Jumat seperti pelaksanaan
-shalat Jumat, informasi imam, khotib, serta kegiatan
-keagamaan lainnya.
-
+Informasi kegiatan rutin hari Jumat seperti jadwal
+khotib, imam, dan kegiatan keagamaan sebelum
+pelaksanaan shalat Jumat.
 
 </p>
 
@@ -626,18 +547,10 @@ keagamaan lainnya.
 
 
 
-
-
 </div>
 
 
-
 </section>
-
-
-
-
-
 
 
 
@@ -650,12 +563,9 @@ keagamaan lainnya.
 <section id="kontak">
 
 
-
 <h2>
 Kontak Masjid
 </h2>
-
-
 
 
 <p>
@@ -663,18 +573,14 @@ Kontak Masjid
 </p>
 
 
-
 <p>
 ah1260794@gmail.com
 </p>
 
 
-
-
 <p>
 Indonesia
 </p>
-
 
 
 
@@ -688,14 +594,7 @@ Indonesia
 
 
 
-
-
-
-
-
-
 <script>
-
 
 
 let semuaJadwal = @json($jadwals);
@@ -705,10 +604,41 @@ let semuaJadwal = @json($jadwals);
 
 
 
+function formatTanggal(tanggal){
+
+
+let t = new Date(tanggal);
+
+
+
+let hari = String(t.getDate())
+.padStart(2,'0');
+
+
+
+let bulan = String(t.getMonth()+1)
+.padStart(2,'0');
+
+
+
+let tahun = t.getFullYear();
+
+
+
+return hari+"-"+bulan+"-"+tahun;
+
+
+}
+
+
+
+
+
+
+
+
 
 function bukaJadwal(tanggal){
-
-
 
 
 
@@ -721,7 +651,6 @@ document
 document
 .getElementById("tabBox")
 .classList.add("muncul");
-
 
 
 
@@ -747,10 +676,9 @@ return tgl == tanggal;
 
 
 
+let tab = "";
 
-let tab="";
-
-let detail="";
+let detail = "";
 
 
 
@@ -764,22 +692,17 @@ dataTanggal.forEach(function(item,index){
 
 
 
-
 tab += `
 
 
 <button onclick="lihatDetail(${index})">
 
-
 ${index+1}
-
 
 </button>
 
 
-
 `;
-
 
 
 
@@ -799,9 +722,7 @@ let foto = item.foto
 
 
 
-
 detail += `
-
 
 
 <div class="profil"
@@ -837,22 +758,21 @@ ${item.nama_masjid}
 
 
 
+
 <p>
 
 Tanggal :
-${item.tanggal}
+${formatTanggal(item.tanggal)}
 
 </p>
 
 
 
-
 </div>
 
 
 
 </div>
-
 
 
 
@@ -862,10 +782,7 @@ ${item.tanggal}
 
 
 
-
-
 });
-
 
 
 
@@ -899,21 +816,15 @@ function lihatDetail(id){
 
 
 
-
-
 document
 .querySelectorAll(".profil")
 .forEach(function(item){
 
 
-
 item.style.display="none";
 
 
-
 });
-
-
 
 
 
@@ -926,7 +837,6 @@ document
 
 
 }
-
 
 
 
@@ -960,7 +870,6 @@ document
 document
 .getElementById("isiDetail")
 .innerHTML="Klik tanggal yang tersedia";
-
 
 
 }
