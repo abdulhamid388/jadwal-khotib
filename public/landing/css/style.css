@@ -28,7 +28,6 @@ body{
 
 
 
-
 /* ================= NAVBAR ================= */
 
 
@@ -42,7 +41,7 @@ nav{
 
     width:100%;
 
-    height:85px;
+    height:90px;
 
     display:flex;
 
@@ -52,7 +51,22 @@ nav{
 
     padding:0 8%;
 
-    z-index:999;
+    z-index:9999;
+
+    transition:.4s;
+
+}
+
+
+
+
+nav.scrolled{
+
+    position:fixed;
+
+    background:white;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
 
 }
 
@@ -60,13 +74,22 @@ nav{
 
 .logo{
 
-    color:white;
-
     font-size:28px;
 
     font-weight:800;
 
+    color:white;
+
 }
+
+
+
+nav.scrolled .logo{
+
+    color:#2563eb;
+
+}
+
 
 
 
@@ -74,7 +97,7 @@ nav ul{
 
     display:flex;
 
-    gap:30px;
+    gap:35px;
 
     list-style:none;
 
@@ -84,13 +107,25 @@ nav ul{
 
 nav ul li a{
 
+
     color:white;
 
     text-decoration:none;
 
     font-weight:600;
 
+    font-size:15px;
+
     transition:.3s;
+
+
+}
+
+
+
+nav.scrolled ul li a{
+
+    color:#334155;
 
 }
 
@@ -98,7 +133,9 @@ nav ul li a{
 
 nav ul li a:hover{
 
+
     color:#2563eb;
+
 
 }
 
@@ -113,6 +150,7 @@ nav ul li a:hover{
 /* ================= HERO ================= */
 
 
+
 #home{
 
     height:100vh;
@@ -125,6 +163,7 @@ nav ul li a:hover{
 
 .carousel-item img{
 
+
     height:100vh;
 
     width:100%;
@@ -133,15 +172,23 @@ nav ul li a:hover{
 
     filter:brightness(45%);
 
+
 }
+
 
 
 
 .carousel-caption{
 
+
     top:50%;
 
+    left:8%;
+
     transform:translateY(-50%);
+
+    text-align:left;
+
 
 }
 
@@ -154,14 +201,12 @@ nav ul li a:hover{
 
     font-weight:800;
 
-    letter-spacing:1px;
-
-
 }
 
 
 
 .carousel-caption p{
+
 
     font-size:20px;
 
@@ -195,9 +240,11 @@ nav ul li a:hover{
 
 .carousel-caption a:hover{
 
+
+    transform:translateY(-5px);
+
     background:#1d4ed8;
 
-    transform:scale(1.05);
 
 }
 
@@ -211,9 +258,12 @@ nav ul li a:hover{
 
 section{
 
+
     padding:90px 8%;
 
+
 }
+
 
 
 
@@ -224,11 +274,11 @@ h2{
 
     font-size:36px;
 
-    font-weight:700;
-
     color:#0f172a;
 
-    margin-bottom:50px;
+    margin-bottom:45px;
+
+    font-weight:700;
 
 
 }
@@ -241,7 +291,9 @@ h2{
 
 
 
-/* ================= KALENDER ================= */
+
+
+/* ================= JADWAL ================= */
 
 
 
@@ -250,9 +302,8 @@ h2{
 
     background:#eef4ff;
 
+
 }
-
-
 
 
 
@@ -261,7 +312,7 @@ h2{
 
     display:flex;
 
-    gap:35px;
+    gap:30px;
 
     align-items:flex-start;
 
@@ -276,21 +327,15 @@ h2{
 .kalender-box{
 
 
-    width:330px;
-
+    width:300px;
 
     background:white;
 
+    padding:18px;
 
-    padding:20px;
+    border-radius:20px;
 
-
-    border-radius:25px;
-
-
-    box-shadow:
-
-    0 15px 35px rgba(0,0,0,.12);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
 
 
 }
@@ -314,15 +359,17 @@ h2{
 
 
 
+
 .navigator h3{
 
 
-    color:#2563eb;
+    font-size:17px;
 
-    font-size:18px;
+    color:#2563eb;
 
 
 }
+
 
 
 
@@ -334,9 +381,9 @@ h2{
 
     height:35px;
 
-    border:none;
-
     border-radius:50%;
+
+    border:none;
 
     background:#2563eb;
 
@@ -344,12 +391,8 @@ h2{
 
     cursor:pointer;
 
-    font-size:20px;
-
 
 }
-
-
 
 
 
@@ -363,7 +406,7 @@ h2{
 
     grid-template-columns:repeat(7,1fr);
 
-    gap:8px;
+    gap:7px;
 
     margin-top:15px;
 
@@ -372,18 +415,14 @@ h2{
 
 
 
-
-
 .hari span{
 
 
     text-align:center;
 
-    font-size:12px;
+    font-size:11px;
 
     font-weight:600;
-
-    color:#64748b;
 
 
 }
@@ -392,11 +431,10 @@ h2{
 
 
 
-
 .tanggal{
 
 
-    height:40px;
+    height:38px;
 
     background:#f1f5f9;
 
@@ -408,13 +446,11 @@ h2{
 
     align-items:center;
 
-
     cursor:pointer;
 
+    font-size:13px;
+
     transition:.3s;
-
-
-    font-size:14px;
 
 
 }
@@ -428,7 +464,7 @@ h2{
 
     color:white;
 
-    transform:translateY(-5px);
+    transform:scale(1.08);
 
 
 }
@@ -448,18 +484,16 @@ h2{
 .detail-box{
 
 
-    width:720px;
+    width:700px;
+
 
 }
 
 
 
-.detail-header{
 
+.detail-box h3{
 
-    font-size:20px;
-
-    font-weight:700;
 
     color:#2563eb;
 
@@ -467,6 +501,7 @@ h2{
 
 
 }
+
 
 
 
@@ -487,34 +522,25 @@ h2{
 
 
 
+
 .detail-item{
-
-
-    height:105px;
 
 
     background:white;
 
+    height:100px;
 
     border-radius:18px;
 
-
     display:flex;
-
 
     align-items:center;
 
+    padding:12px;
 
-    padding:15px;
-
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
 
     position:relative;
-
-
-    box-shadow:
-
-    0 10px 25px rgba(0,0,0,.1);
-
 
     transition:.3s;
 
@@ -535,7 +561,8 @@ h2{
 
 
 
-.nomor{
+
+.angka{
 
 
     position:absolute;
@@ -544,31 +571,29 @@ h2{
 
     left:8px;
 
+    width:22px;
 
-    width:24px;
-
-    height:24px;
-
-
-    border-radius:50%;
-
+    height:22px;
 
     background:#2563eb;
 
     color:white;
 
+    border-radius:50%;
+
+    font-size:11px;
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
 
-
-    font-size:12px;
+    align-items:center;
 
 
 }
+
+
+
 
 
 
@@ -580,12 +605,9 @@ h2{
 
     height:55px;
 
-
     border-radius:50%;
 
-
     object-fit:cover;
-
 
     margin-right:12px;
 
@@ -594,36 +616,35 @@ h2{
 
 
 
-.detail-text h4{
+
+
+.detail-item h4{
 
 
     font-size:13px;
 
     color:#2563eb;
 
-
 }
 
 
 
-.detail-text p{
+.detail-item p{
 
 
     font-size:11px;
 
-    margin:3px 0;
+    margin:2px 0;
 
 
 }
 
 
 
-.detail-text span{
+.detail-item span{
 
 
     font-size:10px;
-
-    color:#64748b;
 
 
 }
@@ -642,6 +663,16 @@ h2{
 
 
 
+#galeri{
+
+
+    background:white;
+
+
+}
+
+
+
 .cards{
 
 
@@ -657,6 +688,7 @@ h2{
 
 
 
+
 .card{
 
 
@@ -666,17 +698,12 @@ h2{
 
     border-radius:20px;
 
-
-    box-shadow:
-
-    0 15px 35px rgba(0,0,0,.1);
-
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
 
     transition:.3s;
 
 
 }
-
 
 
 
@@ -699,6 +726,7 @@ h2{
 
 
 }
+
 
 
 
@@ -728,9 +756,10 @@ h2{
 /* ================= TENTANG ================= */
 
 
-
 #tentang{
 
+
+    background:#eef4ff;
 
     text-align:center;
 
@@ -743,7 +772,7 @@ h2{
 #tentang p{
 
 
-    max-width:800px;
+    max-width:850px;
 
     margin:auto;
 
@@ -760,9 +789,27 @@ h2{
 
 
 
+/* ================= KEGIATAN ================= */
 
 
-/* ================= FOOTER / KONTAK ================= */
+
+#kegiatan{
+
+
+    background:white;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================= KONTAK ================= */
 
 
 
@@ -771,16 +818,17 @@ h2{
 
     text-align:center;
 
+    background:#f8fafc;
+
 
 }
-
 
 
 
 #kontak p{
 
 
-    margin:10px;
+    margin:12px;
 
     font-size:17px;
 
@@ -796,13 +844,78 @@ h2{
 
 
 
+/* ================= FOOTER ================= */
+
+
+
+footer{
+
+
+    background:#0f172a;
+
+    color:white;
+
+    padding:45px 8%;
+
+    text-align:center;
+
+
+}
+
+
+
+footer h2{
+
+
+    color:white;
+
+    margin-bottom:10px;
+
+    font-size:25px;
+
+
+}
+
+
+
+footer p{
+
+
+    margin:8px;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================= RESPONSIVE ================= */
+
+
 
 @media(max-width:900px){
 
 
+nav ul{
+
+
+    gap:12px;
+
+
+}
+
+
+
 .kalender-wrapper{
 
+
     flex-direction:column;
+
 
 }
 
@@ -810,7 +923,9 @@ h2{
 
 .detail-box{
 
+
     width:100%;
+
 
 }
 
@@ -818,7 +933,9 @@ h2{
 
 .tanggal-detail{
 
+
     grid-template-columns:repeat(2,1fr);
+
 
 }
 
@@ -826,15 +943,20 @@ h2{
 
 .cards{
 
+
     grid-template-columns:1fr;
+
 
 }
 
 
 
+
 .carousel-caption h1{
 
+
     font-size:35px;
+
 
 }
 
