@@ -17,6 +17,7 @@ data-bs-ride="carousel">
 
 <div class="carousel-item active">
 
+
 <img src="{{ asset('landing/img/masjid1.jpg') }}"
 class="d-block w-100">
 
@@ -31,19 +32,12 @@ Jadwal Khotib Jumat
 Informasi jadwal khutbah Jumat terbaru
 </p>
 
-</div>
-
 
 </div>
 
 
-<div class="carousel-item">
-
-<img src="{{ asset('landing/img/masjid2.jpg') }}"
-class="d-block w-100">
-
-
 </div>
+
 
 
 </div>
@@ -73,6 +67,7 @@ Kalender Jadwal Khotib
 
 
 
+
 <div class="kalender-wrapper"
 id="wrapper">
 
@@ -82,54 +77,41 @@ id="wrapper">
 
 
 
+
 <!-- KALENDER -->
+
+
 
 <div class="kalender-box">
 
 
 
-<div class="tahun">
+<div class="navigator">
 
 
-<button onclick="ubahTahun(-1)">
+<button onclick="ubahBulan(-1)">
 ▲
 </button>
 
 
-<h3 id="tahun">
-2026
+
+<h3 id="judulBulan">
+
+Januari 2026
+
 </h3>
 
 
-<button onclick="ubahTahun(1)">
+
+
+<button onclick="ubahBulan(1)">
 ▼
 </button>
-
 
 
 </div>
 
 
-
-
-
-
-<div class="bulan-container">
-
-
-
-
-
-@for($bulan=1;$bulan<=12;$bulan++)
-
-
-<div class="bulan">
-
-
-
-<h4>
-{{ \Carbon\Carbon::create()->month($bulan)->translatedFormat('F') }}
-</h4>
 
 
 
@@ -153,41 +135,8 @@ id="wrapper">
 
 
 
-<div class="tanggal-grid">
-
-
-
-@for($i=1;$i<=31;$i++)
-
-
-@php
-
-$tanggal =
-"2026-".
-str_pad($bulan,2,'0',STR_PAD_LEFT).
-"-".
-str_pad($i,2,'0',STR_PAD_LEFT);
-
-
-@endphp
-
-
-
-
-
-<div class="tanggal"
-
-onclick="ambilData('{{ $tanggal }}')">
-
-
-{{ $i }}
-
-
-</div>
-
-
-@endfor
-
+<div class="tanggal-grid"
+id="tanggalGrid">
 
 
 
@@ -195,23 +144,9 @@ onclick="ambilData('{{ $tanggal }}')">
 
 
 
-</div>
-
-
-@endfor
-
-
-
 
 
 </div>
-
-
-
-</div>
-
-
-
 
 
 
@@ -230,10 +165,16 @@ onclick="ambilData('{{ $tanggal }}')">
 id="detailBox">
 
 
-
-<h3>
+<p>
 Pilih tanggal
-</h3>
+</p>
+
+
+</div>
+
+
+
+
 
 
 
@@ -241,19 +182,11 @@ Pilih tanggal
 
 
 
-
-
-
-
-</div>
 
 
 
 
 </section>
-
-
-
 
 
 
@@ -272,7 +205,6 @@ Galeri Khotib
 
 
 
-
 <div class="cards">
 
 
@@ -283,7 +215,13 @@ Galeri Khotib
 <div class="card">
 
 
+@if($j->foto)
+
+
 <img src="{{ asset('storage/'.$j->foto) }}">
+
+
+@endif
 
 
 
@@ -294,17 +232,20 @@ Galeri Khotib
 </h3>
 
 
+
 </div>
 
 
-
 @endforeach
+
 
 
 </div>
 
 
 </section>
+
+
 
 
 
@@ -325,15 +266,15 @@ Tentang Website
 
 <p>
 
-Website ini digunakan untuk memberikan informasi
-jadwal khotib Jumat berdasarkan tanggal.
+
+Website ini dibuat untuk memberikan informasi
+jadwal khotib Jumat secara mudah berdasarkan tanggal.
+
 
 </p>
 
 
 </section>
-
-
 
 
 
@@ -354,7 +295,9 @@ Informasi Kegiatan Masjid
 <div class="cards">
 
 
+
 <div class="card">
+
 
 <h3>
 Kajian Masjid
@@ -362,8 +305,11 @@ Kajian Masjid
 
 
 <p>
+
 Kajian rutin dan kegiatan keagamaan jamaah.
+
 </p>
+
 
 </div>
 
@@ -371,7 +317,9 @@ Kajian rutin dan kegiatan keagamaan jamaah.
 
 
 
+
 <div class="card">
+
 
 <h3>
 Kegiatan Sosial
@@ -379,8 +327,11 @@ Kegiatan Sosial
 
 
 <p>
-Program bantuan dan kegiatan sosial masyarakat.
+
+Program sosial dan kepedulian masyarakat.
+
 </p>
+
 
 </div>
 
@@ -391,18 +342,20 @@ Program bantuan dan kegiatan sosial masyarakat.
 
 <div class="card">
 
+
 <h3>
 Jumat Rutin
 </h3>
 
 
 <p>
-Informasi imam dan khotib setiap Jumat.
+
+Informasi khotib dan kegiatan setiap Jumat.
+
 </p>
 
+
 </div>
-
-
 
 
 </div>
@@ -446,23 +399,175 @@ Indonesia
 
 
 
+
+
 <script>
 
 
-let dataJadwal =
+let semuaJadwal = 
 @json($jadwals);
 
 
 
+let bulan = 0;
+
+let tahun = 2026;
 
 
 
-function ambilData(tanggal){
+
+
+function tampilKalender(){
 
 
 
-let hasil =
-dataJadwal.filter(function(item){
+let date =
+new Date(tahun,bulan,1);
+
+
+
+let jumlahHari =
+new Date(
+tahun,
+bulan+1,
+0
+).getDate();
+
+
+
+
+
+document
+.getElementById("judulBulan")
+.innerHTML =
+date.toLocaleString(
+'id-ID',
+{
+month:'long',
+year:'numeric'
+}
+);
+
+
+
+
+
+
+let html="";
+
+
+
+
+for(let i=1;i<=jumlahHari;i++){
+
+
+
+let tanggal =
+
+tahun+
+
+"-"+
+
+String(bulan+1).padStart(2,'0')
+
++
+
+"-"+
+
+String(i).padStart(2,'0');
+
+
+
+
+
+html += `
+
+
+<div class="tanggal"
+onclick="ambilDetail('${tanggal}')">
+
+${i}
+
+</div>
+
+
+`;
+
+
+
+}
+
+
+
+document
+.getElementById("tanggalGrid")
+.innerHTML=html;
+
+
+
+}
+
+
+
+
+
+
+
+
+function ubahBulan(nilai){
+
+
+
+bulan += nilai;
+
+
+
+if(bulan > 11){
+
+
+bulan=0;
+
+tahun++;
+
+
+}
+
+
+
+if(bulan <0){
+
+
+bulan=11;
+
+tahun--;
+
+
+}
+
+
+
+
+
+tampilKalender();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+function ambilDetail(tanggal){
+
+
+
+let data = semuaJadwal.filter(function(item){
 
 
 
@@ -470,6 +575,7 @@ return item.tanggal.startsWith(tanggal);
 
 
 });
+
 
 
 
@@ -483,20 +589,31 @@ document
 
 
 
+
 let html="";
 
 
 
-hasil.forEach(function(item,index){
+
+
+data.forEach(function(item,index){
 
 
 
 let foto =
 item.foto
+
 ?
+
 "/storage/"+item.foto
+
 :
+
 "/landing/img/default.png";
+
+
+
+
 
 
 
@@ -506,18 +623,18 @@ html += `
 <div class="detail-item">
 
 
-<div class="angka">
+
+<div class="nomor">
 
 ${index+1}
 
 </div>
 
 
+
 <img src="${foto}">
 
 
-
-<div>
 
 <h4>
 
@@ -540,12 +657,8 @@ ${item.tanggal}
 </p>
 
 
-</div>
-
-
 
 </div>
-
 
 
 `;
@@ -553,6 +666,8 @@ ${item.tanggal}
 
 
 });
+
+
 
 
 
@@ -572,20 +687,7 @@ document
 
 
 
-function ubahTahun(nilai){
-
-
-let tahun =
-document.getElementById("tahun");
-
-
-
-tahun.innerHTML =
-parseInt(tahun.innerHTML)+nilai;
-
-
-
-}
+tampilKalender();
 
 
 
