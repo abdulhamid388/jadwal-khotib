@@ -14,16 +14,13 @@ Jadwal Khotib Jumat
 
 
 
-<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-<!-- FONT -->
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 
-
-<!-- CSS UTAMA -->
 
 <link rel="stylesheet" href="{{ asset('landing/css/style.css') }}">
 
@@ -36,13 +33,13 @@ Jadwal Khotib Jumat
 
 
 
+<!-- NAVBAR -->
+
 <nav>
 
 
 <div class="logo">
-
 Jadwal Khotib
-
 </div>
 
 
@@ -51,44 +48,32 @@ Jadwal Khotib
 
 
 <li>
-<a href="#home">
-HOME
-</a>
+<a href="#home">HOME</a>
 </li>
 
 
 <li>
-<a href="#jadwal">
-JADWAL
-</a>
+<a href="#jadwal">JADWAL</a>
 </li>
 
 
 <li>
-<a href="#tentang">
-TENTANG
-</a>
+<a href="#tentang">TENTANG</a>
 </li>
 
 
 <li>
-<a href="#galeri">
-GALERI
-</a>
+<a href="#galeri">GALERI</a>
 </li>
 
 
 <li>
-<a href="#kegiatan">
-KEGIATAN
-</a>
+<a href="#kegiatan">KEGIATAN</a>
 </li>
 
 
 <li>
-<a href="#kontak">
-KONTAK
-</a>
+<a href="#kontak">KONTAK</a>
 </li>
 
 
@@ -101,7 +86,10 @@ KONTAK
 
 
 
+<!-- ISI HALAMAN -->
+
 @yield('content')
+
 
 
 
@@ -121,12 +109,10 @@ Informasi jadwal khutbah Jumat masjid
 </p>
 
 
-
 <p>
-
 © 2026 Masjid
-
 </p>
+
 
 
 </footer>
@@ -136,8 +122,8 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
