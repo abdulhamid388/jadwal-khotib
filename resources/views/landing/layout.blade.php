@@ -13,21 +13,34 @@ Jadwal Khotib Jumat
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
+
+<!-- CSS UTAMA -->
+
 <link rel="stylesheet"
 href="{{ asset('landing/css/style.css') }}">
 
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+<!-- Bootstrap -->
+
+<link 
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 rel="stylesheet">
 
 
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+
+
+<!-- FONT MODERN -->
+
+<link 
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
 rel="stylesheet">
+
 
 
 </head>
+
 
 
 
@@ -35,8 +48,8 @@ rel="stylesheet">
 
 
 
-<!-- NAVBAR -->
 
+<!-- ================= NAVBAR ================= -->
 
 <nav id="navbar">
 
@@ -106,6 +119,7 @@ Kontak
 
 
 
+
 </nav>
 
 
@@ -114,6 +128,9 @@ Kontak
 
 
 
+
+
+<!-- ================= CONTENT ================= -->
 
 
 @yield('content')
@@ -126,9 +143,7 @@ Kontak
 
 
 
-
-
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 
 <footer>
@@ -140,14 +155,21 @@ Kontak
 
 
 <h2>
+
 Website Jadwal Khotib Jumat
+
 </h2>
 
 
 
+
 <p>
+
 Informasi jadwal khutbah Jumat masjid
+
 </p>
+
+
 
 
 
@@ -155,13 +177,20 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
+
+
 <p>
+
 © 2026 Masjid | Semua Hak Dilindungi
+
 </p>
 
 
 
+
+
 </div>
+
 
 
 
@@ -175,7 +204,15 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap JS -->
+
+
+<script 
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+
 
 
 
@@ -187,19 +224,22 @@ Informasi jadwal khutbah Jumat masjid
 window.addEventListener("scroll",function(){
 
 
-let nav=document.getElementById("navbar");
+
+let navbar =
+document.getElementById("navbar");
 
 
-if(window.scrollY > 50){
+
+if(window.scrollY > 60){
 
 
-nav.classList.add("scrolled");
+navbar.classList.add("scrolled");
 
 
 }else{
 
 
-nav.classList.remove("scrolled");
+navbar.classList.remove("scrolled");
 
 
 }
@@ -211,6 +251,7 @@ nav.classList.remove("scrolled");
 
 
 </script>
+
 
 
 

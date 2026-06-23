@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
 
 *{
@@ -13,13 +13,17 @@ html{
 }
 
 
+
 body{
 
-    font-family:'Poppins',sans-serif;
-    color:#475569;
+    font-family:'Plus Jakarta Sans','Poppins',sans-serif;
+
     background:#f8fafc;
 
+    color:#475569;
+
 }
+
 
 
 
@@ -31,19 +35,24 @@ body{
 nav{
 
     position:absolute;
+
     top:0;
+
     left:0;
 
     width:100%;
+
     height:90px;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     padding:0 8%;
 
-    z-index:9999;
+    z-index:999;
 
     transition:.4s;
 
@@ -57,16 +66,21 @@ nav.scrolled{
 
     background:white;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
 
 }
+
 
 
 
 .logo{
 
     font-size:28px;
+
     font-weight:800;
+
+    letter-spacing:.5px;
+
     color:white;
 
 }
@@ -81,13 +95,17 @@ nav.scrolled .logo{
 
 
 
+
 nav ul{
 
     display:flex;
+
     gap:35px;
+
     list-style:none;
 
 }
+
 
 
 
@@ -97,7 +115,11 @@ nav ul li a{
 
     text-decoration:none;
 
+    font-size:15px;
+
     font-weight:600;
+
+    text-transform:capitalize;
 
     transition:.3s;
 
@@ -110,6 +132,7 @@ nav.scrolled ul li a{
     color:#334155;
 
 }
+
 
 
 
@@ -126,41 +149,48 @@ nav ul li a:hover{
 
 
 
-
 /* ================= HERO ================= */
+
 
 
 #home{
 
     height:100vh;
+
     padding:0;
 
 }
 
 
 
-
 .carousel-item img{
 
-    width:100%;
+
     height:100vh;
+
+    width:100%;
 
     object-fit:cover;
 
     filter:brightness(45%);
 
+
 }
+
 
 
 
 .carousel-caption{
 
+
     top:50%;
+
     left:8%;
 
     transform:translateY(-50%);
 
     text-align:left;
+
 
 }
 
@@ -169,8 +199,13 @@ nav ul li a:hover{
 
 .carousel-caption h1{
 
-    font-size:60px;
+
+    font-size:62px;
+
     font-weight:800;
+
+    letter-spacing:1px;
+
 
 }
 
@@ -178,9 +213,14 @@ nav ul li a:hover{
 
 .carousel-caption p{
 
+
     font-size:20px;
 
+    margin-top:15px;
+
+
 }
+
 
 
 
@@ -194,15 +234,16 @@ nav ul li a:hover{
 
     padding:13px 35px;
 
+    border-radius:30px;
+
     background:#2563eb;
 
     color:white;
 
-    border-radius:30px;
-
     text-decoration:none;
 
     transition:.3s;
+
 
 }
 
@@ -210,10 +251,12 @@ nav ul li a:hover{
 
 .carousel-caption a:hover{
 
+
     transform:translateY(-5px);
 
-}
+    background:#1d4ed8;
 
+}
 
 
 
@@ -224,6 +267,7 @@ nav ul li a:hover{
 
 section{
 
+
     padding:90px 8%;
 
 }
@@ -232,18 +276,19 @@ section{
 
 h2{
 
+
     text-align:center;
 
     font-size:36px;
+
+    font-weight:800;
 
     color:#0f172a;
 
     margin-bottom:50px;
 
+
 }
-
-
-
 
 
 
@@ -255,6 +300,7 @@ h2{
 /* ================= JADWAL ================= */
 
 
+
 #jadwal{
 
     background:#eef4ff;
@@ -264,12 +310,7 @@ h2{
 
 
 
-
-
-/* posisi awal tengah */
-
-
-.kalender-area{
+.kalender-wrapper{
 
 
     min-height:500px;
@@ -280,7 +321,7 @@ h2{
 
     align-items:flex-start;
 
-    gap:35px;
+    gap:40px;
 
     transition:.5s;
 
@@ -290,18 +331,14 @@ h2{
 
 
 
-
-
-
-/* ketika klik tanggal */
-
-
-.kalender-area.aktif{
+.kalender-wrapper.aktif{
 
 
     justify-content:flex-start;
 
+
 }
+
 
 
 
@@ -310,29 +347,15 @@ h2{
 .kalender-box{
 
 
-    width:300px;
+    width:320px;
 
     background:white;
 
-    padding:20px;
+    padding:22px;
 
     border-radius:25px;
 
-    box-shadow:
-
-    0 15px 35px rgba(0,0,0,.12);
-
-    transition:.5s;
-
-
-}
-
-
-
-.kalender-area.aktif .kalender-box{
-
-
-    transform:translateX(0);
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
 
 }
 
@@ -351,19 +374,22 @@ h2{
 
     align-items:center;
 
-
 }
-
 
 
 
 .navigator h3{
 
+
     font-size:18px;
 
     color:#2563eb;
 
+    font-weight:700;
+
+
 }
+
 
 
 
@@ -374,17 +400,17 @@ h2{
 
     height:38px;
 
-    border:none;
-
     border-radius:50%;
+
+    border:none;
 
     background:#2563eb;
 
     color:white;
 
-    font-size:20px;
-
     cursor:pointer;
+
+    font-size:20px;
 
 }
 
@@ -402,12 +428,13 @@ h2{
 
     grid-template-columns:repeat(7,1fr);
 
-    gap:7px;
+    gap:8px;
 
-    margin-top:15px;
+    margin-top:18px;
 
 
 }
+
 
 
 
@@ -416,12 +443,13 @@ h2{
 
     text-align:center;
 
-    font-size:11px;
+    font-size:12px;
 
-    font-weight:600;
+    font-weight:700;
+
+    color:#64748b;
 
 }
-
 
 
 
@@ -429,11 +457,11 @@ h2{
 .tanggal{
 
 
-    height:38px;
+    height:40px;
+
+    border-radius:12px;
 
     background:#f1f5f9;
-
-    border-radius:10px;
 
     display:flex;
 
@@ -441,13 +469,11 @@ h2{
 
     align-items:center;
 
-
     cursor:pointer;
 
-    font-size:13px;
+    font-size:14px;
 
     transition:.3s;
-
 
 }
 
@@ -461,12 +487,9 @@ h2{
 
     color:white;
 
-    transform:scale(1.08);
+    transform:translateY(-5px);
 
 }
-
-
-
 
 
 
@@ -483,34 +506,18 @@ h2{
 
     display:none;
 
-    width:900px;
+    width:850px;
 
 }
 
 
 
-.kalender-area.aktif .detail-container{
+.kalender-wrapper.aktif .detail-container{
 
 
     display:block;
 
 }
-
-
-
-
-
-.detail-container h3{
-
-
-    color:#2563eb;
-
-    margin-bottom:15px;
-
-}
-
-
-
 
 
 
@@ -526,16 +533,13 @@ h2{
 
     padding:8px 20px;
 
-    border-radius:20px;
-
-    margin-bottom:15px;
+    border-radius:25px;
 
     cursor:pointer;
 
+    margin-bottom:15px;
+
 }
-
-
-
 
 
 
@@ -551,7 +555,10 @@ h2{
 
     gap:15px;
 
+
 }
+
+
 
 
 
@@ -560,31 +567,23 @@ h2{
 .detail-card{
 
 
-    height:100px;
-
     background:white;
 
-    border-radius:18px;
+    height:110px;
 
+    border-radius:18px;
 
     display:flex;
 
     align-items:center;
 
-
-    padding:12px;
-
+    padding:15px;
 
     position:relative;
 
-
-    box-shadow:
-
-    0 10px 25px rgba(0,0,0,.1);
-
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
 
     transition:.3s;
-
 
 }
 
@@ -594,12 +593,9 @@ h2{
 .detail-card:hover{
 
 
-    transform:translateY(-6px);
+    transform:translateY(-7px);
 
 }
-
-
-
 
 
 
@@ -614,20 +610,15 @@ h2{
     left:8px;
 
 
-    width:24px;
+    width:25px;
 
-    height:24px;
-
-
-    border-radius:50%;
-
+    height:25px;
 
     background:#2563eb;
 
     color:white;
 
-
-    font-size:12px;
+    border-radius:50%;
 
 
     display:flex;
@@ -637,7 +628,10 @@ h2{
     align-items:center;
 
 
+    font-size:12px;
+
 }
+
 
 
 
@@ -650,11 +644,9 @@ h2{
 
     height:55px;
 
-
     border-radius:50%;
 
     object-fit:cover;
-
 
     margin-right:12px;
 
@@ -670,24 +662,22 @@ h2{
 .detail-info h4{
 
 
-    font-size:13px;
+    font-size:14px;
 
     color:#2563eb;
 
-    margin:0;
+    margin-bottom:5px;
 
 
 }
 
 
 
+
 .detail-info p{
 
 
-    font-size:11px;
-
-    margin:3px 0;
-
+    font-size:12px;
 
 }
 
@@ -696,9 +686,10 @@ h2{
 .detail-info span{
 
 
-    font-size:10px;
+    font-size:11px;
 
     color:#64748b;
+
 
 }
 
@@ -739,6 +730,7 @@ h2{
 
 
 
+
 .card{
 
 
@@ -746,13 +738,9 @@ h2{
 
     padding:25px;
 
-    border-radius:20px;
+    border-radius:22px;
 
-
-    box-shadow:
-
-    0 15px 35px rgba(0,0,0,.1);
-
+    box-shadow:0 15px 35px rgba(0,0,0,.1);
 
     transition:.3s;
 
@@ -764,9 +752,12 @@ h2{
 
 .card:hover{
 
+
     transform:translateY(-10px);
 
+
 }
+
 
 
 
@@ -781,6 +772,9 @@ h2{
 
 
 
+
+
+
 .card img{
 
 
@@ -790,7 +784,8 @@ h2{
 
     object-fit:cover;
 
-    border-radius:15px;
+    border-radius:18px;
+
 
 }
 
@@ -805,6 +800,7 @@ h2{
 /* ================= TENTANG ================= */
 
 
+
 #tentang{
 
 
@@ -812,7 +808,10 @@ h2{
 
     text-align:center;
 
+
 }
+
+
 
 
 
@@ -834,8 +833,8 @@ h2{
 
 
 
-
 /* ================= KONTAK ================= */
+
 
 
 #kontak{
@@ -847,15 +846,17 @@ h2{
 
 
 
+
+
 #kontak p{
 
 
-    margin:10px;
-
     font-size:17px;
 
-}
+    margin:10px;
 
+
+}
 
 
 
@@ -868,6 +869,7 @@ h2{
 /* ================= FOOTER ================= */
 
 
+
 footer{
 
 
@@ -875,9 +877,22 @@ footer{
 
     color:white;
 
-    padding:45px;
+    padding:50px 8%;
 
     text-align:center;
+
+
+}
+
+
+
+footer h2{
+
+
+    color:white;
+
+    font-size:25px;
+
 
 }
 
@@ -892,6 +907,7 @@ footer{
 /* ================= RESPONSIVE ================= */
 
 
+
 @media(max-width:900px){
 
 
@@ -904,11 +920,13 @@ nav ul{
 
 
 
-.kalender-area{
+.kalender-wrapper{
+
 
     flex-direction:column;
 
     align-items:center;
+
 
 }
 
@@ -916,7 +934,9 @@ nav ul{
 
 .detail-container{
 
+
     width:100%;
+
 
 }
 
@@ -924,7 +944,9 @@ nav ul{
 
 .tanggal-detail{
 
+
     grid-template-columns:repeat(2,1fr);
+
 
 }
 
@@ -932,7 +954,9 @@ nav ul{
 
 .cards{
 
+
     grid-template-columns:1fr;
+
 
 }
 
@@ -940,7 +964,9 @@ nav ul{
 
 .carousel-caption h1{
 
+
     font-size:35px;
+
 
 }
 
