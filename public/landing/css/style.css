@@ -1,44 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 
 *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-margin:0;
-padding:0;
-box-sizing:border-box;
 
+html{
+    scroll-behavior:smooth;
 }
 
 
 body{
 
-font-family:'Poppins',sans-serif;
+    font-family:'Poppins',sans-serif;
 
-color:#555;
+    color:#475569;
 
-}
-
-
-
-
-
-section{
-
-padding:90px 8%;
-
-}
-
-
-
-h2{
-
-text-align:center;
-
-font-size:34px;
-
-margin-bottom:50px;
-
-color:#1e293b;
+    background:#f8fafc;
 
 }
 
@@ -47,14 +28,96 @@ color:#1e293b;
 
 
 
-/* HERO */
+
+/* ================= NAVBAR ================= */
+
+
+nav{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:85px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 8%;
+
+    z-index:999;
+
+}
+
+
+
+.logo{
+
+    color:white;
+
+    font-size:28px;
+
+    font-weight:800;
+
+}
+
+
+
+nav ul{
+
+    display:flex;
+
+    gap:30px;
+
+    list-style:none;
+
+}
+
+
+
+nav ul li a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+
+nav ul li a:hover{
+
+    color:#2563eb;
+
+}
+
+
+
+
+
+
+
+
+
+/* ================= HERO ================= */
 
 
 #home{
 
-height:100vh;
+    height:100vh;
 
-padding:0;
+    padding:0;
 
 }
 
@@ -62,13 +125,13 @@ padding:0;
 
 .carousel-item img{
 
+    height:100vh;
 
-height:100vh;
+    width:100%;
 
-object-fit:cover;
+    object-fit:cover;
 
-filter:brightness(45%);
-
+    filter:brightness(45%);
 
 }
 
@@ -76,15 +139,9 @@ filter:brightness(45%);
 
 .carousel-caption{
 
+    top:50%;
 
-top:50%;
-
-transform:translateY(-50%);
-
-text-align:left;
-
-left:8%;
-
+    transform:translateY(-50%);
 
 }
 
@@ -92,10 +149,21 @@ left:8%;
 
 .carousel-caption h1{
 
-font-size:55px;
 
-font-weight:700;
+    font-size:60px;
 
+    font-weight:800;
+
+    letter-spacing:1px;
+
+
+}
+
+
+
+.carousel-caption p{
+
+    font-size:20px;
 
 }
 
@@ -104,19 +172,63 @@ font-weight:700;
 .carousel-caption a{
 
 
-display:inline-block;
+    display:inline-block;
 
-margin-top:25px;
+    margin-top:25px;
 
-padding:12px 35px;
+    padding:13px 35px;
 
-border-radius:30px;
+    background:#2563eb;
 
-background:#0066ff;
+    color:white;
 
-color:white;
+    border-radius:30px;
 
-text-decoration:none;
+    text-decoration:none;
+
+    transition:.3s;
+
+
+}
+
+
+
+.carousel-caption a:hover{
+
+    background:#1d4ed8;
+
+    transform:scale(1.05);
+
+}
+
+
+
+
+
+
+
+
+
+section{
+
+    padding:90px 8%;
+
+}
+
+
+
+h2{
+
+
+    text-align:center;
+
+    font-size:36px;
+
+    font-weight:700;
+
+    color:#0f172a;
+
+    margin-bottom:50px;
 
 
 }
@@ -129,28 +241,34 @@ text-decoration:none;
 
 
 
-/* KALENDER */
+/* ================= KALENDER ================= */
+
 
 
 #jadwal{
 
-background:#f4f8ff;
+
+    background:#eef4ff;
 
 }
+
+
 
 
 
 .kalender-wrapper{
 
 
-display:flex;
+    display:flex;
 
-gap:30px;
+    gap:35px;
 
-align-items:flex-start;
+    align-items:flex-start;
 
 
 }
+
+
 
 
 
@@ -158,15 +276,21 @@ align-items:flex-start;
 .kalender-box{
 
 
-width:320px;
+    width:330px;
 
-background:white;
 
-padding:18px;
+    background:white;
 
-border-radius:20px;
 
-box-shadow:0 15px 35px rgba(0,0,0,.12);
+    padding:20px;
+
+
+    border-radius:25px;
+
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.12);
 
 
 }
@@ -174,14 +298,16 @@ box-shadow:0 15px 35px rgba(0,0,0,.12);
 
 
 
+
+
 .navigator{
 
 
-display:flex;
+    display:flex;
 
-justify-content:space-between;
+    justify-content:space-between;
 
-align-items:center;
+    align-items:center;
 
 
 }
@@ -191,9 +317,9 @@ align-items:center;
 .navigator h3{
 
 
-font-size:17px;
+    color:#2563eb;
 
-color:#0066ff;
+    font-size:18px;
 
 
 }
@@ -204,21 +330,26 @@ color:#0066ff;
 .navigator button{
 
 
-border:0;
+    width:35px;
 
-background:#0066ff;
+    height:35px;
 
-color:white;
+    border:none;
 
-width:35px;
+    border-radius:50%;
 
-height:35px;
+    background:#2563eb;
 
-border-radius:50%;
+    color:white;
 
-font-size:20px;
+    cursor:pointer;
+
+    font-size:20px;
+
 
 }
+
+
 
 
 
@@ -228,16 +359,17 @@ font-size:20px;
 .tanggal-grid{
 
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(7,1fr);
+    grid-template-columns:repeat(7,1fr);
 
-gap:8px;
+    gap:8px;
 
-margin-top:15px;
+    margin-top:15px;
 
 
 }
+
 
 
 
@@ -245,11 +377,13 @@ margin-top:15px;
 .hari span{
 
 
-text-align:center;
+    text-align:center;
 
-font-size:11px;
+    font-size:12px;
 
-font-weight:600;
+    font-weight:600;
+
+    color:#64748b;
 
 
 }
@@ -257,26 +391,30 @@ font-weight:600;
 
 
 
+
+
 .tanggal{
 
 
-height:38px;
+    height:40px;
 
-display:flex;
+    background:#f1f5f9;
 
-justify-content:center;
+    border-radius:10px;
 
-align-items:center;
+    display:flex;
 
-background:#eef5ff;
+    justify-content:center;
 
-border-radius:10px;
+    align-items:center;
 
-cursor:pointer;
 
-font-size:13px;
+    cursor:pointer;
 
-transition:.3s;
+    transition:.3s;
+
+
+    font-size:14px;
 
 
 }
@@ -286,11 +424,11 @@ transition:.3s;
 .tanggal:hover{
 
 
-background:#0066ff;
+    background:#2563eb;
 
-color:white;
+    color:white;
 
-transform:scale(1.1);
+    transform:translateY(-5px);
 
 
 }
@@ -303,26 +441,14 @@ transform:scale(1.1);
 
 
 
+/* ================= DETAIL ================= */
 
-/* DETAIL */
 
 
 .detail-box{
 
 
-display:none;
-
-}
-
-
-
-.kalender-wrapper.aktif .detail-box{
-
-
-display:block;
-
-width:650px;
-
+    width:720px;
 
 }
 
@@ -331,13 +457,14 @@ width:650px;
 .detail-header{
 
 
-font-weight:600;
+    font-size:20px;
 
-font-size:18px;
+    font-weight:700;
 
-margin-bottom:15px;
+    color:#2563eb;
 
-color:#0066ff;
+    margin-bottom:20px;
+
 
 }
 
@@ -348,15 +475,14 @@ color:#0066ff;
 .tanggal-detail{
 
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
 
-gap:15px;
+    gap:15px;
 
 
 }
-
 
 
 
@@ -364,35 +490,47 @@ gap:15px;
 .detail-item{
 
 
-background:white;
+    height:105px;
 
-height:100px;
 
-border-radius:18px;
+    background:white;
 
-display:flex;
 
-align-items:center;
+    border-radius:18px;
 
-padding:12px;
 
-box-shadow:0 10px 25px rgba(0,0,0,.12);
+    display:flex;
 
-position:relative;
 
-transition:.3s;
+    align-items:center;
+
+
+    padding:15px;
+
+
+    position:relative;
+
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.1);
+
+
+    transition:.3s;
 
 
 }
+
 
 
 
 .detail-item:hover{
 
-transform:translateY(-5px);
+
+    transform:translateY(-8px);
+
 
 }
-
 
 
 
@@ -400,35 +538,37 @@ transform:translateY(-5px);
 .nomor{
 
 
-position:absolute;
+    position:absolute;
 
-top:8px;
+    top:8px;
 
-left:8px;
-
-
-background:#0066ff;
-
-color:white;
-
-width:23px;
-
-height:23px;
-
-border-radius:50%;
+    left:8px;
 
 
-font-size:11px;
+    width:24px;
 
-display:flex;
+    height:24px;
 
-align-items:center;
 
-justify-content:center;
+    border-radius:50%;
+
+
+    background:#2563eb;
+
+    color:white;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    font-size:12px;
 
 
 }
-
 
 
 
@@ -436,46 +576,42 @@ justify-content:center;
 .detail-item img{
 
 
-width:55px;
+    width:55px;
 
-height:55px;
+    height:55px;
 
-border-radius:50%;
 
-object-fit:cover;
+    border-radius:50%;
 
-margin-left:20px;
 
-margin-right:12px;
+    object-fit:cover;
+
+
+    margin-right:12px;
 
 
 }
-
-
 
 
 
 .detail-text h4{
 
 
-font-size:13px;
+    font-size:13px;
 
-color:#0066ff;
-
-margin:0;
+    color:#2563eb;
 
 
 }
 
 
 
-
 .detail-text p{
 
 
-font-size:11px;
+    font-size:11px;
 
-margin:3px 0;
+    margin:3px 0;
 
 
 }
@@ -485,9 +621,9 @@ margin:3px 0;
 .detail-text span{
 
 
-font-size:10px;
+    font-size:10px;
 
-color:#777;
+    color:#64748b;
 
 
 }
@@ -500,17 +636,20 @@ color:#777;
 
 
 
-/* CARD */
+
+
+/* ================= GALERI ================= */
+
 
 
 .cards{
 
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
 
-gap:30px;
+    gap:30px;
 
 
 }
@@ -521,35 +660,43 @@ gap:30px;
 .card{
 
 
-background:white;
+    background:white;
 
-padding:25px;
+    padding:25px;
 
-border-radius:20px;
+    border-radius:20px;
 
-box-shadow:0 15px 35px rgba(0,0,0,.1);
 
-transition:.3s;
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.1);
+
+
+    transition:.3s;
 
 
 }
+
 
 
 
 .card:hover{
 
 
-transform:translateY(-10px);
+    transform:translateY(-10px);
+
 
 }
-
 
 
 
 .card h3{
 
 
-color:#0066ff;
+    color:#2563eb;
+
+    margin-top:15px;
+
 
 }
 
@@ -559,13 +706,13 @@ color:#0066ff;
 .card img{
 
 
-width:100%;
+    width:100%;
 
-height:230px;
+    height:230px;
 
-object-fit:cover;
+    object-fit:cover;
 
-border-radius:15px;
+    border-radius:15px;
 
 
 }
@@ -574,10 +721,18 @@ border-radius:15px;
 
 
 
+
+
+
+
+/* ================= TENTANG ================= */
+
+
+
 #tentang{
 
 
-text-align:center;
+    text-align:center;
 
 
 }
@@ -588,9 +743,55 @@ text-align:center;
 #tentang p{
 
 
-line-height:2;
+    max-width:800px;
+
+    margin:auto;
+
+    line-height:2;
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ================= FOOTER / KONTAK ================= */
+
+
+
+#kontak{
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+#kontak p{
+
+
+    margin:10px;
+
+    font-size:17px;
+
+
+}
+
+
+
+
+
+
 
 
 
@@ -601,7 +802,7 @@ line-height:2;
 
 .kalender-wrapper{
 
-flex-direction:column;
+    flex-direction:column;
 
 }
 
@@ -609,8 +810,7 @@ flex-direction:column;
 
 .detail-box{
 
-
-width:100%!important;
+    width:100%;
 
 }
 
@@ -618,7 +818,7 @@ width:100%!important;
 
 .tanggal-detail{
 
-grid-template-columns:1fr;
+    grid-template-columns:repeat(2,1fr);
 
 }
 
@@ -626,7 +826,15 @@ grid-template-columns:1fr;
 
 .cards{
 
-grid-template-columns:1fr;
+    grid-template-columns:1fr;
+
+}
+
+
+
+.carousel-caption h1{
+
+    font-size:35px;
 
 }
 
