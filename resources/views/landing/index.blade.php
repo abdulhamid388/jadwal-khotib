@@ -4,7 +4,6 @@
 @section('content')
 
 
-
 <section id="home">
 
 
@@ -13,72 +12,41 @@ class="carousel slide"
 data-bs-ride="carousel">
 
 
-
 <div class="carousel-inner">
 
 
-
 <div class="carousel-item active">
-
 
 <img src="{{ asset('landing/img/masjid1.jpg') }}"
 class="d-block w-100">
 
 
-
 <div class="carousel-caption">
-
 
 <h1>
 Jadwal Khotib Jumat
 </h1>
 
-
 <p>
 Informasi jadwal khutbah Jumat terbaru
 </p>
 
-
 </div>
 
 
 </div>
-
-
-
-
 
 
 <div class="carousel-item">
-
 
 <img src="{{ asset('landing/img/masjid2.jpg') }}"
 class="d-block w-100">
 
 
-
-<div class="carousel-caption">
-
-
-<h1>
-Informasi Masjid
-</h1>
-
-
-<p>
-Kegiatan dan informasi masjid
-</p>
-
-
 </div>
 
 
 </div>
-
-
-
-</div>
-
 
 
 </div>
@@ -98,14 +66,15 @@ Kegiatan dan informasi masjid
 
 
 <h2>
-Jadwal Khotib Jumat
+Kalender Jadwal Khotib
 </h2>
 
 
 
 
 
-<div class="jadwal-container">
+<div class="kalender-wrapper"
+id="wrapper">
 
 
 
@@ -113,33 +82,39 @@ Jadwal Khotib Jumat
 
 
 
-<!-- ================= KALENDER ================= -->
+<!-- KALENDER -->
+
+<div class="kalender-box">
 
 
 
-<div class="calendar-box">
+<div class="tahun">
+
+
+<button onclick="ubahTahun(-1)">
+▲
+</button>
+
+
+<h3 id="tahun">
+2026
+</h3>
+
+
+<button onclick="ubahTahun(1)">
+▼
+</button>
 
 
 
-@php
+</div>
 
 
-use Carbon\Carbon;
 
 
-$jadwalTanggal = $jadwals->groupBy(function($item){
 
 
-return Carbon::parse($item->tanggal)
-->format('Y-m-d');
-
-
-});
-
-
-@endphp
-
-
+<div class="bulan-container">
 
 
 
@@ -148,45 +123,13 @@ return Carbon::parse($item->tanggal)
 @for($bulan=1;$bulan<=12;$bulan++)
 
 
-
-@php
-
-
-$awalBulan =
-Carbon::create(2026,$bulan,1);
-
-
-
-$jumlahHari =
-$awalBulan->daysInMonth;
-
-
-
-$awalHari =
-$awalBulan->dayOfWeek;
-
-
-
-@endphp
-
-
-
-
-
-
-
-
 <div class="bulan">
 
 
 
-<h3>
-
-{{ $awalBulan->translatedFormat('F Y') }}
-
-</h3>
-
-
+<h4>
+{{ \Carbon\Carbon::create()->month($bulan)->translatedFormat('F') }}
+</h4>
 
 
 
@@ -210,42 +153,20 @@ $awalBulan->dayOfWeek;
 
 
 
+<div class="tanggal-grid">
 
 
 
-<div class="calendar-grid">
-
-
-
-
-
-
-@for($i=0;$i<$awalHari;$i++)
-
-<div></div>
-
-@endfor
-
-
-
-
-
-
-
-@for($hari=1;$hari<=$jumlahHari;$hari++)
-
+@for($i=1;$i<=31;$i++)
 
 
 @php
 
-
-$tanggalFix =
-Carbon::create(
-2026,
-$bulan,
-$hari
-)->format('Y-m-d');
-
+$tanggal =
+"2026-".
+str_pad($bulan,2,'0',STR_PAD_LEFT).
+"-".
+str_pad($i,2,'0',STR_PAD_LEFT);
 
 
 @endphp
@@ -254,42 +175,27 @@ $hari
 
 
 
+<div class="tanggal"
+
+onclick="ambilData('{{ $tanggal }}')">
 
 
-@if(isset($jadwalTanggal[$tanggalFix]))
+{{ $i }}
 
 
-
-<div class="tanggal aktif"
-
-onclick="lihatJadwal('{{ $tanggalFix }}')">
+</div>
 
 
-{{ $hari }}
+@endfor
+
+
 
 
 </div>
 
 
 
-@else
-
-
-<div class="tanggal">
-
-
-{{ $hari }}
-
-
 </div>
-
-
-
-@endif
-
-
-
-
 
 
 @endfor
@@ -298,55 +204,6 @@ onclick="lihatJadwal('{{ $tanggalFix }}')">
 
 
 
-
-</div>
-
-
-
-
-</div>
-
-
-
-
-
-
-
-@endfor
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- ================= DETAIL ================= -->
-
-
-
-<div class="detail-container"
-id="detailContainer">
-
-
-
-<div class="kosong">
-
-
-Klik tanggal yang berwarna biru
-
 </div>
 
 
@@ -359,12 +216,41 @@ Klik tanggal yang berwarna biru
 
 
 
+
+
+
+
+
+
+<!-- DETAIL -->
+
+
+
+<div class="detail-box"
+id="detailBox">
+
+
+
+<h3>
+Pilih tanggal
+</h3>
+
+
+
 </div>
+
+
+
+
+
+
+
+</div>
+
 
 
 
 </section>
-
 
 
 
@@ -387,9 +273,7 @@ Galeri Khotib
 
 
 
-
 <div class="cards">
-
 
 
 @foreach($jadwals as $j)
@@ -399,25 +283,7 @@ Galeri Khotib
 <div class="card">
 
 
-
-
-
-@if($j->foto)
-
-
 <img src="{{ asset('storage/'.$j->foto) }}">
-
-
-@else
-
-
-<img src="{{ asset('landing/img/default.png') }}">
-
-
-@endif
-
-
-
 
 
 
@@ -428,27 +294,17 @@ Galeri Khotib
 </h3>
 
 
-
-
-
 </div>
-
 
 
 
 @endforeach
 
 
-
 </div>
 
 
-
 </section>
-
-
-
-
 
 
 
@@ -467,26 +323,17 @@ Tentang Website
 </h2>
 
 
-
 <p>
 
-
-Website Jadwal Khotib Jumat dibuat untuk memberikan
-informasi jadwal khutbah Jumat secara mudah.
-
-
-<br><br>
-
-
-Jamaah dapat melihat jadwal berdasarkan tanggal,
-nama khotib, masjid, dan foto khotib.
-
-
+Website ini digunakan untuk memberikan informasi
+jadwal khotib Jumat berdasarkan tanggal.
 
 </p>
 
 
 </section>
+
+
 
 
 
@@ -504,18 +351,10 @@ Informasi Kegiatan Masjid
 </h2>
 
 
-
-
-
 <div class="cards">
 
 
-
-
-
-
 <div class="card">
-
 
 <h3>
 Kajian Masjid
@@ -523,14 +362,8 @@ Kajian Masjid
 
 
 <p>
-
-Kajian rutin untuk menambah wawasan agama,
-mempererat hubungan jamaah, dan meningkatkan
-pengetahuan keislaman.
-
+Kajian rutin dan kegiatan keagamaan jamaah.
 </p>
-
-
 
 </div>
 
@@ -538,10 +371,7 @@ pengetahuan keislaman.
 
 
 
-
-
 <div class="card">
-
 
 <h3>
 Kegiatan Sosial
@@ -549,17 +379,10 @@ Kegiatan Sosial
 
 
 <p>
-
-Kegiatan sosial seperti bantuan masyarakat,
-program berbagi, dan kegiatan kepedulian sosial.
-
+Program bantuan dan kegiatan sosial masyarakat.
 </p>
 
-
-
 </div>
-
-
 
 
 
@@ -568,29 +391,21 @@ program berbagi, dan kegiatan kepedulian sosial.
 
 <div class="card">
 
-
 <h3>
 Jumat Rutin
 </h3>
 
 
 <p>
-
-Informasi jadwal khotib Jumat,
-imam, dan kegiatan rutin setiap hari Jumat.
-
+Informasi imam dan khotib setiap Jumat.
 </p>
 
-
-
 </div>
 
 
 
 
-
 </div>
-
 
 
 </section>
@@ -607,9 +422,8 @@ imam, dan kegiatan rutin setiap hari Jumat.
 
 
 <h2>
-Kontak Masjid
+Kontak
 </h2>
-
 
 
 <p>
@@ -635,67 +449,24 @@ Indonesia
 <script>
 
 
-let semuaJadwal =
+let dataJadwal =
 @json($jadwals);
 
 
 
 
 
-function formatTanggal(tanggal){
+
+function ambilData(tanggal){
 
 
 
-let d =
-new Date(tanggal);
-
-
-
-return String(d.getDate())
-.padStart(2,'0')
-
-+
-
-"-"
-
-+
-
-String(d.getMonth()+1)
-.padStart(2,'0')
-
-+
-
-"-"
-
-+
-
-d.getFullYear();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function lihatJadwal(tanggal){
-
-
-
-
-
-let data =
-semuaJadwal.filter(function(item){
+let hasil =
+dataJadwal.filter(function(item){
 
 
 
 return item.tanggal.startsWith(tanggal);
-
 
 
 });
@@ -704,71 +475,55 @@ return item.tanggal.startsWith(tanggal);
 
 
 
-
-
-let html = "";
-
-
-
+document
+.getElementById("wrapper")
+.classList.add("aktif");
 
 
 
-data.forEach(function(item,index){
 
 
+let html="";
+
+
+
+hasil.forEach(function(item,index){
 
 
 
 let foto =
 item.foto
-
 ?
-
 "/storage/"+item.foto
-
 :
-
 "/landing/img/default.png";
-
-
-
-
 
 
 
 html += `
 
 
-<div class="detail-card">
+<div class="detail-item">
 
 
-
-<div class="nomor">
+<div class="angka">
 
 ${index+1}
 
 </div>
 
 
-
-
 <img src="${foto}">
-
-
-
 
 
 
 <div>
 
-
-
-<h3>
+<h4>
 
 ${item.nama_khotib}
 
-</h3>
-
+</h4>
 
 
 <p>
@@ -778,18 +533,14 @@ ${item.nama_masjid}
 </p>
 
 
-
 <p>
 
-${formatTanggal(item.tanggal)}
+${item.tanggal}
 
 </p>
 
 
-
-
 </div>
-
 
 
 
@@ -807,12 +558,9 @@ ${formatTanggal(item.tanggal)}
 
 
 
-
-
 document
-.getElementById("detailContainer")
-.innerHTML =
-html;
+.getElementById("detailBox")
+.innerHTML=html;
 
 
 
@@ -821,8 +569,27 @@ html;
 
 
 
-</script>
 
+
+
+function ubahTahun(nilai){
+
+
+let tahun =
+document.getElementById("tahun");
+
+
+
+tahun.innerHTML =
+parseInt(tahun.innerHTML)+nilai;
+
+
+
+}
+
+
+
+</script>
 
 
 
