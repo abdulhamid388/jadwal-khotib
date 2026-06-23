@@ -2,180 +2,28 @@
 
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
 }
 
 
 
 body{
 
-    font-family:'Poppins',sans-serif;
+font-family:'Poppins',sans-serif;
 
-    color:#555;
-
-    overflow-x:hidden;
+color:#555;
 
 }
-
-
-
-html{
-
-    scroll-behavior:smooth;
-
-}
-
-
-
-
-
-/* ================= NAVBAR ================= */
-
-
-nav{
-
-    position:absolute;
-
-    top:0;
-
-    width:100%;
-
-    height:85px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:0 8%;
-
-    z-index:999;
-
-}
-
-
-
-.logo{
-
-    color:white;
-
-    font-size:26px;
-
-    font-weight:700;
-
-}
-
-
-
-
-
-nav ul{
-
-    display:flex;
-
-    gap:30px;
-
-    list-style:none;
-
-}
-
-
-
-nav ul li a{
-
-
-    color:white;
-
-    text-decoration:none;
-
-    font-size:15px;
-
-    font-weight:500;
-
-}
-
-
-
-
-
-
-
-/* ================= HERO ================= */
-
-
-#home{
-
-    height:100vh;
-
-    padding:0;
-
-}
-
-
-
-.carousel-item img{
-
-    width:100%;
-
-    height:100vh;
-
-    object-fit:cover;
-
-    filter:brightness(55%);
-
-}
-
-
-
-
-
-.carousel-caption{
-
-    top:50%;
-
-    left:8%;
-
-    transform:translateY(-50%);
-
-    text-align:left;
-
-}
-
-
-
-.carousel-caption h1{
-
-    font-size:55px;
-
-    font-weight:700;
-
-}
-
-
-
-.carousel-caption p{
-
-    font-size:20px;
-
-}
-
-
-
-
-
-
-
-
-/* ================= SECTION ================= */
 
 
 
 section{
 
-    padding:90px 8%;
+padding:90px 8%;
 
 }
 
@@ -183,15 +31,15 @@ section{
 
 section h2{
 
-    text-align:center;
+text-align:center;
 
-    font-size:34px;
+font-size:34px;
 
-    font-weight:700;
+font-weight:700;
 
-    color:#333;
+color:#222;
 
-    margin-bottom:45px;
+margin-bottom:50px;
 
 }
 
@@ -199,35 +47,78 @@ section h2{
 
 
 
+/* HERO */
+
+
+#home{
+
+height:100vh;
+
+padding:0;
+
+}
+
+
+
+.carousel-item img{
+
+
+height:100vh;
+
+object-fit:cover;
+
+filter:brightness(50%);
+
+
+}
+
+
+
+.carousel-caption{
+
+top:50%;
+
+left:8%;
+
+transform:translateY(-50%);
+
+text-align:left;
+
+}
+
+
+
+.carousel-caption h1{
+
+
+font-size:60px;
+
+font-weight:700;
+
+}
 
 
 
 
-
-/* ================= KALENDER ================= */
-
+/* KALENDER */
 
 
 #jadwal{
 
-    background:#fafafa;
+background:#f7faff;
 
 }
-
-
 
 
 
 .kalender-wrapper{
 
 
-    display:flex;
+display:flex;
 
+gap:25px;
 
-    gap:25px;
-
-
-    align-items:flex-start;
+align-items:flex-start;
 
 
 }
@@ -235,35 +126,27 @@ section h2{
 
 
 
-
-
-
-
-/* BOX KALENDER KECIL */
 
 
 .kalender-box{
 
 
-    width:350px;
+width:330px;
 
 
-    background:white;
+background:white;
 
 
-    padding:18px;
+padding:18px;
 
 
-    border-radius:20px;
+border-radius:20px;
 
 
-    box-shadow:
-
-    0 10px 30px rgba(0,0,0,.08);
+box-shadow:0 15px 35px #0002;
 
 
 }
-
 
 
 
@@ -273,67 +156,47 @@ section h2{
 .navigator{
 
 
-    display:flex;
+display:flex;
 
+justify-content:center;
 
-    justify-content:center;
+align-items:center;
 
-
-    align-items:center;
-
-
-    gap:15px;
-
-
-    margin-bottom:20px;
+gap:15px;
 
 
 }
-
-
 
 
 
 .navigator h3{
 
+color:#0066ff;
 
-    font-size:20px;
-
-
-    color:#0066ff;
-
-
-    font-weight:600;
-
+font-size:18px;
 
 }
-
-
 
 
 
 .navigator button{
 
 
-    width:32px;
+width:32px;
+
+height:32px;
 
 
-    height:32px;
+border:none;
 
 
-    border:none;
+border-radius:50%;
 
 
-    border-radius:50%;
+background:#0066ff;
 
 
-    background:#0066ff;
-
-
-    color:white;
-
-
-    cursor:pointer;
+color:white;
 
 
 }
@@ -342,21 +205,22 @@ section h2{
 
 
 
+.hari,
 
 
-/* NAMA HARI */
+.tanggal-grid{
 
 
-.hari{
+display:grid;
 
 
-    display:grid;
+grid-template-columns:repeat(7,1fr);
 
 
-    grid-template-columns:repeat(7,1fr);
+gap:7px;
 
 
-    margin-bottom:10px;
+margin-top:15px;
 
 
 }
@@ -368,41 +232,11 @@ section h2{
 .hari span{
 
 
-    text-align:center;
+text-align:center;
 
+font-size:11px;
 
-    font-size:11px;
-
-
-    font-weight:600;
-
-
-    color:#888;
-
-
-}
-
-
-
-
-
-
-
-
-/* TANGGAL */
-
-
-.tanggal-grid{
-
-
-    display:grid;
-
-
-    grid-template-columns:repeat(7,1fr);
-
-
-    gap:7px;
-
+font-weight:600;
 
 }
 
@@ -413,46 +247,45 @@ section h2{
 .tanggal{
 
 
-    height:35px;
+height:34px;
 
 
-    background:#eef3f8;
+background:#edf3ff;
 
 
-    border-radius:8px;
+border-radius:8px;
 
 
-    display:flex;
+display:flex;
 
 
-    justify-content:center;
+align-items:center;
 
 
-    align-items:center;
+justify-content:center;
 
 
-    font-size:12px;
+cursor:pointer;
 
 
-    cursor:pointer;
+font-size:12px;
 
 
-    transition:.3s;
+transition:.3s;
 
 
 }
-
-
 
 
 
 .tanggal:hover{
 
 
-    background:#0066ff;
+background:#0066ff;
 
+color:white;
 
-    color:white;
+transform:scale(1.1);
 
 
 }
@@ -465,21 +298,17 @@ section h2{
 
 
 
-
-
-
-
-/* ================= DETAIL ================= */
-
+/* DETAIL */
 
 
 .detail-box{
 
 
-    display:none;
+display:none;
 
 
 }
+
 
 
 
@@ -487,22 +316,19 @@ section h2{
 .kalender-wrapper.aktif .detail-box{
 
 
-    display:flex;
+display:flex;
 
 
-    flex-direction:column;
+flex-direction:column;
 
 
-    gap:12px;
+gap:10px;
 
 
-    width:550px;
+width:430px;
 
 
 }
-
-
-
 
 
 
@@ -512,32 +338,48 @@ section h2{
 .detail-item{
 
 
-    height:90px;
+height:85px;
 
 
-    background:white;
+background:white;
 
 
-    border-radius:18px;
+border-radius:18px;
 
 
-    display:flex;
+display:flex;
 
 
-    align-items:center;
+align-items:center;
 
 
-    padding:15px;
+padding:12px;
 
 
-    box-shadow:
+box-shadow:0 10px 25px #0002;
 
 
-    0 8px 20px rgba(0,0,0,.08);
+animation:muncul .4s;
 
 
-    position:relative;
+position:relative;
 
+
+}
+
+
+
+
+@keyframes muncul{
+
+
+from{
+
+opacity:0;
+
+transform:translateX(30px);
+
+}
 
 }
 
@@ -546,100 +388,83 @@ section h2{
 
 
 
-
-
-/* NOMOR */
 
 .nomor{
 
 
-    position:absolute;
+position:absolute;
 
 
-    left:10px;
+top:8px;
 
 
-    top:10px;
+left:8px;
 
 
-    width:24px;
+width:22px;
 
 
-    height:24px;
+height:22px;
 
 
-    border-radius:50%;
+border-radius:50%;
 
 
-    background:#0066ff;
+background:#0066ff;
 
 
-    color:white;
+color:white;
 
 
-    font-size:12px;
+font-size:11px;
 
 
-    display:flex;
+display:flex;
 
 
-    justify-content:center;
+align-items:center;
 
 
-    align-items:center;
+justify-content:center;
 
 
 }
 
 
-
-
-
-
-
-
-/* FOTO BULAT */
 
 
 .detail-item img{
 
 
-    width:60px;
+width:55px;
 
 
-    height:60px;
+height:55px;
 
 
-    border-radius:50%;
+border-radius:50%;
 
 
-    object-fit:cover;
+object-fit:cover;
 
 
-    margin-left:35px;
+margin-left:25px;
 
 
-    margin-right:18px;
+margin-right:15px;
 
 
 }
-
-
-
-
 
 
 
 .detail-item h4{
 
 
-    color:#0066ff;
+color:#0066ff;
 
 
-    font-size:15px;
-
-
-    font-weight:600;
+font-size:14px;
 
 
 }
@@ -649,10 +474,7 @@ section h2{
 .detail-item p{
 
 
-    font-size:13px;
-
-
-    margin:3px 0;
+font-size:12px;
 
 
 }
@@ -665,49 +487,41 @@ section h2{
 
 
 
-
-
-
-
-
-/* ================= GALERI ================= */
-
+/* CARD */
 
 
 .cards{
 
 
-    display:grid;
+display:grid;
 
 
-    grid-template-columns:repeat(3,1fr);
+grid-template-columns:repeat(3,1fr);
 
 
-    gap:30px;
+gap:30px;
 
 
 }
-
-
 
 
 
 .card{
 
 
-    background:white;
+background:white;
 
 
-    padding:25px;
+padding:25px;
 
 
-    border-radius:18px;
+border-radius:18px;
 
 
-    box-shadow:
+box-shadow:0 15px 35px #0001;
 
 
-    0 10px 25px rgba(0,0,0,.08);
+transition:.4s;
 
 
 }
@@ -715,20 +529,10 @@ section h2{
 
 
 
-
-.card img{
-
-
-    width:100%;
+.card:hover{
 
 
-    height:230px;
-
-
-    object-fit:cover;
-
-
-    border-radius:15px;
+transform:translateY(-10px);
 
 
 }
@@ -738,114 +542,57 @@ section h2{
 .card h3{
 
 
-    margin-top:15px;
-
-
-    color:#0066ff;
-
-
-    font-weight:600;
+color:#0066ff;
 
 
 }
 
 
 
+.card img{
+
+
+width:100%;
+
+
+height:230px;
+
+
+object-fit:cover;
+
+
+border-radius:15px;
+
+
+}
 
 
 
-
-
-
-
-/* ================= TENTANG ================= */
 
 
 #tentang{
 
 
-    background:#f7f7f7;
+background:#f7f7f7;
 
+text-align:center;
 
 }
-
 
 
 
 #tentang p{
 
 
-    text-align:center;
+line-height:2;
 
-
-    font-size:16px;
-
-
-    line-height:2;
+font-size:16px;
 
 
 }
 
 
 
-
-
-
-
-
-
-/* ================= KEGIATAN ================= */
-
-
-
-#kegiatan .card{
-
-
-    text-align:center;
-
-
-}
-
-
-
-
-
-/* ================= KONTAK ================= */
-
-
-
-#kontak{
-
-
-    text-align:center;
-
-
-}
-
-
-
-
-
-#kontak p{
-
-
-    font-size:16px;
-
-
-    margin:10px;
-
-
-}
-
-
-
-
-
-
-
-
-
-/* ================= RESPONSIVE ================= */
 
 
 
@@ -854,29 +601,16 @@ section h2{
 
 .kalender-wrapper{
 
-
-    flex-direction:column;
-
+flex-direction:column;
 
 }
 
 
 
-.kalender-box{
+.detail-box{
 
 
-    width:100%;
-
-
-}
-
-
-
-
-.kalender-wrapper.aktif .detail-box{
-
-
-    width:100%;
+width:100%!important;
 
 
 }
@@ -886,11 +620,9 @@ section h2{
 .cards{
 
 
-    grid-template-columns:1fr;
-
+grid-template-columns:1fr;
 
 }
-
 
 
 }
