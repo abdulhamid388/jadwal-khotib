@@ -67,12 +67,19 @@ nav.scrolled{
     padding:0 6%;
 }
 
+nav.scrolled ul a{
+    height:68px;
+}
+
 
 .logo{
 
     color:white;
     font-size:28px;
     font-weight:800;
+    line-height:1;
+    margin:0;
+    padding:0;
 
 }
 
@@ -100,13 +107,21 @@ nav ul a{
     text-decoration:none;
     color:white;
     font-weight:600;
+    display:flex;
+    align-items:center;
+    height:85px;
+    padding:0 2px;
+    line-height:1;
 
 }
 
 nav ul li{
     display:flex;
     align-items:center;
+    height:85px;
 }
+
+
 
 nav ul a:hover{
     opacity:.9;
