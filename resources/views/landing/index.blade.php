@@ -24,7 +24,7 @@ data-bs-ride="carousel">
 <div class="carousel-item active">
 
 
-<img src="{{asset('landing/img/masjid1.jpg')}}"
+<img src="{{asset('landing/img/masjid3.jpeg')}}"
 class="d-block w-100"
 alt="Masjid">
 

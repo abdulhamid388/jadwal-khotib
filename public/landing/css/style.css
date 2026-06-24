@@ -171,7 +171,8 @@ nav.scrolled ul a{
 
 .carousel-item img{
 
-    width:100%;
+    width:100vw;
+    margin-left:calc(50% - 50vw);
     height:100vh;
 
     object-fit:cover;
@@ -433,7 +434,15 @@ h2{
 
     grid-template-columns:repeat(4,1fr);
 
-    gap:20px;
+    gap:12px;
+
+    grid-auto-rows:92px;
+
+    max-height:calc(92px * 4 + 12px * 3);
+
+    overflow:auto;
+
+    padding:8px;
 
 }
 
@@ -443,21 +452,25 @@ h2{
 
     background:white;
 
-    min-height:130px;
+    min-height:0;
 
-    border-radius:20px;
+    height:88px;
 
-    padding:20px;
+    border-radius:12px;
+
+    padding:12px;
 
     display:flex;
 
     align-items:center;
 
-    gap:15px;
+    gap:12px;
 
     position:relative;
 
-    box-shadow:0 15px 35px rgba(0,0,0,.1);
+    box-shadow:0 10px 22px rgba(2,6,23,.06);
+
+    overflow:hidden;
 
 }
 
@@ -465,11 +478,11 @@ h2{
 
 .detail-card img{
 
-    width:65px;
+    width:54px;
 
-    height:65px;
+    height:54px;
 
-    border-radius:50%;
+    border-radius:8px;
 
     object-fit:cover;
 
@@ -482,9 +495,11 @@ h2{
 
 .detail-info h4{
 
-    color:#2563eb;
+    color:var(--primary);
 
-    font-size:16px;
+    font-size:14px;
+
+    margin:0;
 
 }
 
@@ -492,7 +507,11 @@ h2{
 
 .detail-info p{
 
-    font-size:13px;
+    font-size:12px;
+
+    margin:2px 0 0 0;
+
+    color:rgba(15,23,42,.65);
 
 }
 
