@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 
 *{
@@ -16,13 +16,16 @@ html{
 
 body{
 
-    font-family:'Plus Jakarta Sans','Poppins',sans-serif;
+    font-family:'Inter',sans-serif;
 
     background:#f8fafc;
 
     color:#475569;
 
+    overflow-x:hidden;
+
 }
+
 
 
 
@@ -44,15 +47,18 @@ nav{
 
     height:90px;
 
-    display:flex;
 
-    align-items:center;
+    display:flex;
 
     justify-content:space-between;
 
+    align-items:center;
+
+
     padding:0 8%;
 
-    z-index:999;
+
+    z-index:9999;
 
     transition:.4s;
 
@@ -60,13 +66,16 @@ nav{
 
 
 
+
+
 nav.scrolled{
+
 
     position:fixed;
 
     background:white;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.12);
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
 
 }
 
@@ -75,15 +84,16 @@ nav.scrolled{
 
 .logo{
 
+
+    color:white;
+
     font-size:28px;
 
     font-weight:800;
 
-    letter-spacing:.5px;
-
-    color:white;
-
 }
+
+
 
 
 
@@ -96,7 +106,9 @@ nav.scrolled .logo{
 
 
 
+
 nav ul{
+
 
     display:flex;
 
@@ -109,25 +121,25 @@ nav ul{
 
 
 
-nav ul li a{
 
-    color:white;
+nav ul a{
+
 
     text-decoration:none;
 
-    font-size:15px;
+    color:white;
 
     font-weight:600;
 
-    text-transform:capitalize;
-
-    transition:.3s;
+    font-size:15px;
 
 }
 
 
 
-nav.scrolled ul li a{
+
+
+nav.scrolled ul a{
 
     color:#334155;
 
@@ -136,11 +148,15 @@ nav.scrolled ul li a{
 
 
 
-nav ul li a:hover{
 
-    color:#2563eb;
+
+.menu-toggle{
+
+
+    display:none;
 
 }
+
 
 
 
@@ -157,8 +173,6 @@ nav ul li a:hover{
 
     height:100vh;
 
-    padding:0;
-
 }
 
 
@@ -170,12 +184,16 @@ nav ul li a:hover{
 
     width:100%;
 
+
     object-fit:cover;
+
 
     filter:brightness(45%);
 
 
 }
+
+
 
 
 
@@ -189,6 +207,7 @@ nav ul li a:hover{
 
     transform:translateY(-50%);
 
+
     text-align:left;
 
 
@@ -197,14 +216,14 @@ nav ul li a:hover{
 
 
 
+
 .carousel-caption h1{
 
 
-    font-size:62px;
+    font-size:clamp(35px,5vw,65px);
+
 
     font-weight:800;
-
-    letter-spacing:1px;
 
 
 }
@@ -215,9 +234,6 @@ nav ul li a:hover{
 
 
     font-size:20px;
-
-    margin-top:15px;
-
 
 }
 
@@ -232,15 +248,21 @@ nav ul li a:hover{
 
     margin-top:25px;
 
+
     padding:13px 35px;
 
-    border-radius:30px;
 
     background:#2563eb;
 
+
     color:white;
 
+
+    border-radius:30px;
+
+
     text-decoration:none;
+
 
     transition:.3s;
 
@@ -254,9 +276,8 @@ nav ul li a:hover{
 
     transform:translateY(-5px);
 
-    background:#1d4ed8;
-
 }
+
 
 
 
@@ -270,7 +291,10 @@ section{
 
     padding:90px 8%;
 
+
 }
+
+
 
 
 
@@ -285,6 +309,7 @@ h2{
 
     color:#0f172a;
 
+
     margin-bottom:50px;
 
 
@@ -297,15 +322,19 @@ h2{
 
 
 
-/* ================= JADWAL ================= */
 
+/* ================= JADWAL ================= */
 
 
 #jadwal{
 
+
     background:#eef4ff;
 
+
 }
+
+
 
 
 
@@ -313,20 +342,25 @@ h2{
 .kalender-wrapper{
 
 
-    min-height:500px;
-
     display:flex;
+
 
     justify-content:center;
 
+
     align-items:flex-start;
 
+
     gap:40px;
+
 
     transition:.5s;
 
 
 }
+
+
+
 
 
 
@@ -343,23 +377,25 @@ h2{
 
 
 
-
 .kalender-box{
 
 
-    width:320px;
+    width:330px;
+
 
     background:white;
 
-    padding:22px;
+
+    padding:25px;
+
 
     border-radius:25px;
 
+
     box-shadow:0 20px 40px rgba(0,0,0,.12);
 
+
 }
-
-
 
 
 
@@ -378,14 +414,14 @@ h2{
 
 
 
+
+
 .navigator h3{
 
 
-    font-size:18px;
-
     color:#2563eb;
 
-    font-weight:700;
+    font-size:18px;
 
 
 }
@@ -393,24 +429,27 @@ h2{
 
 
 
+
 .navigator button{
 
 
-    width:38px;
+    width:40px;
 
-    height:38px;
+    height:40px;
+
+
+    border:none;
 
     border-radius:50%;
 
-    border:none;
 
     background:#2563eb;
 
     color:white;
 
-    cursor:pointer;
 
     font-size:20px;
+
 
 }
 
@@ -430,10 +469,12 @@ h2{
 
     gap:8px;
 
-    margin-top:18px;
+    margin-top:20px;
 
 
 }
+
+
 
 
 
@@ -447,9 +488,9 @@ h2{
 
     font-weight:700;
 
-    color:#64748b;
 
 }
+
 
 
 
@@ -457,25 +498,30 @@ h2{
 .tanggal{
 
 
-    height:40px;
+    height:42px;
 
-    border-radius:12px;
 
     background:#f1f5f9;
 
-    display:flex;
 
-    justify-content:center;
+    border-radius:12px;
+
+
+    display:flex;
 
     align-items:center;
 
+    justify-content:center;
+
+
     cursor:pointer;
 
-    font-size:14px;
 
     transition:.3s;
 
+
 }
+
 
 
 
@@ -487,9 +533,12 @@ h2{
 
     color:white;
 
-    transform:translateY(-5px);
+
+    transform:translateY(-4px);
+
 
 }
+
 
 
 
@@ -501,14 +550,19 @@ h2{
 /* ================= DETAIL ================= */
 
 
+
 .detail-container{
 
 
     display:none;
 
-    width:850px;
+
+    width:min(900px,100%);
+
 
 }
+
+
 
 
 
@@ -517,7 +571,11 @@ h2{
 
     display:block;
 
+
 }
+
+
+
 
 
 
@@ -527,19 +585,27 @@ h2{
 
     border:none;
 
+
     background:#2563eb;
+
 
     color:white;
 
-    padding:8px 20px;
 
-    border-radius:25px;
+    padding:10px 25px;
+
+
+    border-radius:30px;
+
+
+    margin-bottom:20px;
+
 
     cursor:pointer;
 
-    margin-bottom:15px;
 
 }
+
 
 
 
@@ -551,9 +617,11 @@ h2{
 
     display:none;
 
+
     grid-template-columns:repeat(4,1fr);
 
-    gap:15px;
+
+    gap:20px;
 
 
 }
@@ -569,23 +637,33 @@ h2{
 
     background:white;
 
-    height:110px;
 
-    border-radius:18px;
+    height:120px;
 
-    display:flex;
 
-    align-items:center;
+    border-radius:20px;
+
 
     padding:15px;
 
+
+    display:flex;
+
+
+    align-items:center;
+
+
     position:relative;
+
 
     box-shadow:0 10px 25px rgba(0,0,0,.1);
 
+
     transition:.3s;
 
+
 }
+
 
 
 
@@ -595,7 +673,11 @@ h2{
 
     transform:translateY(-7px);
 
+
 }
+
+
+
 
 
 
@@ -605,33 +687,38 @@ h2{
 
     position:absolute;
 
-    top:8px;
 
-    left:8px;
+    top:10px;
+
+    left:10px;
 
 
     width:25px;
 
+
     height:25px;
+
 
     background:#2563eb;
 
+
     color:white;
+
 
     border-radius:50%;
 
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
 
     font-size:12px;
 
-}
 
+}
 
 
 
@@ -640,20 +727,22 @@ h2{
 .detail-card img{
 
 
-    width:55px;
+    width:60px;
 
-    height:55px;
+
+    height:60px;
+
 
     border-radius:50%;
 
+
     object-fit:cover;
 
-    margin-right:12px;
+
+    margin-right:15px;
 
 
 }
-
-
 
 
 
@@ -662,14 +751,14 @@ h2{
 .detail-info h4{
 
 
-    font-size:14px;
-
     color:#2563eb;
 
-    margin-bottom:5px;
+
+    font-size:15px;
 
 
 }
+
 
 
 
@@ -677,18 +766,7 @@ h2{
 .detail-info p{
 
 
-    font-size:12px;
-
-}
-
-
-
-.detail-info span{
-
-
-    font-size:11px;
-
-    color:#64748b;
+    font-size:13px;
 
 
 }
@@ -699,19 +777,7 @@ h2{
 
 
 
-
-
-/* ================= GALERI ================= */
-
-
-
-#galeri{
-
-    background:white;
-
-}
-
-
+/* ================= CARD ================= */
 
 
 
@@ -720,12 +786,14 @@ h2{
 
     display:grid;
 
+
     grid-template-columns:repeat(3,1fr);
+
 
     gap:30px;
 
-}
 
+}
 
 
 
@@ -734,42 +802,19 @@ h2{
 .card{
 
 
-    background:white;
+    border:none;
+
 
     padding:25px;
 
-    border-radius:22px;
+
+    border-radius:25px;
+
 
     box-shadow:0 15px 35px rgba(0,0,0,.1);
 
-    transition:.3s;
-
 
 }
-
-
-
-
-.card:hover{
-
-
-    transform:translateY(-10px);
-
-
-}
-
-
-
-
-.card h3{
-
-
-    color:#2563eb;
-
-    margin-top:15px;
-
-}
-
 
 
 
@@ -780,80 +825,14 @@ h2{
 
     width:100%;
 
-    height:230px;
+
+    height:240px;
+
 
     object-fit:cover;
 
-    border-radius:18px;
 
-
-}
-
-
-
-
-
-
-
-
-
-/* ================= TENTANG ================= */
-
-
-
-#tentang{
-
-
-    background:#eef4ff;
-
-    text-align:center;
-
-
-}
-
-
-
-
-
-#tentang p{
-
-
-    max-width:850px;
-
-    margin:auto;
-
-    line-height:2;
-
-}
-
-
-
-
-
-
-
-
-/* ================= KONTAK ================= */
-
-
-
-#kontak{
-
-
-    text-align:center;
-
-}
-
-
-
-
-
-#kontak p{
-
-
-    font-size:17px;
-
-    margin:10px;
+    border-radius:20px;
 
 
 }
@@ -875,9 +854,12 @@ footer{
 
     background:#0f172a;
 
+
     color:white;
 
+
     padding:50px 8%;
+
 
     text-align:center;
 
@@ -886,10 +868,13 @@ footer{
 
 
 
+
+
 footer h2{
 
 
     color:white;
+
 
     font-size:25px;
 
@@ -904,19 +889,11 @@ footer h2{
 
 
 
-/* ================= RESPONSIVE ================= */
+/* ================= TABLET ================= */
 
 
 
-@media(max-width:900px){
-
-
-
-nav ul{
-
-    gap:12px;
-
-}
+@media(max-width:1100px){
 
 
 
@@ -925,17 +902,8 @@ nav ul{
 
     flex-direction:column;
 
+
     align-items:center;
-
-
-}
-
-
-
-.detail-container{
-
-
-    width:100%;
 
 
 }
@@ -952,10 +920,128 @@ nav ul{
 
 
 
-.cards{
+}
 
 
-    grid-template-columns:1fr;
+
+
+
+
+
+
+
+
+
+/* ================= MOBILE ================= */
+
+
+
+@media(max-width:700px){
+
+
+
+nav{
+
+
+    padding:0 25px;
+
+
+}
+
+
+
+.menu-toggle{
+
+
+    display:block;
+
+
+    color:white;
+
+
+    font-size:28px;
+
+
+}
+
+
+
+
+
+nav ul{
+
+
+    display:none;
+
+
+    position:absolute;
+
+
+    top:90px;
+
+
+    left:0;
+
+
+    width:100%;
+
+
+    background:white;
+
+
+    flex-direction:column;
+
+
+    text-align:center;
+
+
+    padding:25px;
+
+
+}
+
+
+
+
+
+nav ul.aktif{
+
+
+    display:flex;
+
+
+}
+
+
+
+
+nav ul a{
+
+
+    color:#334155!important;
+
+
+}
+
+
+
+
+section{
+
+
+    padding:60px 5%;
+
+
+}
+
+
+
+
+
+.carousel-caption{
+
+
+    left:5%;
 
 
 }
@@ -969,6 +1055,53 @@ nav ul{
 
 
 }
+
+
+
+
+
+.kalender-box{
+
+
+    width:100%;
+
+
+}
+
+
+
+
+.detail-card{
+
+
+    height:100px;
+
+
+}
+
+
+
+
+.tanggal-detail{
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+
+
+
+.cards{
+
+
+    grid-template-columns:1fr;
+
+
+}
+
 
 
 

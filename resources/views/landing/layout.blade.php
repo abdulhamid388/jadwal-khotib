@@ -5,12 +5,13 @@
 
 <meta charset="UTF-8">
 
+
 <title>
 Jadwal Khotib Jumat
 </title>
 
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 
@@ -21,7 +22,7 @@ href="{{ asset('landing/css/style.css') }}">
 
 
 
-<!-- Bootstrap -->
+<!-- BOOTSTRAP -->
 
 <link 
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -44,12 +45,15 @@ rel="stylesheet">
 
 
 
+
 <body>
 
 
 
 
+
 <!-- ================= NAVBAR ================= -->
+
 
 <nav id="navbar">
 
@@ -64,7 +68,24 @@ Jadwal Khotib
 
 
 
-<ul>
+
+<!-- BUTTON MOBILE -->
+
+
+<div class="menu-toggle"
+onclick="bukaMenu()">
+
+☰
+
+</div>
+
+
+
+
+
+
+
+<ul id="menu">
 
 
 <li>
@@ -74,13 +95,11 @@ Home
 </li>
 
 
-
 <li>
 <a href="#jadwal">
 Jadwal
 </a>
 </li>
-
 
 
 <li>
@@ -90,13 +109,11 @@ Tentang
 </li>
 
 
-
 <li>
 <a href="#galeri">
 Galeri
 </a>
 </li>
-
 
 
 <li>
@@ -106,7 +123,6 @@ Kegiatan
 </li>
 
 
-
 <li>
 <a href="#kontak">
 Kontak
@@ -114,8 +130,9 @@ Kontak
 </li>
 
 
-
 </ul>
+
+
 
 
 
@@ -146,6 +163,7 @@ Kontak
 <!-- ================= FOOTER ================= -->
 
 
+
 <footer>
 
 
@@ -173,7 +191,9 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
+
 <div class="footer-line"></div>
+
 
 
 
@@ -204,7 +224,7 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
-<!-- Bootstrap JS -->
+<!-- BOOTSTRAP JS -->
 
 
 <script 
@@ -221,8 +241,10 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.j
 <script>
 
 
-window.addEventListener("scroll",function(){
+// NAVBAR SCROLL
 
+
+window.addEventListener("scroll",function(){
 
 
 let navbar =
@@ -250,6 +272,27 @@ navbar.classList.remove("scrolled");
 
 
 
+
+
+
+
+// MENU MOBILE
+
+
+function bukaMenu(){
+
+
+let menu =
+document.getElementById("menu");
+
+
+menu.classList.toggle("aktif");
+
+
+}
+
+
+
 </script>
 
 
@@ -257,7 +300,7 @@ navbar.classList.remove("scrolled");
 
 
 
-</body>
 
+</body>
 
 </html>

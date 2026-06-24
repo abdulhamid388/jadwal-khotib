@@ -101,7 +101,6 @@ Jadwal Khotib Jumat
 
 
 
-
 <div class="kalender-wrapper"
 id="kalenderWrapper">
 
@@ -116,13 +115,13 @@ id="kalenderWrapper">
 <div class="kalender-box">
 
 
-
 <div class="navigator">
 
 
 <button onclick="bulanMundur()">
 ‹
 </button>
+
 
 
 <h3 id="judulBulan"></h3>
@@ -140,7 +139,6 @@ id="kalenderWrapper">
 
 
 
-
 <div class="hari">
 
 <span>Min</span>
@@ -151,7 +149,6 @@ id="kalenderWrapper">
 <span>Jum</span>
 <span>Sab</span>
 
-
 </div>
 
 
@@ -161,10 +158,7 @@ id="kalenderWrapper">
 <div class="tanggal-grid"
 id="kalender">
 
-
 </div>
-
-
 
 
 
@@ -194,11 +188,9 @@ onclick="kembaliKalender()">
 
 
 
-
 <h3>
 Detail Khotib
 </h3>
-
 
 
 
@@ -209,6 +201,7 @@ Detail Khotib
 return $item->tanggal->format('Y-m-d');
 
 }) as $tanggal=>$list)
+
 
 
 
@@ -227,13 +220,11 @@ id="detail-{{$tanggal}}">
 <div class="detail-card">
 
 
-
 <div class="angka">
 
 {{$index+1}}
 
 </div>
-
 
 
 
@@ -280,6 +271,9 @@ id="detail-{{$tanggal}}">
 </span>
 
 
+</div>
+
+
 
 </div>
 
@@ -287,7 +281,13 @@ id="detail-{{$tanggal}}">
 
 
 
+@endforeach
+
+
+
+
 </div>
+
 
 
 
@@ -304,21 +304,10 @@ id="detail-{{$tanggal}}">
 
 
 
-@endforeach
-
-
-
 
 
 </div>
 
-
-
-
-
-
-
-</div>
 
 
 </section>
@@ -344,9 +333,7 @@ Galeri Khotib
 <div class="cards">
 
 
-
 @foreach($jadwals as $j)
-
 
 
 <div class="card">
@@ -372,9 +359,7 @@ Galeri Khotib
 </div>
 
 
-
 @endforeach
-
 
 
 </div>
@@ -396,7 +381,6 @@ Galeri Khotib
 <h2>
 Tentang Website
 </h2>
-
 
 
 <p>
@@ -427,9 +411,7 @@ Informasi Kegiatan
 
 
 
-
 <div class="cards">
-
 
 
 <div class="card">
@@ -451,7 +433,6 @@ Kajian rutin dan pembelajaran agama bersama jamaah.
 
 
 
-
 <div class="card">
 
 
@@ -466,7 +447,6 @@ Program sosial masjid untuk membantu masyarakat.
 
 
 </div>
-
 
 
 
@@ -539,7 +519,6 @@ let tahun = 2026;
 
 
 
-
 function tampilKalender(){
 
 
@@ -563,10 +542,8 @@ let bulanNama=[
 
 
 
-
 document.getElementById("judulBulan").innerHTML =
 bulanNama[bulan]+" "+tahun;
-
 
 
 
@@ -577,23 +554,13 @@ kalender.innerHTML="";
 
 
 
-
-
-let awal = new Date(
-tahun,
-bulan,
-1
-).getDay();
+let awal =
+new Date(tahun,bulan,1).getDay();
 
 
 
-
-let jumlah = new Date(
-tahun,
-bulan+1,
-0
-).getDate();
-
+let jumlah =
+new Date(tahun,bulan+1,0).getDate();
 
 
 
@@ -611,8 +578,8 @@ kalender.innerHTML += "<div></div>";
 for(let i=1;i<=jumlah;i++){
 
 
-let tanggal =
 
+let tanggal =
 tahun+
 "-"+
 String(bulan+1).padStart(2,'0')+
@@ -635,17 +602,11 @@ ${i}
 
 `;
 
-
-
 }
 
 
 
 }
-
-
-
-
 
 
 
@@ -654,30 +615,26 @@ ${i}
 function lihatTanggal(tanggal){
 
 
-
 document
 .getElementById("kalenderWrapper")
 .classList.add("aktif");
 
 
 
+document.querySelectorAll(".tanggal-detail")
+.forEach(e=>{
 
-document
-.querySelectorAll(".tanggal-detail")
-.forEach(item=>{
-
-item.style.display="none";
+e.style.display="none";
 
 });
 
 
 
 
-
-let detail=document.getElementById(
+let detail =
+document.getElementById(
 "detail-"+tanggal
 );
-
 
 
 
@@ -694,10 +651,6 @@ detail.style.display="grid";
 
 
 
-
-
-
-
 function kembaliKalender(){
 
 
@@ -707,18 +660,15 @@ document
 
 
 
-document
-.querySelectorAll(".tanggal-detail")
-.forEach(item=>{
+document.querySelectorAll(".tanggal-detail")
+.forEach(e=>{
 
-item.style.display="none";
+e.style.display="none";
 
 });
 
 
 }
-
-
 
 
 
@@ -751,7 +701,6 @@ tampilKalender();
 
 
 
-
 function bulanMundur(){
 
 
@@ -775,13 +724,11 @@ tampilKalender();
 
 
 
-
 tampilKalender();
 
 
 
 </script>
-
 
 
 
