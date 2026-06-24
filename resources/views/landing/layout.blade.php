@@ -30,12 +30,10 @@ rel="stylesheet">
 
 
 
-
-
-<!-- FONT MODERN -->
+<!-- FONT -->
 
 <link 
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
 rel="stylesheet">
 
 
@@ -44,11 +42,7 @@ rel="stylesheet">
 
 
 
-
-
 <body>
-
-
 
 
 
@@ -69,17 +63,12 @@ Jadwal Khotib
 
 
 
-<!-- BUTTON MOBILE -->
-
-
 <div class="menu-toggle"
 onclick="bukaMenu()">
 
 ☰
 
 </div>
-
-
 
 
 
@@ -95,11 +84,13 @@ Home
 </li>
 
 
+
 <li>
 <a href="#jadwal">
 Jadwal
 </a>
 </li>
+
 
 
 <li>
@@ -109,11 +100,13 @@ Tentang
 </li>
 
 
+
 <li>
 <a href="#galeri">
 Galeri
 </a>
 </li>
+
 
 
 <li>
@@ -123,6 +116,7 @@ Kegiatan
 </li>
 
 
+
 <li>
 <a href="#kontak">
 Kontak
@@ -130,9 +124,8 @@ Kontak
 </li>
 
 
+
 </ul>
-
-
 
 
 
@@ -147,10 +140,14 @@ Kontak
 
 
 
-<!-- ================= CONTENT ================= -->
+<!-- ================= HALAMAN ================= -->
 
+
+<main>
 
 @yield('content')
+
+</main>
 
 
 
@@ -163,9 +160,7 @@ Kontak
 <!-- ================= FOOTER ================= -->
 
 
-
 <footer>
-
 
 
 <div class="footer-content">
@@ -173,21 +168,14 @@ Kontak
 
 
 <h2>
-
 Website Jadwal Khotib Jumat
-
 </h2>
 
 
 
-
 <p>
-
 Informasi jadwal khutbah Jumat masjid
-
 </p>
-
-
 
 
 
@@ -197,20 +185,14 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
-
-
 <p>
-
 © 2026 Masjid | Semua Hak Dilindungi
-
 </p>
 
 
 
 
-
 </div>
-
 
 
 
@@ -224,13 +206,9 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
-<!-- BOOTSTRAP JS -->
-
-
 <script 
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
 </script>
-
 
 
 
@@ -247,8 +225,7 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.j
 window.addEventListener("scroll",function(){
 
 
-let navbar =
-document.getElementById("navbar");
+let navbar=document.getElementById("navbar");
 
 
 
@@ -276,14 +253,15 @@ navbar.classList.remove("scrolled");
 
 
 
-// MENU MOBILE
+
+
+// MENU HP
 
 
 function bukaMenu(){
 
 
-let menu =
-document.getElementById("menu");
+let menu=document.getElementById("menu");
 
 
 menu.classList.toggle("aktif");
@@ -294,8 +272,6 @@ menu.classList.toggle("aktif");
 
 
 </script>
-
-
 
 
 

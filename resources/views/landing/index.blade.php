@@ -4,6 +4,10 @@
 @section('content')
 
 
+
+<!-- ================= HERO ================= -->
+
+
 <section id="home">
 
 
@@ -12,17 +16,22 @@ class="carousel slide"
 data-bs-ride="carousel">
 
 
+
 <div class="carousel-inner">
+
 
 
 <div class="carousel-item active">
 
 
 <img src="{{asset('landing/img/masjid1.jpg')}}"
-class="d-block w-100">
+class="d-block w-100"
+alt="Masjid">
+
 
 
 <div class="carousel-caption">
+
 
 
 <h1>
@@ -30,9 +39,11 @@ Jadwal Khotib Jumat
 </h1>
 
 
+
 <p>
 Informasi jadwal khutbah Jumat terbaru
 </p>
+
 
 
 <a href="#jadwal">
@@ -40,10 +51,12 @@ Lihat Jadwal
 </a>
 
 
+
 </div>
 
 
 </div>
+
 
 
 
@@ -53,10 +66,15 @@ Lihat Jadwal
 
 
 <img src="{{asset('landing/img/masjid2.jpg')}}"
-class="d-block w-100">
+class="d-block w-100"
+alt="Masjid">
+
+
+
 
 
 <div class="carousel-caption">
+
 
 
 <h1>
@@ -64,21 +82,27 @@ Informasi Masjid
 </h1>
 
 
+
 <p>
 Kegiatan dan informasi masjid
 </p>
 
 
-</div>
-
 
 </div>
 
 
+
 </div>
 
 
+
 </div>
+
+
+
+</div>
+
 
 
 </section>
@@ -91,12 +115,18 @@ Kegiatan dan informasi masjid
 
 
 
+<!-- ================= JADWAL ================= -->
+
+
 <section id="jadwal">
+
 
 
 <h2>
 Jadwal Khotib Jumat
 </h2>
+
+
 
 
 
@@ -115,11 +145,13 @@ id="kalenderWrapper">
 <div class="kalender-box">
 
 
+
 <div class="navigator">
 
 
+
 <button onclick="bulanMundur()">
-‹
+<
 </button>
 
 
@@ -129,8 +161,9 @@ id="kalenderWrapper">
 
 
 <button onclick="bulanMaju()">
-›
+>
 </button>
+
 
 
 </div>
@@ -139,7 +172,10 @@ id="kalenderWrapper">
 
 
 
+
+
 <div class="hari">
+
 
 <span>Min</span>
 <span>Sen</span>
@@ -149,7 +185,9 @@ id="kalenderWrapper">
 <span>Jum</span>
 <span>Sab</span>
 
+
 </div>
+
 
 
 
@@ -158,7 +196,10 @@ id="kalenderWrapper">
 <div class="tanggal-grid"
 id="kalender">
 
+
 </div>
+
+
 
 
 
@@ -188,9 +229,11 @@ onclick="kembaliKalender()">
 
 
 
+
 <h3>
 Detail Khotib
 </h3>
+
 
 
 
@@ -213,11 +256,17 @@ id="detail-{{$tanggal}}">
 
 
 
+
 @foreach($list as $index=>$j)
 
 
 
+
+
 <div class="detail-card">
+
+
+
 
 
 <div class="angka">
@@ -225,6 +274,8 @@ id="detail-{{$tanggal}}">
 {{$index+1}}
 
 </div>
+
+
 
 
 
@@ -239,6 +290,7 @@ id="detail-{{$tanggal}}">
 <img src="{{asset('landing/img/default.png')}}">
 
 @endif
+
 
 
 
@@ -264,6 +316,7 @@ id="detail-{{$tanggal}}">
 
 
 
+
 <span>
 
 {{\Carbon\Carbon::parse($j->tanggal)->translatedFormat('d F Y')}}
@@ -271,17 +324,8 @@ id="detail-{{$tanggal}}">
 </span>
 
 
-</div>
-
-
 
 </div>
-
-
-
-
-
-@endforeach
 
 
 
@@ -298,6 +342,21 @@ id="detail-{{$tanggal}}">
 
 
 
+
+</div>
+
+
+
+
+
+@endforeach
+
+
+
+
+
+
+
 </div>
 
 
@@ -306,8 +365,8 @@ id="detail-{{$tanggal}}">
 
 
 
-</div>
 
+</div>
 
 
 </section>
@@ -318,6 +377,9 @@ id="detail-{{$tanggal}}">
 
 
 
+
+
+<!-- ================= GALERI ================= -->
 
 
 <section id="galeri">
@@ -333,10 +395,13 @@ Galeri Khotib
 <div class="cards">
 
 
+
 @foreach($jadwals as $j)
 
 
+
 <div class="card">
+
 
 
 
@@ -348,6 +413,7 @@ Galeri Khotib
 
 
 
+
 <h3>
 
 {{$j->nama_khotib}}
@@ -356,10 +422,15 @@ Galeri Khotib
 
 
 
+
 </div>
 
 
+
+
 @endforeach
+
+
 
 
 </div>
@@ -375,12 +446,19 @@ Galeri Khotib
 
 
 
+<!-- ================= TENTANG ================= -->
+
+
+
 <section id="tentang">
+
 
 
 <h2>
 Tentang Website
 </h2>
+
+
 
 
 <p>
@@ -391,6 +469,7 @@ informasi khotib, dan masjid tempat pelaksanaan.
 </p>
 
 
+
 </section>
 
 
@@ -399,9 +478,11 @@ informasi khotib, dan masjid tempat pelaksanaan.
 
 
 
+<!-- ================= KEGIATAN ================= -->
 
 
 <section id="kegiatan">
+
 
 
 <h2>
@@ -411,7 +492,9 @@ Informasi Kegiatan
 
 
 
+
 <div class="cards">
+
 
 
 <div class="card">
@@ -469,6 +552,7 @@ Informasi khutbah Jumat setiap minggu.
 
 
 
+
 </div>
 
 
@@ -481,6 +565,11 @@ Informasi khutbah Jumat setiap minggu.
 
 
 
+
+
+<!-- ================= KONTAK ================= -->
+
+
 <section id="kontak">
 
 
@@ -489,14 +578,17 @@ Kontak Masjid
 </h2>
 
 
+
 <p>
 085806203202
 </p>
 
 
+
 <p>
 Indonesia
 </p>
+
 
 
 </section>
@@ -515,6 +607,8 @@ Indonesia
 let bulan = 6;
 
 let tahun = 2026;
+
+
 
 
 
@@ -542,8 +636,13 @@ let bulanNama=[
 
 
 
+
+
 document.getElementById("judulBulan").innerHTML =
 bulanNama[bulan]+" "+tahun;
+
+
+
 
 
 
@@ -554,8 +653,11 @@ kalender.innerHTML="";
 
 
 
+
+
 let awal =
 new Date(tahun,bulan,1).getDay();
+
 
 
 
@@ -565,11 +667,18 @@ new Date(tahun,bulan+1,0).getDate();
 
 
 
+
+
+
 for(let i=0;i<awal;i++){
+
 
 kalender.innerHTML += "<div></div>";
 
+
 }
+
+
 
 
 
@@ -580,11 +689,14 @@ for(let i=1;i<=jumlah;i++){
 
 
 let tanggal =
+
 tahun+
 "-"+
 String(bulan+1).padStart(2,'0')+
 "-"+
 String(i).padStart(2,'0');
+
+
 
 
 
@@ -595,18 +707,27 @@ kalender.innerHTML += `
 <div class="tanggal"
 onclick="lihatTanggal('${tanggal}')">
 
+
 ${i}
+
 
 </div>
 
 
 `;
 
+
+
 }
 
 
 
+
 }
+
+
+
+
 
 
 
@@ -615,9 +736,12 @@ ${i}
 function lihatTanggal(tanggal){
 
 
+
 document
 .getElementById("kalenderWrapper")
 .classList.add("aktif");
+
+
 
 
 
@@ -631,6 +755,8 @@ e.style.display="none";
 
 
 
+
+
 let detail =
 document.getElementById(
 "detail-"+tanggal
@@ -638,14 +764,26 @@ document.getElementById(
 
 
 
+
+
+
 if(detail){
+
 
 detail.style.display="grid";
 
+
 }
 
 
+
+
 }
+
+
+
+
+
 
 
 
@@ -660,15 +798,24 @@ document
 
 
 
+
 document.querySelectorAll(".tanggal-detail")
 .forEach(e=>{
 
+
 e.style.display="none";
+
 
 });
 
 
+
 }
+
+
+
+
+
 
 
 
@@ -681,19 +828,26 @@ function bulanMaju(){
 bulan++;
 
 
+
 if(bulan>11){
+
 
 bulan=0;
 
 tahun++;
 
+
 }
+
 
 
 tampilKalender();
 
 
 }
+
+
+
 
 
 
@@ -707,13 +861,17 @@ function bulanMundur(){
 bulan--;
 
 
+
 if(bulan<0){
+
 
 bulan=11;
 
 tahun--;
 
+
 }
+
 
 
 tampilKalender();
@@ -724,11 +882,19 @@ tampilKalender();
 
 
 
+
+
+
+
 tampilKalender();
+
 
 
 
 </script>
+
+
+
 
 
 
