@@ -299,6 +299,20 @@ menu.classList.toggle("aktif");
 }
 
 
+// =================
+// AUTO CAROUSEL SLIDE
+// =================
+
+const carousel = document.getElementById('sliderMasjid');
+if(carousel) {
+    const bootstrapCarousel = new bootstrap.Carousel(carousel, {
+        interval: 3000,
+        wrap: true,
+        keyboard: true
+    });
+}
+
+
 
 
 
