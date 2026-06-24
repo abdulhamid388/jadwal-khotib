@@ -28,7 +28,6 @@ body{
 
 
 
-
 /* ================= NAVBAR ================= */
 
 
@@ -37,22 +36,20 @@ nav{
     position:absolute;
 
     top:0;
-
     left:0;
 
     width:100%;
 
-    height:90px;
+    height:85px;
+
+    padding:0 8%;
 
 
     display:flex;
 
-    align-items:center;
-
     justify-content:space-between;
 
-
-    padding:0 8%;
+    align-items:center;
 
 
     z-index:9999;
@@ -60,6 +57,7 @@ nav{
     transition:.4s;
 
 }
+
 
 
 
@@ -76,7 +74,9 @@ nav.scrolled{
 
 
 
+
 .logo{
+
 
     color:white;
 
@@ -97,13 +97,16 @@ nav.scrolled .logo{
 
 
 
+
 nav ul{
 
     display:flex;
 
-    gap:35px;
+    gap:30px;
 
     list-style:none;
+
+    margin:0;
 
 }
 
@@ -112,13 +115,12 @@ nav ul{
 
 nav ul a{
 
+
     text-decoration:none;
 
     color:white;
 
     font-weight:600;
-
-    font-size:15px;
 
 }
 
@@ -132,12 +134,19 @@ nav.scrolled ul a{
 
 
 
+
+
 .menu-toggle{
 
     display:none;
 
-}
+    font-size:28px;
 
+    color:white;
+
+    cursor:pointer;
+
+}
 
 
 
@@ -150,44 +159,19 @@ nav.scrolled ul a{
 
 #home{
 
-    width:100%;
-
-    height:100vh;
-
-    padding:0;
-
-}
-
-
-
-.carousel{
-
-    width:100%;
-
     height:100vh;
 
 }
 
 
 
-.carousel-inner{
-
-    width:100%;
-
-    height:100%;
-
-}
-
-
-
+.carousel,
+.carousel-inner,
 .carousel-item{
 
-    width:100%;
-
     height:100%;
 
 }
-
 
 
 
@@ -198,9 +182,7 @@ nav.scrolled ul a{
 
     height:100vh;
 
-
     object-fit:cover;
-
 
     filter:brightness(45%);
 
@@ -215,21 +197,13 @@ nav.scrolled ul a{
 .carousel-caption{
 
 
-    position:absolute;
-
-
     top:50%;
-
 
     left:50%;
 
-
     transform:translate(-50%,-50%);
 
-
-
     width:90%;
-
 
     text-align:center;
 
@@ -239,12 +213,10 @@ nav.scrolled ul a{
 
 
 
-
 .carousel-caption h1{
 
 
     font-size:clamp(35px,5vw,70px);
-
 
     font-weight:800;
 
@@ -254,19 +226,11 @@ nav.scrolled ul a{
 
 
 
-
 .carousel-caption p{
-
 
     font-size:20px;
 
-
-    margin-top:15px;
-
-
 }
-
-
 
 
 
@@ -276,12 +240,10 @@ nav.scrolled ul a{
 
     display:inline-block;
 
-
     margin-top:25px;
 
 
-    padding:13px 35px;
-
+    padding:12px 35px;
 
 
     background:#2563eb;
@@ -296,20 +258,6 @@ nav.scrolled ul a{
     text-decoration:none;
 
 
-    transition:.3s;
-
-
-}
-
-
-
-
-.carousel-caption a:hover{
-
-
-    transform:translateY(-5px);
-
-
 }
 
 
@@ -318,6 +266,8 @@ nav.scrolled ul a{
 
 
 
+
+/* ================= SECTION ================= */
 
 
 section{
@@ -330,21 +280,16 @@ section{
 
 
 
-
 h2{
 
 
     text-align:center;
 
-
     font-size:36px;
-
 
     font-weight:800;
 
-
     color:#0f172a;
-
 
     margin-bottom:50px;
 
@@ -362,11 +307,11 @@ h2{
 /* ================= JADWAL ================= */
 
 
+
 #jadwal{
 
 
     background:#eef4ff;
-
 
 }
 
@@ -386,9 +331,6 @@ h2{
 
 
     gap:40px;
-
-
-    transition:.5s;
 
 
 }
@@ -414,10 +356,6 @@ h2{
 
     width:330px;
 
-
-    max-width:100%;
-
-
     background:white;
 
 
@@ -431,7 +369,6 @@ h2{
 
 
 }
-
 
 
 
@@ -453,32 +390,17 @@ h2{
 
 
 
-
-
-.navigator h3{
-
-
-    color:#2563eb;
-
-
-}
-
-
-
-
 .navigator button{
 
 
     width:40px;
 
-
     height:40px;
 
 
-    border:none;
-
-
     border-radius:50%;
+
+    border:none;
 
 
     background:#2563eb;
@@ -487,11 +409,7 @@ h2{
     color:white;
 
 
-    cursor:pointer;
-
-
 }
-
 
 
 
@@ -503,12 +421,9 @@ h2{
 
     display:grid;
 
-
     grid-template-columns:repeat(7,1fr);
 
-
     gap:8px;
-
 
     margin-top:20px;
 
@@ -518,20 +433,15 @@ h2{
 
 
 
-
 .hari span{
 
 
     text-align:center;
 
-
     font-size:12px;
 
-
-    font-weight:700;
-
-
 }
+
 
 
 
@@ -569,7 +479,6 @@ h2{
 
     background:#2563eb;
 
-
     color:white;
 
 
@@ -583,7 +492,9 @@ h2{
 
 
 
+
 /* ================= DETAIL ================= */
+
 
 
 .detail-container{
@@ -596,6 +507,7 @@ h2{
 
 
 }
+
 
 
 
@@ -629,12 +541,7 @@ h2{
     border-radius:30px;
 
 
-    margin-bottom:20px;
-
-
 }
-
-
 
 
 
@@ -652,6 +559,8 @@ h2{
 
 
 }
+
+
 
 
 
@@ -689,6 +598,8 @@ h2{
 
 
 
+
+
 .angka{
 
 
@@ -707,13 +618,13 @@ h2{
     height:25px;
 
 
+    border-radius:50%;
+
+
     background:#2563eb;
 
 
     color:white;
-
-
-    border-radius:50%;
 
 
     display:flex;
@@ -726,7 +637,6 @@ h2{
 
 
 }
-
 
 
 
@@ -747,21 +657,6 @@ h2{
 
 
     margin-right:15px;
-
-
-}
-
-
-
-
-
-.detail-info h4{
-
-
-    color:#2563eb;
-
-
-    font-size:15px;
 
 
 }
@@ -793,8 +688,6 @@ h2{
 
 
 
-
-
 .card{
 
 
@@ -804,15 +697,10 @@ h2{
     border-radius:25px;
 
 
-    border:none;
-
-
     box-shadow:0 15px 35px rgba(0,0,0,.1);
 
 
 }
-
-
 
 
 
@@ -869,17 +757,18 @@ footer{
 
 
 
+
+
 /* ================= TABLET ================= */
 
 
-@media(max-width:1100px){
+@media(max-width:1000px){
 
 
 .kalender-wrapper{
 
 
     flex-direction:column;
-
 
     align-items:center;
 
@@ -898,6 +787,15 @@ footer{
 
 
 
+.cards{
+
+
+    grid-template-columns:repeat(2,1fr);
+
+
+}
+
+
 }
 
 
@@ -908,10 +806,11 @@ footer{
 
 
 
-/* ================= MOBILE ================= */
+/* ================= HP ================= */
 
 
 @media(max-width:700px){
+
 
 
 nav{
@@ -924,17 +823,10 @@ nav{
 
 
 
-
 .menu-toggle{
 
 
     display:block;
-
-
-    color:white;
-
-
-    font-size:28px;
 
 
 }
@@ -952,7 +844,7 @@ nav ul{
     position:absolute;
 
 
-    top:90px;
+    top:85px;
 
 
     left:0;
@@ -967,15 +859,13 @@ nav ul{
     flex-direction:column;
 
 
-    padding:25px;
-
-
     text-align:center;
 
 
+    padding:25px;
+
+
 }
-
-
 
 
 
@@ -986,6 +876,7 @@ nav ul.aktif{
 
 
 }
+
 
 
 
@@ -1004,17 +895,6 @@ section{
 
 
     padding:60px 5%;
-
-
-}
-
-
-
-
-.carousel-item img{
-
-
-    height:90vh;
 
 
 }
@@ -1072,6 +952,17 @@ section{
 
 
     grid-template-columns:1fr;
+
+
+}
+
+
+
+
+.detail-card{
+
+
+    height:100px;
 
 
 }

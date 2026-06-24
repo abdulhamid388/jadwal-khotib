@@ -15,7 +15,7 @@ Jadwal Khotib Jumat
 
 
 
-<!-- CSS UTAMA -->
+<!-- CSS WEBSITE -->
 
 <link rel="stylesheet"
 href="{{ asset('landing/css/style.css') }}">
@@ -33,7 +33,7 @@ rel="stylesheet">
 <!-- FONT -->
 
 <link 
-href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
 rel="stylesheet">
 
 
@@ -42,7 +42,11 @@ rel="stylesheet">
 
 
 
+
+
 <body>
+
+
 
 
 
@@ -63,12 +67,13 @@ Jadwal Khotib
 
 
 
-<div class="menu-toggle"
+<button class="menu-toggle"
 onclick="bukaMenu()">
 
 ☰
 
-</div>
+</button>
+
 
 
 
@@ -129,7 +134,6 @@ Kontak
 
 
 
-
 </nav>
 
 
@@ -140,7 +144,9 @@ Kontak
 
 
 
-<!-- ================= HALAMAN ================= -->
+
+
+<!-- ================= CONTENT ================= -->
 
 
 <main>
@@ -168,14 +174,20 @@ Kontak
 
 
 <h2>
+
 Website Jadwal Khotib Jumat
+
 </h2>
 
 
 
+
 <p>
+
 Informasi jadwal khutbah Jumat masjid
+
 </p>
+
 
 
 
@@ -185,9 +197,13 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
+
 <p>
+
 © 2026 Masjid | Semua Hak Dilindungi
+
 </p>
+
 
 
 
@@ -206,6 +222,11 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
+
+
+<!-- BOOTSTRAP JS -->
+
+
 <script 
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
 </script>
@@ -216,20 +237,25 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.j
 
 
 
+
+
 <script>
 
 
+// =================
 // NAVBAR SCROLL
+// =================
 
 
-window.addEventListener("scroll",function(){
+window.addEventListener("scroll",()=>{
 
 
-let navbar=document.getElementById("navbar");
+let navbar =
+document.getElementById("navbar");
 
 
 
-if(window.scrollY > 60){
+if(window.scrollY > 50){
 
 
 navbar.classList.add("scrolled");
@@ -255,13 +281,18 @@ navbar.classList.remove("scrolled");
 
 
 
-// MENU HP
+
+
+// =================
+// MENU MOBILE
+// =================
 
 
 function bukaMenu(){
 
 
-let menu=document.getElementById("menu");
+let menu =
+document.getElementById("menu");
 
 
 menu.classList.toggle("aktif");
@@ -271,12 +302,18 @@ menu.classList.toggle("aktif");
 
 
 
+
+
+
 </script>
 
 
 
 
 
+
+
 </body>
+
 
 </html>
