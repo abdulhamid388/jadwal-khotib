@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 :root{
     --bg:#f8fafc;
@@ -21,12 +21,13 @@ html{
 
 body{
 
-    font-family:'Inter',sans-serif;
+    font-family:'Poppins',sans-serif;
     background:var(--bg);
     color:var(--muted);
     overflow-x:hidden;
     font-weight:400;
     letter-spacing:0.3px;
+    line-height:1.6;
 
 }
 
@@ -84,12 +85,13 @@ nav.scrolled ul a{
 
     color:white;
     font-size:24px;
-    font-weight:800;
+    font-weight:600;
     line-height:85px;
     margin:0;
     padding:0;
     display:flex;
     align-items:center;
+    letter-spacing:-0.5px;
 
 }
 
@@ -116,13 +118,14 @@ nav ul a{
 
     text-decoration:none;
     color:white;
-    font-weight:600;
+    font-weight:500;
     font-size:15px;
     display:flex;
     align-items:center;
     height:85px;
     padding:0 2px;
     line-height:85px;
+    letter-spacing:-0.3px;
 
 }
 
@@ -232,7 +235,7 @@ nav.scrolled ul a{
 .carousel-caption h1{
 
     font-size:clamp(35px,6vw,70px);
-    font-weight:700;
+    font-weight:600;
     line-height:1.1;
     color:#ffffff;
     letter-spacing:-1px;
@@ -243,8 +246,11 @@ nav.scrolled ul a{
 .carousel-caption p{
 
     font-size:20px;
+    font-weight:400;
 
     color:rgba(255,255,255,.95);
+    letter-spacing:0.2px;
+    line-height:1.5;
 
 }
 
@@ -268,6 +274,7 @@ nav.scrolled ul a{
     font-weight:500;
     font-size:15px;
     letter-spacing:0.3px;
+    transition:all .24s ease;
 
 }
 
@@ -307,12 +314,13 @@ h2{
     text-align:center;
 
     font-size:36px;
-    font-weight:600;
+    font-weight:500;
     letter-spacing:-0.5px;
 
     color:#0f172a;
 
     margin-bottom:50px;
+    line-height:1.2;
 
 }
 
@@ -546,10 +554,10 @@ h2{
     color:var(--primary);
 
     font-size:11px;
+    font-weight:600;
+    letter-spacing:-0.2px;
 
     margin:0;
-
-    font-weight:600;
 
 }
 
@@ -558,12 +566,15 @@ h2{
 .detail-info p{
 
     font-size:9px;
+    font-weight:400;
 
     margin:1px 0 0 0;
 
     color:rgba(15,23,42,.65);
 
-    line-height:1.2;
+    line-height:1.3;
+    letter-spacing:-0.1px;
+
 
 }
 
@@ -644,8 +655,10 @@ h2{
 #kegiatan .card h3{
     color:var(--primary);
     font-size:20px;
+    font-weight:600;
     margin-bottom:12px;
     margin-top:0;
+    letter-spacing:-0.3px;
 }
 
 #kegiatan .card p{
@@ -720,7 +733,9 @@ footer{
 
 .footer-content h2{
     font-size:20px;
+    font-weight:500;
     margin-bottom:12px;
+    letter-spacing:-0.3px;
 }
 
 .footer-line{
@@ -737,8 +752,10 @@ footer{
 
 .navigator h3{
     font-size:18px;
+    font-weight:600;
     color:var(--dark);
     margin:0 12px;
+    letter-spacing:-0.3px;
 }
 
 .detail-card img{border-radius:12px}
@@ -750,10 +767,20 @@ footer{
     border-radius:8px;
     cursor:pointer;
     color:var(--dark);
+    font-weight:500;
+    font-size:14px;
+    transition:all .2s ease;
+}
     margin-bottom:18px;
 }
 
-.card h3{font-size:18px;margin-top:14px;color:var(--dark);}
+.card h3{
+    font-size:18px;
+    font-weight:600;
+    margin-top:14px;
+    color:var(--dark);
+    letter-spacing:-0.2px;
+}
 
 .card p{color:rgba(15,23,42,.7);line-height:1.5}
 
