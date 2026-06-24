@@ -29,10 +29,12 @@ Route::get('/', [
 |--------------------------------------------------------------------------
 */
 
-Route::resource(
-    'admid',
-    JadwalController::class
-);
+Route::middleware('auth')->group(function () {
+    Route::resource(
+        'admin',
+        JadwalController::class
+    );
+});
 
 
 
