@@ -154,7 +154,7 @@ nav.scrolled ul a{
 
 #home{
 
-    height:100vh;
+    height:120vh;
 
 }
 
@@ -173,7 +173,7 @@ nav.scrolled ul a{
 
     width:100vw;
     margin-left:calc(50% - 50vw);
-    height:100vh;
+    height:120vh;
 
     object-fit:cover;
 
@@ -497,9 +497,11 @@ h2{
 
     color:var(--primary);
 
-    font-size:14px;
+    font-size:11px;
 
     margin:0;
+
+    font-weight:600;
 
 }
 
@@ -507,11 +509,13 @@ h2{
 
 .detail-info p{
 
-    font-size:12px;
+    font-size:9px;
 
-    margin:2px 0 0 0;
+    margin:1px 0 0 0;
 
     color:rgba(15,23,42,.65);
+
+    line-height:1.2;
 
 }
 
