@@ -53,7 +53,8 @@ nav{
     align-items:center;
 
     z-index:9999;
-    background:transparent;
+    background:rgba(0,0,0,0.15);
+    backdrop-filter:blur(8px);
     transition:background .28s ease, box-shadow .28s ease, height .28s ease, padding .28s ease;
 
 }
@@ -63,23 +64,30 @@ nav{
 nav.scrolled{
     background:white;
     box-shadow:0 10px 30px rgba(2,6,23,.12);
-    height:68px;
+    height:72px;
     padding:0 6%;
 }
 
+nav.scrolled .logo{
+    line-height:72px;
+}
+
 nav.scrolled ul a{
-    height:68px;
+    height:72px;
+    line-height:72px;
 }
 
 
 .logo{
 
     color:white;
-    font-size:28px;
+    font-size:24px;
     font-weight:800;
-    line-height:1;
+    line-height:85px;
     margin:0;
     padding:0;
+    display:flex;
+    align-items:center;
 
 }
 
@@ -107,11 +115,12 @@ nav ul a{
     text-decoration:none;
     color:white;
     font-weight:600;
+    font-size:15px;
     display:flex;
     align-items:center;
     height:85px;
     padding:0 2px;
-    line-height:1;
+    line-height:85px;
 
 }
 
