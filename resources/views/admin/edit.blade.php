@@ -9,7 +9,7 @@
 
 <div class="card border-0 shadow-sm" style="max-width: 600px;">
     <div class="card-body p-4">
-        <form action="{{ route('admin.update', $jadwal->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.jadwal.update', $jadwal->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
