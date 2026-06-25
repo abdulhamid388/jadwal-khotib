@@ -13,7 +13,7 @@ class JadwalController extends Controller
     {
         $jadwals = Jadwal::latest()->get();
 
-        return view('admin.index', compact('jadwals'));
+        return view('admin.jadwal.index', compact('jadwals'));
     }
 
 

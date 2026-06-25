@@ -180,7 +180,7 @@
 
 
                 <a 
-                href="{{ route('admin.index') }}"
+                href="{{ route('admin.jadwal.index') }}"
                 class="btn btn-secondary">
 
                     Batal
