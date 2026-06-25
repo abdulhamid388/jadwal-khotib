@@ -22,7 +22,7 @@
     <div class="card-body p-4">
 
 
-        <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.jadwal.store') }}" method="POST" enctype="multipart/form-data">
 
             @csrf
 
