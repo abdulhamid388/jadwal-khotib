@@ -9,62 +9,89 @@ use App\Http\Controllers\JadwalController;
 
 /*
 |--------------------------------------------------------------------------
-| Auth Routes
+| AUTH
 |--------------------------------------------------------------------------
 */
+
 require __DIR__.'/auth.php';
+
 
 
 /*
 |--------------------------------------------------------------------------
-| Halaman Publik
+| LANDING / HALAMAN PUBLIK
 |--------------------------------------------------------------------------
 */
 
 Route::get('/', [
     LandingController::class,
     'index'
-]);
+])->name('home');
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| DASHBOARD
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/dashboard', function () {
+
     return view('dashboard');
+
 })->middleware(['auth'])->name('dashboard');
 
 
 
 
 
+
 /*
 |--------------------------------------------------------------------------
-| Halaman Admin
+| ADMIN JADWAL KHOTIB
 |--------------------------------------------------------------------------
 */
 
-Route::middleware('auth')->group(function () {
+
+Route::middleware(['auth'])
+->prefix('admin')
+->name('admin.')
+->group(function () {
+
+
     Route::resource(
-        'admin',
+        'jadwal',
         JadwalController::class
     );
+
+
 });
 
 
 
 
 
+
 /*
 |--------------------------------------------------------------------------
-| Foto Storage
+| STORAGE FOTO
 |--------------------------------------------------------------------------
 */
+
 
 Route::get('/storage/{filename}', function ($filename) {
 
 
-    $path = storage_path('app/public/'.$filename);
+    $path = storage_path(
+        'app/public/'.$filename
+    );
 
 
 
-    if (!file_exists($path)) {
+    if(!file_exists($path)){
 
         abort(404);
 
@@ -76,4 +103,5 @@ Route::get('/storage/{filename}', function ($filename) {
 
 
 
-})->where('filename','.*');
+})
+->where('filename','.*');
