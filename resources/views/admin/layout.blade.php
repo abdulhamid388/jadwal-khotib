@@ -148,7 +148,7 @@
 <body>
     <div class="sidebar">
         <h3><i class="bi bi-shield-check"></i> Admin</h3>
-        <a href="{{ route('admin.index') }}" class="active">
+        <a href="{{ route('admin.jadwal.index') }}" class="active">
             <i class="bi bi-calendar2-week"></i>
             Jadwal Khotib
         </a>
