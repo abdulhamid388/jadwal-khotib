@@ -80,7 +80,7 @@ class JadwalController extends Controller
 
 
         return redirect()
-            ->route('admid.index')
+            ->route('admid.jadwal.index')
             ->with('success','Jadwal berhasil ditambahkan');
 
     }
