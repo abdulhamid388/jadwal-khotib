@@ -26,6 +26,10 @@ Route::get('/', [
     'index'
 ]);
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
 
 
 
