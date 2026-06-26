@@ -1,10 +1,13 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
 
+
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\JadwalController;
+
 
 
 /*
@@ -13,7 +16,11 @@ use App\Http\Controllers\JadwalController;
 |--------------------------------------------------------------------------
 */
 
+
 require __DIR__.'/auth.php';
+
+
+
 
 
 
@@ -23,10 +30,16 @@ require __DIR__.'/auth.php';
 |--------------------------------------------------------------------------
 */
 
+
 Route::get('/', [
+
     LandingController::class,
+
     'index'
+
 ])->name('home');
+
+
 
 
 
@@ -38,11 +51,19 @@ Route::get('/', [
 |--------------------------------------------------------------------------
 */
 
+
 Route::get('/dashboard', function () {
+
 
     return view('dashboard');
 
-})->middleware(['auth'])->name('dashboard');
+
+})->middleware('auth')
+
+->name('dashboard');
+
+
+
 
 
 
@@ -51,24 +72,121 @@ Route::get('/dashboard', function () {
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN JADWAL KHOTIB
+| ADMIN
 |--------------------------------------------------------------------------
 */
 
 
-Route::middleware(['auth'])
+Route::middleware('auth')
+
 ->prefix('admin')
+
 ->name('admin.')
-->group(function () {
+
+->group(function(){
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Jadwal Khotib CRUD
+    |--------------------------------------------------------------------------
+    */
 
 
     Route::resource(
+
         'jadwal',
+
         JadwalController::class
+
     );
 
 
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Daftar Masjid
+    |--------------------------------------------------------------------------
+    */
+
+
+    Route::get('/masjid', function(){
+
+
+        return view('admin.masjid');
+
+
+    })->name('masjid');
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Daftar Khotib
+    |--------------------------------------------------------------------------
+    */
+
+
+    Route::get('/khotib', function(){
+
+
+        return view('admin.khotib');
+
+
+    })->name('khotib');
+
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Data User
+    |--------------------------------------------------------------------------
+    */
+
+
+    Route::get('/user', function(){
+
+
+        $users = \App\Models\User::all();
+
+
+
+        return view(
+
+            'admin.user',
+
+            compact('users')
+
+        );
+
+
+    })->name('user');
+
+
+
+
+
+
 });
+
+
 
 
 
@@ -82,20 +200,27 @@ Route::middleware(['auth'])
 */
 
 
-Route::get('/storage/{filename}', function ($filename) {
+Route::get('/storage/{filename}', function($filename){
+
 
 
     $path = storage_path(
+
         'app/public/'.$filename
+
     );
+
 
 
 
     if(!file_exists($path)){
 
+
         abort(404);
 
+
     }
+
 
 
 
@@ -104,4 +229,5 @@ Route::get('/storage/{filename}', function ($filename) {
 
 
 })
+
 ->where('filename','.*');

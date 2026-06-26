@@ -271,7 +271,7 @@ Jadwal Khotib
 
 
 
-<a href="#">
+<a href="{{route('admin.masjid')}}">
 
 <i class="bi bi-building"></i>
 
@@ -285,7 +285,7 @@ Daftar Masjid
 
 
 
-<a href="#">
+<a href="{{route('admin.khotib')}}">
 
 <i class="bi bi-person-badge"></i>
 
@@ -299,7 +299,7 @@ Daftar Khotib
 
 
 
-<a href="#">
+<a href="{{route('admin.user')}}">
 
 <i class="bi bi-people"></i>
 
