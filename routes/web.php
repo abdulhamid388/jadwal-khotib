@@ -16,7 +16,6 @@ use App\Http\Controllers\JadwalController;
 |--------------------------------------------------------------------------
 */
 
-
 require __DIR__.'/auth.php';
 
 
@@ -26,7 +25,7 @@ require __DIR__.'/auth.php';
 
 /*
 |--------------------------------------------------------------------------
-| LANDING / HALAMAN PUBLIK
+| LANDING WEBSITE
 |--------------------------------------------------------------------------
 */
 
@@ -52,13 +51,15 @@ Route::get('/', [
 */
 
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function(){
 
 
     return view('dashboard');
 
 
-})->middleware('auth')
+})
+
+->middleware('auth')
 
 ->name('dashboard');
 
@@ -90,9 +91,10 @@ Route::middleware('auth')
 
 
 
+
     /*
     |--------------------------------------------------------------------------
-    | Jadwal Khotib CRUD
+    | CRUD JADWAL KHOTIB
     |--------------------------------------------------------------------------
     */
 
@@ -111,9 +113,11 @@ Route::middleware('auth')
 
 
 
+
+
     /*
     |--------------------------------------------------------------------------
-    | Daftar Masjid
+    | DAFTAR MASJID
     |--------------------------------------------------------------------------
     */
 
@@ -121,10 +125,36 @@ Route::middleware('auth')
     Route::get('/masjid', function(){
 
 
-        return view('admin.masjid');
+
+        $masjids = \App\Models\Jadwal::select(
+
+            'nama_masjid'
+
+        )
+
+        ->groupBy('nama_masjid')
+
+        ->get();
 
 
-    })->name('masjid');
+
+
+
+        return view(
+
+            'admin.masjid',
+
+            compact('masjids')
+
+        );
+
+
+
+    })
+
+    ->name('masjid');
+
+
 
 
 
@@ -134,7 +164,7 @@ Route::middleware('auth')
 
     /*
     |--------------------------------------------------------------------------
-    | Daftar Khotib
+    | DAFTAR KHOTIB
     |--------------------------------------------------------------------------
     */
 
@@ -142,10 +172,45 @@ Route::middleware('auth')
     Route::get('/khotib', function(){
 
 
-        return view('admin.khotib');
+
+        $khotibs = \App\Models\Jadwal::select(
+
+            'nama_khotib',
+
+            'foto'
+
+        )
+
+        ->groupBy(
+
+            'nama_khotib',
+
+            'foto'
+
+        )
+
+        ->get();
 
 
-    })->name('khotib');
+
+
+
+
+        return view(
+
+            'admin.khotib',
+
+            compact('khotibs')
+
+        );
+
+
+
+
+    })
+
+    ->name('khotib');
+
 
 
 
@@ -156,7 +221,7 @@ Route::middleware('auth')
 
     /*
     |--------------------------------------------------------------------------
-    | Data User
+    | DATA USER
     |--------------------------------------------------------------------------
     */
 
@@ -164,7 +229,10 @@ Route::middleware('auth')
     Route::get('/user', function(){
 
 
+
         $users = \App\Models\User::all();
+
+
 
 
 
@@ -177,7 +245,11 @@ Route::middleware('auth')
         );
 
 
-    })->name('user');
+
+    })
+
+    ->name('user');
+
 
 
 
@@ -185,6 +257,7 @@ Route::middleware('auth')
 
 
 });
+
 
 
 
