@@ -4,18 +4,38 @@
 @section('content')
 
 
-<h2>Daftar User</h2>
+
+<div class="mb-4">
+
+
+<h2>
+Data User
+</h2>
+
+
+<p class="text-muted">
+Daftar pengguna yang dapat masuk sistem
+</p>
+
+
+</div>
 
 
 
-<div class="card shadow-sm">
+
+
+<div class="card border-0 shadow-sm">
 
 
 <div class="card-body">
 
 
 
-<table class="table">
+<table class="table table-hover align-middle">
+
+
+
+<thead class="bg-light">
 
 
 <tr>
@@ -26,39 +46,103 @@
 
 <th>Email</th>
 
+<th>Bergabung</th>
+
+
 </tr>
 
 
 
-@foreach($users as $u)
+</thead>
+
+
+
+
+<tbody>
+
+
+
+@forelse($users as $user)
 
 
 <tr>
 
 
+
 <td>
+
 {{ $loop->iteration }}
+
 </td>
+
+
 
 
 <td>
-{{ $u->name }}
+
+
+<div class="fw-semibold">
+
+{{ $user->name }}
+
+</div>
+
+
 </td>
+
+
 
 
 <td>
-{{ $u->email }}
+
+{{ $user->email }}
+
 </td>
+
+
+
+
+<td>
+
+{{ $user->created_at->translatedFormat('d F Y') }}
+
+</td>
+
 
 
 </tr>
 
 
 
-@endforeach
+
+@empty
+
+
+
+<tr>
+
+<td colspan="4" class="text-center text-muted">
+
+Belum ada user
+
+</td>
+
+</tr>
+
+
+
+@endforelse
+
+
+
+
+</tbody>
+
 
 
 </table>
+
+
 
 
 </div>
