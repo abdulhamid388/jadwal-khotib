@@ -25,7 +25,10 @@ class JadwalController extends Controller
         $jadwals = Jadwal::latest()->get();
 
 
-        return view('admin.index', compact('jadwals'));
+        return view(
+            'admin.index',
+            compact('jadwals')
+        );
 
     }
 
@@ -33,16 +36,59 @@ class JadwalController extends Controller
 
 
 
+
+
+
     /*
     |--------------------------------------------------------------------------
-    | Form tambah
+    | Form tambah jadwal
     |--------------------------------------------------------------------------
     */
 
     public function create()
     {
 
-        return view('admin.create');
+
+        // ambil daftar masjid
+
+        $masjids = Jadwal::select('nama_masjid')
+
+            ->groupBy('nama_masjid')
+
+            ->get();
+
+
+
+
+
+        // ambil daftar khotib
+
+        $khotibs = Jadwal::select('nama_khotib')
+
+            ->groupBy('nama_khotib')
+
+            ->get();
+
+
+
+
+
+
+
+        return view(
+
+            'admin.create',
+
+            compact(
+
+                'masjids',
+
+                'khotibs'
+
+            )
+
+        );
+
 
     }
 
@@ -52,9 +98,11 @@ class JadwalController extends Controller
 
 
 
+
+
     /*
     |--------------------------------------------------------------------------
-    | Simpan data baru
+    | Simpan jadwal
     |--------------------------------------------------------------------------
     */
 
@@ -67,9 +115,12 @@ class JadwalController extends Controller
 
             'nama_masjid' => 'required',
 
+
             'tanggal' => 'required',
 
+
             'nama_khotib' => 'required',
+
 
             'foto' => 'required|image|max:2048'
 
@@ -81,8 +132,9 @@ class JadwalController extends Controller
 
 
 
-        $foto = null;
 
+
+        $foto = null;
 
 
 
@@ -90,11 +142,20 @@ class JadwalController extends Controller
 
 
             $foto = $request
-                    ->file('foto')
-                    ->store('khotib','public');
+
+                ->file('foto')
+
+                ->store(
+
+                    'khotib',
+
+                    'public'
+
+                );
 
 
         }
+
 
 
 
@@ -116,6 +177,7 @@ class JadwalController extends Controller
             'foto' => $foto
 
 
+
         ]);
 
 
@@ -129,10 +191,18 @@ class JadwalController extends Controller
 
             ->route('admin.jadwal.index')
 
-            ->with('success','Jadwal berhasil ditambahkan');
+            ->with(
+
+                'success',
+
+                'Jadwal berhasil ditambahkan'
+
+            );
 
 
     }
+
+
 
 
 
@@ -145,7 +215,7 @@ class JadwalController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Detail data
+    | Detail jadwal
     |--------------------------------------------------------------------------
     */
 
@@ -157,10 +227,19 @@ class JadwalController extends Controller
 
 
 
-        return view('admin.show', compact('jadwal'));
+        return view(
+
+            'admin.show',
+
+            compact('jadwal')
+
+        );
 
 
     }
+
+
+
 
 
 
@@ -184,7 +263,44 @@ class JadwalController extends Controller
 
 
 
-        return view('admin.edit', compact('jadwal'));
+
+        $masjids = Jadwal::select('nama_masjid')
+
+            ->groupBy('nama_masjid')
+
+            ->get();
+
+
+
+
+
+        $khotibs = Jadwal::select('nama_khotib')
+
+            ->groupBy('nama_khotib')
+
+            ->get();
+
+
+
+
+
+
+
+        return view(
+
+            'admin.edit',
+
+            compact(
+
+                'jadwal',
+
+                'masjids',
+
+                'khotibs'
+
+            )
+
+        );
 
 
     }
@@ -197,9 +313,13 @@ class JadwalController extends Controller
 
 
 
+
+
+
+
     /*
     |--------------------------------------------------------------------------
-    | Update data
+    | Update jadwal
     |--------------------------------------------------------------------------
     */
 
@@ -237,6 +357,8 @@ class JadwalController extends Controller
 
 
 
+
+
         $data = [
 
 
@@ -262,13 +384,13 @@ class JadwalController extends Controller
         if($request->hasFile('foto')){
 
 
-            // hapus foto lama
 
             if($jadwal->foto){
 
 
                 Storage::disk('public')
-                    ->delete($jadwal->foto);
+
+                ->delete($jadwal->foto);
 
 
             }
@@ -278,13 +400,21 @@ class JadwalController extends Controller
 
 
 
-
             $data['foto'] = $request
+
                 ->file('foto')
-                ->store('khotib','public');
+
+                ->store(
+
+                    'khotib',
+
+                    'public'
+
+                );
 
 
         }
+
 
 
 
@@ -301,14 +431,17 @@ class JadwalController extends Controller
 
 
 
-
-
         return redirect()
 
             ->route('admin.jadwal.index')
 
-            ->with('success','Jadwal berhasil diperbarui');
+            ->with(
 
+                'success',
+
+                'Jadwal berhasil diperbarui'
+
+            );
 
 
     }
@@ -321,9 +454,13 @@ class JadwalController extends Controller
 
 
 
+
+
+
+
     /*
     |--------------------------------------------------------------------------
-    | Hapus data
+    | Hapus jadwal
     |--------------------------------------------------------------------------
     */
 
@@ -343,10 +480,12 @@ class JadwalController extends Controller
 
 
             Storage::disk('public')
-                ->delete($jadwal->foto);
+
+            ->delete($jadwal->foto);
 
 
         }
+
 
 
 
@@ -362,12 +501,17 @@ class JadwalController extends Controller
 
 
 
-
         return redirect()
 
             ->route('admin.jadwal.index')
 
-            ->with('success','Jadwal berhasil dihapus');
+            ->with(
+
+                'success',
+
+                'Jadwal berhasil dihapus'
+
+            );
 
 
     }
