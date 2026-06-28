@@ -1,19 +1,21 @@
 @extends('admin.layout')
 
+
 @section('content')
 
 
 <div class="mb-4">
 
-    <h2>
-        Daftar Masjid
-    </h2>
+<h2>
+Daftar Masjid
+</h2>
 
-    <p class="text-muted">
-        Data masjid yang sudah terdaftar
-    </p>
+<p class="text-muted">
+Daftar masjid yang sudah terdaftar
+</p>
 
 </div>
+
 
 
 
@@ -23,19 +25,16 @@
 <div class="card-body">
 
 
-<table class="table table-hover align-middle">
+<table class="table align-middle">
 
 
-<thead class="bg-light">
+<thead class="table-light">
 
 <tr>
 
 <th>No</th>
 
 <th>Nama Masjid</th>
-
-<th>Jumlah Jadwal</th>
-
 
 </tr>
 
@@ -46,15 +45,7 @@
 <tbody>
 
 
-@php
-
-$masjid = $jadwals->groupBy('nama_masjid');
-
-@endphp
-
-
-
-@forelse($masjid as $nama=>$data)
+@forelse($masjids as $m)
 
 
 <tr>
@@ -70,24 +61,9 @@ $masjid = $jadwals->groupBy('nama_masjid');
 
 <div class="fw-semibold">
 
-{{ $nama }}
+{{ $m->nama_masjid }}
 
 </div>
-
-
-</td>
-
-
-
-
-<td>
-
-
-<span class="badge bg-primary">
-
-{{ count($data) }} Jadwal
-
-</span>
 
 
 </td>
@@ -103,12 +79,11 @@ $masjid = $jadwals->groupBy('nama_masjid');
 
 <tr>
 
-<td colspan="3" class="text-center text-muted">
+<td colspan="2" class="text-center">
 
 Belum ada data masjid
 
 </td>
-
 
 </tr>
 
@@ -116,12 +91,11 @@ Belum ada data masjid
 @endforelse
 
 
-
 </tbody>
 
 
-</table>
 
+</table>
 
 
 </div>

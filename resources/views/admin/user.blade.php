@@ -4,17 +4,17 @@
 @section('content')
 
 
-
 <div class="mb-4">
 
-
 <h2>
-Data User
+Daftar User
 </h2>
 
 
 <p class="text-muted">
-Daftar pengguna yang dapat masuk sistem
+
+User yang dapat mengakses admin
+
 </p>
 
 
@@ -30,12 +30,10 @@ Daftar pengguna yang dapat masuk sistem
 <div class="card-body">
 
 
-
-<table class="table table-hover align-middle">
-
+<table class="table">
 
 
-<thead class="bg-light">
+<thead class="table-light">
 
 
 <tr>
@@ -46,27 +44,22 @@ Daftar pengguna yang dapat masuk sistem
 
 <th>Email</th>
 
-<th>Bergabung</th>
-
 
 </tr>
-
 
 
 </thead>
 
 
 
-
 <tbody>
 
 
+@foreach($users as $u)
 
-@forelse($users as $user)
 
 
 <tr>
-
 
 
 <td>
@@ -77,34 +70,17 @@ Daftar pengguna yang dapat masuk sistem
 
 
 
-
 <td>
 
-
-<div class="fw-semibold">
-
-{{ $user->name }}
-
-</div>
-
+{{ $u->name }}
 
 </td>
 
 
 
-
 <td>
 
-{{ $user->email }}
-
-</td>
-
-
-
-
-<td>
-
-{{ $user->created_at->translatedFormat('d F Y') }}
+{{ $u->email }}
 
 </td>
 
@@ -114,25 +90,7 @@ Daftar pengguna yang dapat masuk sistem
 
 
 
-
-@empty
-
-
-
-<tr>
-
-<td colspan="4" class="text-center text-muted">
-
-Belum ada user
-
-</td>
-
-</tr>
-
-
-
-@endforelse
-
+@endforeach
 
 
 
@@ -143,13 +101,10 @@ Belum ada user
 </table>
 
 
-
-
 </div>
 
 
 </div>
-
 
 
 

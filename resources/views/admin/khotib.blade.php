@@ -4,6 +4,7 @@
 @section('content')
 
 
+
 <div class="mb-4">
 
 
@@ -27,59 +28,69 @@ Data khotib yang sudah terdaftar
 
 
 
-@php
+@forelse($khotibs as $k)
 
-$khotibs = $jadwals->groupBy('nama_khotib');
-
-@endphp
-
-
-
-
-
-@forelse($khotibs as $nama=>$data)
 
 
 <div class="col-md-4">
 
 
-<div class="card border-0 shadow-sm h-100">
+
+<div class="card border-0 shadow-sm">
 
 
-<div class="card-body text-center">
+<div class="card-body d-flex align-items-center gap-3">
+
+
+
+@if($k->foto)
 
 
 <img 
-
-src="{{ $data->first()->foto 
-? asset('storage/'.$data->first()->foto)
-: asset('landing/img/default.png') }}"
-
-class="rounded-circle mb-3"
-
-width="80"
-
-height="80"
-
+src="{{ asset('storage/'.$k->foto) }}"
+width="60"
+height="60"
+class="rounded-circle"
 style="object-fit:cover">
 
 
 
+@else
 
 
-<h5>
+<img
+src="{{ asset('landing/img/default.png') }}"
+width="60"
+height="60"
+class="rounded-circle">
 
-{{ $nama }}
+
+
+@endif
+
+
+
+
+
+<div>
+
+
+<h5 class="mb-1">
+
+{{ $k->nama_khotib }}
 
 </h5>
 
 
+<small class="text-muted">
 
-<p class="text-muted">
+Khotib Jumat
 
-{{ count($data) }} Jadwal khutbah
+</small>
 
-</p>
+
+</div>
+
 
 
 
@@ -90,19 +101,18 @@ style="object-fit:cover">
 
 
 </div>
+
 
 
 
 @empty
 
 
-
-<div class="text-center text-muted">
+<p class="text-center">
 
 Belum ada data khotib
 
-</div>
-
+</p>
 
 
 @endforelse
