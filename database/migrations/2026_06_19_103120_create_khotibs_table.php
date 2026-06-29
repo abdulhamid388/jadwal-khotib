@@ -11,7 +11,6 @@ return new class extends Migration
     public function up(): void
     {
 
-
         Schema::create('khotibs', function (Blueprint $table) {
 
 
@@ -21,12 +20,12 @@ return new class extends Migration
             $table->string('nama_khotib');
 
 
-            $table->string('no_hp');
+            $table->string('no_hp')
+            ->nullable();
 
 
             $table->string('foto')
-                  ->nullable();
-
+            ->nullable();
 
 
             $table->timestamps();
@@ -34,19 +33,14 @@ return new class extends Migration
 
         });
 
-
     }
-
-
 
 
 
     public function down(): void
     {
 
-
         Schema::dropIfExists('khotibs');
-
 
     }
 
