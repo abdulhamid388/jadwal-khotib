@@ -7,7 +7,6 @@
 
 <!-- ================= HERO ================= -->
 
-
 <section id="home">
 
 
@@ -16,22 +15,17 @@ class="carousel slide"
 data-bs-ride="carousel">
 
 
-
 <div class="carousel-inner">
-
 
 
 <div class="carousel-item active">
 
 
 <img src="{{asset('landing/img/masjid3.jpeg')}}"
-class="d-block w-100"
-alt="Masjid">
-
+class="d-block w-100">
 
 
 <div class="carousel-caption">
-
 
 
 <h1>
@@ -39,11 +33,9 @@ Jadwal Khotib Jumat
 </h1>
 
 
-
 <p>
 Informasi jadwal khutbah Jumat terbaru
 </p>
-
 
 
 <a href="#jadwal">
@@ -51,12 +43,10 @@ Lihat Jadwal
 </a>
 
 
-
 </div>
 
 
 </div>
-
 
 
 
@@ -66,15 +56,10 @@ Lihat Jadwal
 
 
 <img src="{{asset('landing/img/masjid2.jpg')}}"
-class="d-block w-100"
-alt="Masjid">
-
-
-
+class="d-block w-100">
 
 
 <div class="carousel-caption">
-
 
 
 <h1>
@@ -82,27 +67,21 @@ Informasi Masjid
 </h1>
 
 
-
 <p>
 Kegiatan dan informasi masjid
 </p>
 
 
-
 </div>
-
-
-
-</div>
-
 
 
 </div>
 
 
-
 </div>
 
+
+</div>
 
 
 </section>
@@ -121,12 +100,9 @@ Kegiatan dan informasi masjid
 <section id="jadwal">
 
 
-
 <h2>
 Jadwal Khotib Jumat
 </h2>
-
-
 
 
 
@@ -138,10 +114,6 @@ id="kalenderWrapper">
 
 
 
-
-<!-- KALENDER -->
-
-
 <div class="kalender-box">
 
 
@@ -149,21 +121,17 @@ id="kalenderWrapper">
 <div class="navigator">
 
 
-
 <button onclick="bulanMundur()">
 <
 </button>
 
 
-
 <h3 id="judulBulan"></h3>
-
 
 
 <button onclick="bulanMaju()">
 >
 </button>
-
 
 
 </div>
@@ -172,10 +140,7 @@ id="kalenderWrapper">
 
 
 
-
-
 <div class="hari">
-
 
 <span>Min</span>
 <span>Sen</span>
@@ -185,9 +150,7 @@ id="kalenderWrapper">
 <span>Jum</span>
 <span>Sab</span>
 
-
 </div>
-
 
 
 
@@ -196,10 +159,7 @@ id="kalenderWrapper">
 <div class="tanggal-grid"
 id="kalender">
 
-
 </div>
-
-
 
 
 
@@ -215,13 +175,12 @@ id="kalender">
 
 <!-- DETAIL -->
 
-
 <div class="detail-container">
 
 
 
 <button class="kembali"
-onclick="kembaliKalender()">
+onclick="kembaliKalender">
 
 ← Kembali
 
@@ -229,11 +188,9 @@ onclick="kembaliKalender()">
 
 
 
-
 <h3>
 Detail Khotib
 </h3>
-
 
 
 
@@ -254,18 +211,11 @@ id="detail-{{$tanggal}}">
 
 
 
-
-
-
 @foreach($list as $index=>$j)
 
 
 
-
-
 <div class="detail-card">
-
-
 
 
 
@@ -280,17 +230,19 @@ id="detail-{{$tanggal}}">
 
 
 
+@if($j->khotib && $j->khotib->foto)
 
-@if($j->foto)
 
-<img src="{{asset('storage/'.$j->foto)}}">
+<img src="{{asset('storage/'.$j->khotib->foto)}}">
+
 
 @else
 
+
 <img src="{{asset('landing/img/default.png')}}">
 
-@endif
 
+@endif
 
 
 
@@ -300,17 +252,19 @@ id="detail-{{$tanggal}}">
 <div class="detail-info">
 
 
+
 <h4>
 
-{{$j->nama_khotib}}
+{{ $j->khotib->nama_khotib ?? '-' }}
 
 </h4>
 
 
 
+
 <p>
 
-{{$j->nama_masjid}}
+{{ $j->masjid->nama_masjid ?? '-' }}
 
 </p>
 
@@ -319,7 +273,7 @@ id="detail-{{$tanggal}}">
 
 <span>
 
-{{\Carbon\Carbon::parse($j->tanggal)->translatedFormat('d F Y')}}
+{{ $j->tanggal->translatedFormat('d F Y') }}
 
 </span>
 
@@ -329,6 +283,14 @@ id="detail-{{$tanggal}}">
 
 
 
+</div>
+
+
+
+
+@endforeach
+
+
 
 </div>
 
@@ -342,28 +304,7 @@ id="detail-{{$tanggal}}">
 
 
 
-
 </div>
-
-
-
-
-
-@endforeach
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
 
 
 </div>
@@ -405,26 +346,43 @@ Galeri Khotib
 
 
 
-@if($j->foto)
 
-<img src="{{asset('storage/'.$j->foto)}}">
+@if($j->khotib && $j->khotib->foto)
+
+
+<img src="{{asset('storage/'.$j->khotib->foto)}}">
+
+
+@else
+
+
+<img src="{{asset('landing/img/default.png')}}">
+
 
 @endif
 
 
 
 
+
+
 <h3>
 
-{{$j->nama_khotib}}
+{{ $j->khotib->nama_khotib ?? '-' }}
 
 </h3>
 
 
 
+<p>
+
+{{ $j->masjid->nama_masjid ?? '-' }}
+
+</p>
+
+
 
 </div>
-
 
 
 
@@ -432,11 +390,12 @@ Galeri Khotib
 
 
 
-
 </div>
 
 
 </section>
+
+
 
 
 
@@ -449,16 +408,12 @@ Galeri Khotib
 <!-- ================= TENTANG ================= -->
 
 
-
 <section id="tentang">
-
 
 
 <h2>
 Tentang Website
 </h2>
-
-
 
 
 <p>
@@ -469,8 +424,9 @@ informasi khotib, dan masjid tempat pelaksanaan.
 </p>
 
 
-
 </section>
+
+
 
 
 
@@ -484,7 +440,6 @@ informasi khotib, dan masjid tempat pelaksanaan.
 <section id="kegiatan">
 
 
-
 <h2>
 Informasi Kegiatan
 </h2>
@@ -492,9 +447,7 @@ Informasi Kegiatan
 
 
 
-
 <div class="cards">
-
 
 
 <div class="card">
@@ -552,12 +505,10 @@ Informasi khutbah Jumat setiap minggu.
 
 
 
-
 </div>
 
 
 </section>
-
 
 
 
@@ -578,11 +529,9 @@ Kontak Masjid
 </h2>
 
 
-
 <p>
 085806203202
 </p>
-
 
 
 <p>
@@ -590,8 +539,9 @@ Indonesia
 </p>
 
 
-
 </section>
+
+
 
 
 
@@ -610,11 +560,7 @@ let tahun = 2026;
 
 
 
-
-
-
 function tampilKalender(){
-
 
 
 let bulanNama=[
@@ -636,22 +582,14 @@ let bulanNama=[
 
 
 
-
-
 document.getElementById("judulBulan").innerHTML =
 bulanNama[bulan]+" "+tahun;
 
 
 
-
-
-
 let kalender=document.getElementById("kalender");
 
-
 kalender.innerHTML="";
-
-
 
 
 
@@ -660,27 +598,16 @@ new Date(tahun,bulan,1).getDay();
 
 
 
-
 let jumlah =
 new Date(tahun,bulan+1,0).getDate();
 
 
 
-
-
-
-
 for(let i=0;i<awal;i++){
-
 
 kalender.innerHTML += "<div></div>";
 
-
 }
-
-
-
-
 
 
 
@@ -700,34 +627,21 @@ String(i).padStart(2,'0');
 
 
 
-
 kalender.innerHTML += `
-
 
 <div class="tanggal"
 onclick="lihatTanggal('${tanggal}')">
 
-
 ${i}
-
 
 </div>
 
-
 `;
 
-
-
 }
 
 
-
-
 }
-
-
-
-
 
 
 
@@ -736,12 +650,9 @@ ${i}
 function lihatTanggal(tanggal){
 
 
-
 document
 .getElementById("kalenderWrapper")
 .classList.add("aktif");
-
-
 
 
 
@@ -754,9 +665,6 @@ e.style.display="none";
 
 
 
-
-
-
 let detail =
 document.getElementById(
 "detail-"+tanggal
@@ -764,27 +672,14 @@ document.getElementById(
 
 
 
-
-
-
 if(detail){
-
 
 detail.style.display="grid";
 
-
 }
 
 
-
-
 }
-
-
-
-
-
-
 
 
 
@@ -797,27 +692,7 @@ document
 .classList.remove("aktif");
 
 
-
-
-document.querySelectorAll(".tanggal-detail")
-.forEach(e=>{
-
-
-e.style.display="none";
-
-
-});
-
-
-
 }
-
-
-
-
-
-
-
 
 
 
@@ -828,28 +703,19 @@ function bulanMaju(){
 bulan++;
 
 
-
 if(bulan>11){
-
 
 bulan=0;
 
 tahun++;
 
-
 }
-
 
 
 tampilKalender();
 
 
 }
-
-
-
-
-
 
 
 
@@ -861,17 +727,13 @@ function bulanMundur(){
 bulan--;
 
 
-
 if(bulan<0){
-
 
 bulan=11;
 
 tahun--;
 
-
 }
-
 
 
 tampilKalender();
@@ -882,17 +744,11 @@ tampilKalender();
 
 
 
-
-
-
-
 tampilKalender();
-
 
 
 
 </script>
-
 
 
 
