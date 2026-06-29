@@ -36,7 +36,11 @@ class LandingController extends Controller
 
             'landing.index',
 
-            compact('jadwals')
+            [
+
+                'jadwals' => $jadwals
+
+            ]
 
         );
 
