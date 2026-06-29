@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-class Masjid extends Model
+class Khotib extends Model
 {
 
     use HasFactory;
@@ -17,9 +17,11 @@ class Masjid extends Model
 
     protected $fillable = [
 
-        'nama_masjid',
+        'nama_khotib',
 
-        'alamat'
+        'no_hp',
+
+        'foto'
 
     ];
 
