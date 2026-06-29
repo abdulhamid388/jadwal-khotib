@@ -1,47 +1,35 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 
-return new class extends Migration
+class Khotib extends Model
 {
 
-    public function up(): void
+    use HasFactory;
+
+
+    protected $fillable = [
+
+        'nama_khotib',
+        'no_hp',
+        'foto'
+
+    ];
+
+
+
+    public function jadwals()
     {
 
-        Schema::create('khotibs', function (Blueprint $table) {
-
-
-            $table->id();
-
-
-            $table->string('nama_khotib');
-
-
-            $table->string('no_hp')
-            ->nullable();
-
-
-            $table->string('foto')
-            ->nullable();
-
-
-            $table->timestamps();
-
-
-        });
+        return $this->hasMany(
+            Jadwal::class,
+            'khotib_id'
+        );
 
     }
 
-
-
-    public function down(): void
-    {
-
-        Schema::dropIfExists('khotibs');
-
-    }
-
-};
+}

@@ -15,37 +15,25 @@ class JadwalController extends Controller
 {
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Tampilkan semua jadwal
-    |--------------------------------------------------------------------------
-    */
-
-
+    /**
+     * Menampilkan semua jadwal
+     */
     public function index()
     {
 
 
         $jadwals = Jadwal::with([
-
             'masjid',
-
             'khotib'
-
         ])
-
         ->latest()
-
         ->get();
 
 
 
         return view(
-
             'admin.index',
-
             compact('jadwals')
-
         );
 
 
@@ -57,42 +45,26 @@ class JadwalController extends Controller
 
 
 
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Form tambah jadwal
-    |--------------------------------------------------------------------------
-    */
-
-
+    /**
+     * Form tambah jadwal
+     */
     public function create()
     {
 
 
-
         $masjids = Masjid::all();
-
 
 
         $khotibs = Khotib::all();
 
 
 
-
-
         return view(
-
             'admin.create',
-
             compact(
-
                 'masjids',
-
                 'khotibs'
-
             )
-
         );
 
 
@@ -104,54 +76,26 @@ class JadwalController extends Controller
 
 
 
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Simpan jadwal
-    |--------------------------------------------------------------------------
-    */
-
-
+    /**
+     * Simpan jadwal
+     */
     public function store(Request $request)
     {
-
 
 
         $request->validate([
 
 
-            'masjid_id' => [
-
-                'required',
-
-                'exists:masjids,id'
-
-            ],
+            'masjid_id' => 'required|exists:masjids,id',
 
 
-
-            'khotib_id' => [
-
-                'required',
-
-                'exists:khotibs,id'
-
-            ],
+            'khotib_id' => 'required|exists:khotibs,id',
 
 
-
-            'tanggal' => [
-
-                'required',
-
-                'date'
-
-            ]
+            'tanggal' => 'required|date'
 
 
         ]);
-
 
 
 
@@ -161,17 +105,13 @@ class JadwalController extends Controller
         Jadwal::create([
 
 
-
             'masjid_id' => $request->masjid_id,
-
 
 
             'khotib_id' => $request->khotib_id,
 
 
-
             'tanggal' => $request->tanggal
-
 
 
         ]);
@@ -181,19 +121,14 @@ class JadwalController extends Controller
 
 
 
-
         return redirect()
 
-        ->route('admin.jadwal.index')
+            ->route('admin.jadwal.index')
 
-        ->with(
-
-            'success',
-
-            'Jadwal berhasil ditambahkan'
-
-        );
-
+            ->with(
+                'success',
+                'Jadwal berhasil ditambahkan'
+            );
 
 
     }
@@ -205,17 +140,11 @@ class JadwalController extends Controller
 
 
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | Detail
-    |--------------------------------------------------------------------------
-    */
-
-
+    /**
+     * Detail jadwal
+     */
     public function show($id)
     {
-
 
 
         $jadwal = Jadwal::with([
@@ -227,7 +156,6 @@ class JadwalController extends Controller
         ])
 
         ->findOrFail($id);
-
 
 
 
@@ -252,20 +180,24 @@ class JadwalController extends Controller
 
 
 
-
-    /*
-    |--------------------------------------------------------------------------
-    | Form edit
-    |--------------------------------------------------------------------------
-    */
-
-
+    /**
+     * Form edit
+     */
     public function edit($id)
     {
 
 
+        $jadwal = Jadwal::with([
 
-        $jadwal = Jadwal::findOrFail($id);
+            'masjid',
+
+            'khotib'
+
+        ])
+
+        ->findOrFail($id);
+
+
 
 
 
@@ -274,7 +206,6 @@ class JadwalController extends Controller
 
 
         $khotibs = Khotib::all();
-
 
 
 
@@ -308,59 +239,26 @@ class JadwalController extends Controller
 
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Update
-    |--------------------------------------------------------------------------
-    */
-
-
+    /**
+     * Update jadwal
+     */
     public function update(Request $request,$id)
     {
-
 
 
         $request->validate([
 
 
-
-            'masjid_id' => [
-
-                'required',
-
-                'exists:masjids,id'
-
-            ],
+            'masjid_id' => 'required|exists:masjids,id',
 
 
+            'khotib_id' => 'required|exists:khotibs,id',
 
 
-            'khotib_id' => [
-
-                'required',
-
-                'exists:khotibs,id'
-
-            ],
-
-
-
-
-
-            'tanggal' => [
-
-                'required',
-
-                'date'
-
-            ]
-
+            'tanggal' => 'required|date'
 
 
         ]);
-
-
-
 
 
 
@@ -374,21 +272,16 @@ class JadwalController extends Controller
 
 
 
-
         $jadwal->update([
-
 
 
             'masjid_id' => $request->masjid_id,
 
 
-
             'khotib_id' => $request->khotib_id,
 
 
-
             'tanggal' => $request->tanggal
-
 
 
         ]);
@@ -399,20 +292,14 @@ class JadwalController extends Controller
 
 
 
-
-
         return redirect()
 
-        ->route('admin.jadwal.index')
+            ->route('admin.jadwal.index')
 
-        ->with(
-
-            'success',
-
-            'Jadwal berhasil diperbarui'
-
-        );
-
+            ->with(
+                'success',
+                'Jadwal berhasil diperbarui'
+            );
 
 
     }
@@ -425,16 +312,12 @@ class JadwalController extends Controller
 
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | Hapus
-    |--------------------------------------------------------------------------
-    */
 
-
+    /**
+     * Hapus jadwal
+     */
     public function destroy($id)
     {
-
 
 
         $jadwal = Jadwal::findOrFail($id);
@@ -452,21 +335,15 @@ class JadwalController extends Controller
 
         return redirect()
 
-        ->route('admin.jadwal.index')
+            ->route('admin.jadwal.index')
 
-        ->with(
-
-            'success',
-
-            'Jadwal berhasil dihapus'
-
-        );
-
+            ->with(
+                'success',
+                'Jadwal berhasil dihapus'
+            );
 
 
     }
-
-
 
 
 
