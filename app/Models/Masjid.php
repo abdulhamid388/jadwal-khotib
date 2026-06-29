@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 
 
 class Masjid extends Model
@@ -14,6 +12,26 @@ class Masjid extends Model
     use HasFactory;
 
 
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Nama tabel
+    |--------------------------------------------------------------------------
+    */
+
+    protected $table = 'masjids';
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Data yang boleh disimpan
+    |--------------------------------------------------------------------------
+    */
 
     protected $fillable = [
 
@@ -27,14 +45,31 @@ class Masjid extends Model
 
 
 
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Relasi ke tabel jadwals
+    |--------------------------------------------------------------------------
+    */
+
     public function jadwals()
     {
 
+
         return $this->hasMany(
-            Jadwal::class
+
+            Jadwal::class,
+
+            'masjid_id'
+
         );
 
+
     }
+
+
 
 
 }

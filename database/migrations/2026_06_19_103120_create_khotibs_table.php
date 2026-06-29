@@ -8,12 +8,11 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
 
-
     public function up(): void
     {
 
 
-        Schema::create('khotibs', function(Blueprint $table){
+        Schema::create('khotibs', function (Blueprint $table) {
 
 
             $table->id();
@@ -25,7 +24,9 @@ return new class extends Migration
             $table->string('no_hp');
 
 
-            $table->string('foto')->nullable();
+            $table->string('foto')
+                  ->nullable();
+
 
 
             $table->timestamps();
@@ -48,6 +49,5 @@ return new class extends Migration
 
 
     }
-
 
 };

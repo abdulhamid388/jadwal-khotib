@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
 
 
 class Khotib extends Model
@@ -14,6 +12,23 @@ class Khotib extends Model
     use HasFactory;
 
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Nama tabel
+    |--------------------------------------------------------------------------
+    */
+
+    protected $table = 'khotibs';
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Field yang boleh disimpan
+    |--------------------------------------------------------------------------
+    */
 
     protected $fillable = [
 
@@ -29,14 +44,30 @@ class Khotib extends Model
 
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Relasi ke jadwals
+    |--------------------------------------------------------------------------
+    */
+
     public function jadwals()
     {
 
+
         return $this->hasMany(
-            Jadwal::class
+
+            Jadwal::class,
+
+            'khotib_id'
+
         );
 
+
     }
+
+
+
+
 
 
 }

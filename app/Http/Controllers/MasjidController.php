@@ -3,21 +3,18 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Jadwal;
 use App\Models\Masjid;
-use App\Models\Khotib;
-
 use Illuminate\Http\Request;
 
 
 
-class JadwalController extends Controller
+class MasjidController extends Controller
 {
 
 
     /*
     |--------------------------------------------------------------------------
-    | Tampilkan semua jadwal
+    | Tampilkan semua masjid
     |--------------------------------------------------------------------------
     */
 
@@ -26,25 +23,15 @@ class JadwalController extends Controller
     {
 
 
-        $jadwals = Jadwal::with([
-
-            'masjid',
-
-            'khotib'
-
-        ])
-
-        ->latest()
-
-        ->get();
+        $masjids = Masjid::latest()->get();
 
 
 
         return view(
 
-            'admin.index',
+            'admin.masjid',
 
-            compact('jadwals')
+            compact('masjids')
 
         );
 
@@ -61,7 +48,7 @@ class JadwalController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Form tambah jadwal
+    | Form tambah masjid
     |--------------------------------------------------------------------------
     */
 
@@ -70,28 +57,9 @@ class JadwalController extends Controller
     {
 
 
-
-        $masjids = Masjid::all();
-
-
-
-        $khotibs = Khotib::all();
-
-
-
-
-
         return view(
 
-            'admin.create',
-
-            compact(
-
-                'masjids',
-
-                'khotibs'
-
-            )
+            'admin.masjid_create'
 
         );
 
@@ -108,7 +76,7 @@ class JadwalController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Simpan jadwal
+    | Simpan masjid
     |--------------------------------------------------------------------------
     */
 
@@ -117,64 +85,54 @@ class JadwalController extends Controller
     {
 
 
-
         $request->validate([
 
 
-            'masjid_id' => [
+
+            'nama_masjid' => [
 
                 'required',
 
-                'exists:masjids,id'
+                'string'
 
             ],
 
 
 
-            'khotib_id' => [
+
+            'alamat' => [
 
                 'required',
 
-                'exists:khotibs,id'
-
-            ],
-
-
-
-            'tanggal' => [
-
-                'required',
-
-                'date'
+                'string'
 
             ]
 
 
-        ]);
-
-
-
-
-
-
-
-        Jadwal::create([
-
-
-
-            'masjid_id' => $request->masjid_id,
-
-
-
-            'khotib_id' => $request->khotib_id,
-
-
-
-            'tanggal' => $request->tanggal
-
-
 
         ]);
+
+
+
+
+
+
+
+
+        Masjid::create([
+
+
+
+            'nama_masjid' => $request->nama_masjid,
+
+
+
+            'alamat' => $request->alamat
+
+
+
+        ]);
+
 
 
 
@@ -184,16 +142,15 @@ class JadwalController extends Controller
 
         return redirect()
 
-        ->route('admin.jadwal.index')
+        ->route('admin.masjid.index')
 
         ->with(
 
             'success',
 
-            'Jadwal berhasil ditambahkan'
+            'Data masjid berhasil ditambahkan'
 
         );
-
 
 
     }
@@ -208,7 +165,7 @@ class JadwalController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Detail
+    | Detail masjid
     |--------------------------------------------------------------------------
     */
 
@@ -217,28 +174,16 @@ class JadwalController extends Controller
     {
 
 
-
-        $jadwal = Jadwal::with([
-
-            'masjid',
-
-            'khotib'
-
-        ])
-
-        ->findOrFail($id);
-
-
-
+        $masjid = Masjid::findOrFail($id);
 
 
 
 
         return view(
 
-            'admin.show',
+            'admin.masjid_show',
 
-            compact('jadwal')
+            compact('masjid')
 
         );
 
@@ -264,36 +209,16 @@ class JadwalController extends Controller
     {
 
 
-
-        $jadwal = Jadwal::findOrFail($id);
-
-
-
-        $masjids = Masjid::all();
-
-
-
-        $khotibs = Khotib::all();
-
-
-
+        $masjid = Masjid::findOrFail($id);
 
 
 
 
         return view(
 
-            'admin.edit',
+            'admin.masjid_edit',
 
-            compact(
-
-                'jadwal',
-
-                'masjids',
-
-                'khotibs'
-
-            )
+            compact('masjid')
 
         );
 
@@ -310,7 +235,7 @@ class JadwalController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Update
+    | Update masjid
     |--------------------------------------------------------------------------
     */
 
@@ -319,39 +244,26 @@ class JadwalController extends Controller
     {
 
 
-
         $request->validate([
 
 
 
-            'masjid_id' => [
+            'nama_masjid' => [
 
                 'required',
 
-                'exists:masjids,id'
+                'string'
 
             ],
 
 
 
 
-            'khotib_id' => [
+            'alamat' => [
 
                 'required',
 
-                'exists:khotibs,id'
-
-            ],
-
-
-
-
-
-            'tanggal' => [
-
-                'required',
-
-                'date'
+                'string'
 
             ]
 
@@ -365,9 +277,7 @@ class JadwalController extends Controller
 
 
 
-
-
-        $jadwal = Jadwal::findOrFail($id);
+        $masjid = Masjid::findOrFail($id);
 
 
 
@@ -375,19 +285,15 @@ class JadwalController extends Controller
 
 
 
-        $jadwal->update([
+        $masjid->update([
 
 
 
-            'masjid_id' => $request->masjid_id,
+            'nama_masjid' => $request->nama_masjid,
 
 
 
-            'khotib_id' => $request->khotib_id,
-
-
-
-            'tanggal' => $request->tanggal
+            'alamat' => $request->alamat
 
 
 
@@ -400,19 +306,17 @@ class JadwalController extends Controller
 
 
 
-
         return redirect()
 
-        ->route('admin.jadwal.index')
+        ->route('admin.masjid.index')
 
         ->with(
 
             'success',
 
-            'Jadwal berhasil diperbarui'
+            'Data masjid berhasil diperbarui'
 
         );
-
 
 
     }
@@ -427,7 +331,7 @@ class JadwalController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Hapus
+    | Hapus masjid
     |--------------------------------------------------------------------------
     */
 
@@ -436,13 +340,15 @@ class JadwalController extends Controller
     {
 
 
-
-        $jadwal = Jadwal::findOrFail($id);
-
+        $masjid = Masjid::findOrFail($id);
 
 
 
-        $jadwal->delete();
+
+
+
+        $masjid->delete();
+
 
 
 
@@ -452,21 +358,18 @@ class JadwalController extends Controller
 
         return redirect()
 
-        ->route('admin.jadwal.index')
+        ->route('admin.masjid.index')
 
         ->with(
 
             'success',
 
-            'Jadwal berhasil dihapus'
+            'Data masjid berhasil dihapus'
 
         );
 
 
-
     }
-
-
 
 
 

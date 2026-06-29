@@ -9,9 +9,6 @@ return new class extends Migration
 {
 
 
-    /**
-     * Membuat tabel masjids
-     */
     public function up(): void
     {
 
@@ -40,9 +37,6 @@ return new class extends Migration
 
 
 
-    /**
-     * Menghapus tabel masjids
-     */
     public function down(): void
     {
 

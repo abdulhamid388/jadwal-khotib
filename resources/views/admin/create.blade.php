@@ -1,9 +1,11 @@
 @extends('admin.layout')
 
+
 @section('content')
 
 
 <div class="mb-4">
+
 
     <h2>
         Tambah Jadwal Khotib
@@ -14,7 +16,10 @@
         Tambahkan jadwal khutbah Jumat baru
     </p>
 
+
 </div>
+
+
 
 
 
@@ -28,10 +33,11 @@ style="max-width:650px">
 
 
 
+
+
 <form 
 action="{{ route('admin.jadwal.store') }}"
-method="POST"
-enctype="multipart/form-data">
+method="POST">
 
 
 @csrf
@@ -40,42 +46,91 @@ enctype="multipart/form-data">
 
 
 
-{{-- MASJID --}}
+
+
+{{-- PILIH MASJID --}}
+
 
 <div class="mb-3">
 
 
 <label class="form-label">
+
 Nama Masjid
+
 </label>
 
 
-<input 
-type="text"
-name="nama_masjid"
-class="form-control"
-list="listMasjid"
-placeholder="Pilih atau ketik nama masjid"
+
+
+<select
+
+name="masjid_id"
+
+class="form-control @error('masjid_id') is-invalid @enderror"
+
 required>
 
 
 
-<datalist id="listMasjid">
+<option value="">
+
+-- Pilih Masjid --
+
+</option>
+
+
+
+
 
 
 @foreach($masjids as $m)
 
-<option value="{{ $m->nama_masjid }}">
+
+
+<option value="{{ $m->id }}">
+
+
+{{ $m->nama_masjid }}
+
+
+</option>
+
+
 
 
 @endforeach
 
 
-</datalist>
+
+
+</select>
+
+
+
+
+
+
+@error('masjid_id')
+
+
+<div class="invalid-feedback">
+
+
+{{ $message }}
+
+
+</div>
+
+
+@enderror
+
+
 
 
 
 </div>
+
 
 
 
@@ -86,19 +141,46 @@ required>
 
 {{-- TANGGAL --}}
 
+
+
 <div class="mb-3">
 
 
 <label class="form-label">
+
 Tanggal
+
 </label>
 
 
-<input 
+
+
+<input
+
 type="date"
+
 name="tanggal"
-class="form-control"
+
+class="form-control @error('tanggal') is-invalid @enderror"
+
 required>
+
+
+
+@error('tanggal')
+
+
+<div class="invalid-feedback">
+
+
+{{ $message }}
+
+
+</div>
+
+
+@enderror
+
 
 
 
@@ -111,41 +193,92 @@ required>
 
 
 
-{{-- KHOTIB --}}
+
+{{-- PILIH KHOTIB --}}
+
 
 
 <div class="mb-3">
 
 
 <label class="form-label">
+
 Nama Khotib
+
 </label>
 
 
 
-<input 
-type="text"
-name="nama_khotib"
-class="form-control"
-list="listKhotib"
-placeholder="Pilih atau ketik nama khotib"
+
+
+
+<select
+
+name="khotib_id"
+
+class="form-control @error('khotib_id') is-invalid @enderror"
+
 required>
 
 
 
+<option value="">
 
-<datalist id="listKhotib">
+-- Pilih Khotib --
+
+</option>
+
+
+
+
 
 
 @foreach($khotibs as $k)
 
-<option value="{{ $k->nama_khotib }}">
+
+
+<option value="{{ $k->id }}">
+
+
+
+{{ $k->nama_khotib }}
+
+
+
+</option>
+
+
+
 
 
 @endforeach
 
 
-</datalist>
+
+
+
+</select>
+
+
+
+
+
+
+@error('khotib_id')
+
+
+<div class="invalid-feedback">
+
+
+{{ $message }}
+
+
+</div>
+
+
+@enderror
+
+
 
 
 
@@ -159,31 +292,28 @@ required>
 
 
 
+{{-- INFO FOTO --}}
 
-{{-- FOTO --}}
 
 
 <div class="mb-4">
 
 
 <label class="form-label">
+
 Foto Khotib
+
 </label>
 
 
-<input 
-type="file"
-name="foto"
-class="form-control"
-accept="image/*">
 
 
+<p class="text-muted mb-0">
 
-<small class="text-muted">
+Foto otomatis mengambil dari data khotib
 
-Format JPG/PNG maksimal 2MB
+</p>
 
-</small>
 
 
 
@@ -200,7 +330,11 @@ Format JPG/PNG maksimal 2MB
 <div class="d-flex gap-2">
 
 
+
 <button 
+
+type="submit"
+
 class="btn btn-primary">
 
 
@@ -212,8 +346,13 @@ Simpan Jadwal
 
 
 
+
+
+
 <a 
+
 href="{{ route('admin.jadwal.index') }}"
+
 class="btn btn-secondary">
 
 
@@ -224,7 +363,12 @@ Kembali
 
 
 
+
+
+
 </div>
+
+
 
 
 
@@ -234,10 +378,14 @@ Kembali
 
 
 
+
+
 </div>
 
 
 </div>
+
+
 
 
 

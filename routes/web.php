@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Response;
 
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\MasjidController;
+use App\Http\Controllers\KhotibController;
+
+
 
 
 
@@ -94,17 +98,14 @@ Route::middleware('auth')
 
     /*
     |--------------------------------------------------------------------------
-    | CRUD JADWAL KHOTIB
+    | JADWAL KHOTIB
     |--------------------------------------------------------------------------
     */
 
 
     Route::resource(
-
         'jadwal',
-
         JadwalController::class
-
     );
 
 
@@ -122,37 +123,10 @@ Route::middleware('auth')
     */
 
 
-    Route::get('/masjid', function(){
-
-
-
-        $masjids = \App\Models\Jadwal::select(
-
-            'nama_masjid'
-
-        )
-
-        ->groupBy('nama_masjid')
-
-        ->get();
-
-
-
-
-
-        return view(
-
-            'admin.masjid',
-
-            compact('masjids')
-
-        );
-
-
-
-    })
-
-    ->name('masjid');
+    Route::resource(
+        'masjid',
+        MasjidController::class
+    );
 
 
 
@@ -169,47 +143,10 @@ Route::middleware('auth')
     */
 
 
-    Route::get('/khotib', function(){
-
-
-
-        $khotibs = \App\Models\Jadwal::select(
-
-            'nama_khotib',
-
-            'foto'
-
-        )
-
-        ->groupBy(
-
-            'nama_khotib',
-
-            'foto'
-
-        )
-
-        ->get();
-
-
-
-
-
-
-        return view(
-
-            'admin.khotib',
-
-            compact('khotibs')
-
-        );
-
-
-
-
-    })
-
-    ->name('khotib');
+    Route::resource(
+        'khotib',
+        KhotibController::class
+    );
 
 
 
@@ -229,27 +166,44 @@ Route::middleware('auth')
     Route::get('/user', function(){
 
 
-
         $users = \App\Models\User::all();
 
 
 
-
-
         return view(
-
             'admin.user',
-
             compact('users')
-
         );
-
 
 
     })
 
     ->name('user');
 
+
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | KEMBALI KE WEBSITE
+    |--------------------------------------------------------------------------
+    */
+
+
+    Route::get('/website', function(){
+
+
+        return redirect('/');
+
+
+    })
+
+    ->name('website');
 
 
 
@@ -286,6 +240,7 @@ Route::get('/storage/{filename}', function($filename){
 
 
 
+
     if(!file_exists($path)){
 
 
@@ -293,6 +248,7 @@ Route::get('/storage/{filename}', function($filename){
 
 
     }
+
 
 
 

@@ -2,17 +2,12 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-
 class Jadwal extends Model
 {
-
     use HasFactory;
-
 
 
     /*
@@ -25,78 +20,56 @@ class Jadwal extends Model
 
 
 
-
-
     /*
     |--------------------------------------------------------------------------
-    | Data yang boleh disimpan
+    | Field yang boleh diisi
     |--------------------------------------------------------------------------
     */
 
     protected $fillable = [
 
         'masjid_id',
-
         'khotib_id',
-
         'tanggal'
 
     ];
 
 
 
-
-
-
-
     /*
     |--------------------------------------------------------------------------
-    | Relasi ke tabel masjid
+    | Relasi ke tabel masjids
     |--------------------------------------------------------------------------
     */
 
     public function masjid()
     {
 
-
         return $this->belongsTo(
             Masjid::class,
             'masjid_id'
         );
 
-
     }
-
-
-
-
-
 
 
 
 
     /*
     |--------------------------------------------------------------------------
-    | Relasi ke tabel khotib
+    | Relasi ke tabel khotibs
     |--------------------------------------------------------------------------
     */
 
     public function khotib()
     {
 
-
         return $this->belongsTo(
             Khotib::class,
             'khotib_id'
         );
 
-
     }
-
-
-
-
-
 
 
 
@@ -112,7 +85,5 @@ class Jadwal extends Model
         'tanggal' => 'date'
 
     ];
-
-
 
 }

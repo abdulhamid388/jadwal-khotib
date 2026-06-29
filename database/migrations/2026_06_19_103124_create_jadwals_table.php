@@ -13,23 +13,17 @@ return new class extends Migration
     {
 
 
-        Schema::create('jadwals', function (Blueprint $table) {
+        Schema::create('jadwals', function(Blueprint $table){
 
 
             $table->id();
 
 
 
-            $table->foreignId('masjid_id')
-                ->constrained('masjids')
-                ->cascadeOnDelete();
+            $table->unsignedBigInteger('masjid_id');
 
 
-
-            $table->foreignId('khotib_id')
-                ->constrained('khotibs')
-                ->cascadeOnDelete();
-
+            $table->unsignedBigInteger('khotib_id');
 
 
 
@@ -40,12 +34,26 @@ return new class extends Migration
             $table->timestamps();
 
 
+
+
+            $table->foreign('masjid_id')
+                ->references('id')
+                ->on('masjids')
+                ->cascadeOnDelete();
+
+
+
+
+            $table->foreign('khotib_id')
+                ->references('id')
+                ->on('khotibs')
+                ->cascadeOnDelete();
+
+
         });
 
 
     }
-
-
 
 
 

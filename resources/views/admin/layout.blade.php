@@ -7,31 +7,38 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>Admin Jadwal Khotib</title>
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+rel="stylesheet">
 
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" 
+rel="stylesheet">
+
 
 
 <style>
 
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
 }
 
 
 
 body{
 
-    font-family: 'Inter', sans-serif;
+font-family:'Inter',sans-serif;
 
-    background:#f8fafc;
+background:#f8fafc;
 
 }
 
@@ -40,41 +47,45 @@ body{
 
 /* SIDEBAR */
 
+
 .sidebar{
 
 
-    width:260px;
+width:260px;
 
-    height:100vh;
+height:100vh;
 
-    background:#0f172a;
+background:#0f172a;
 
-    position:fixed;
+position:fixed;
 
-    left:0;
+left:0;
 
-    top:0;
+top:0;
 
-    padding:25px;
+padding:25px;
 
-    color:white;
+color:white;
+
+overflow-y:auto;
+
 
 }
-
 
 
 
 
 .sidebar h3{
 
-    font-size:25px;
 
-    font-weight:800;
+font-size:25px;
 
-    margin-bottom:10px;
+font-weight:800;
+
+margin-bottom:15px;
+
 
 }
-
 
 
 
@@ -82,13 +93,13 @@ body{
 .welcome{
 
 
-    background:#1e293b;
+background:#1e293b;
 
-    padding:15px;
+padding:15px;
 
-    border-radius:15px;
+border-radius:15px;
 
-    margin-bottom:30px;
+margin-bottom:30px;
 
 
 }
@@ -97,67 +108,75 @@ body{
 
 .welcome p{
 
-    margin:0;
 
-    font-size:14px;
+margin:0;
 
-    color:#cbd5e1;
+font-size:14px;
+
+color:#cbd5e1;
+
 
 }
+
 
 
 
 .welcome h5{
 
-    margin:5px 0 0;
 
-    color:white;
+margin-top:5px;
+
+color:white;
+
 
 }
 
 
 
+
+
+
+/* MENU */
 
 
 .menu a{
 
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    gap:12px;
-
-
-    color:#cbd5e1;
-
-    text-decoration:none;
+gap:12px;
 
 
-    padding:12px 15px;
+color:#cbd5e1;
 
 
-    border-radius:12px;
+text-decoration:none;
 
 
-    margin-bottom:8px;
+padding:12px 15px;
 
 
-    transition:.3s;
+border-radius:12px;
+
+
+margin-bottom:8px;
+
+
+transition:.3s;
 
 
 }
-
-
 
 
 
 .menu a:hover{
 
 
-    background:#2563eb;
+background:#2563eb;
 
-    color:white;
+color:white;
 
 
 }
@@ -166,29 +185,50 @@ body{
 
 
 
+
+
+/* CONTENT */
 
 
 .content{
 
 
-    margin-left:260px;
+margin-left:260px;
 
-    padding:30px;
+padding:30px;
 
 
 }
 
 
 
+
+
+
+
+/* LOGOUT */
+
+
+.logout{
+
+
+position:absolute;
+
+bottom:25px;
+
+left:25px;
+
+right:25px;
+
+
+}
 
 
 
 .logout button{
 
 
-    width:100%;
-
-    margin-top:20px;
+width:100%;
 
 
 }
@@ -200,6 +240,7 @@ body{
 </style>
 
 
+
 </head>
 
 
@@ -209,10 +250,10 @@ body{
 
 
 
-<!-- SIDEBAR -->
-
 
 <div class="sidebar">
+
+
 
 
 
@@ -227,6 +268,9 @@ Admin
 
 
 
+
+
+@auth
 
 <div class="welcome">
 
@@ -248,6 +292,10 @@ Selamat datang,
 </div>
 
 
+@endauth
+
+
+
 
 
 
@@ -257,11 +305,16 @@ Selamat datang,
 
 
 
+
+
 <a href="{{ route('admin.jadwal.index') }}">
+
 
 <i class="bi bi-calendar-week"></i>
 
+
 Jadwal Khotib
+
 
 </a>
 
@@ -271,11 +324,15 @@ Jadwal Khotib
 
 
 
-<a href="{{route('admin.masjid')}}">
+
+<a href="{{ route('admin.masjid.index') }}">
+
 
 <i class="bi bi-building"></i>
 
+
 Daftar Masjid
+
 
 </a>
 
@@ -285,11 +342,16 @@ Daftar Masjid
 
 
 
-<a href="{{route('admin.khotib')}}">
+
+
+<a href="{{ route('admin.khotib.index') }}">
+
 
 <i class="bi bi-person-badge"></i>
 
+
 Daftar Khotib
+
 
 </a>
 
@@ -299,11 +361,16 @@ Daftar Khotib
 
 
 
-<a href="{{route('admin.user')}}">
+
+
+<a href="{{ route('admin.user') }}">
+
 
 <i class="bi bi-people"></i>
 
+
 User
+
 
 </a>
 
@@ -314,14 +381,17 @@ User
 
 
 
-<a href="/">
+
+<a href="{{ route('home') }}">
+
 
 <i class="bi bi-house"></i>
 
+
 Kembali ke Website
 
-</a>
 
+</a>
 
 
 
@@ -340,9 +410,12 @@ Kembali ke Website
 <div class="logout">
 
 
+
 <form action="{{ route('logout') }}" method="POST">
 
+
 @csrf
+
 
 
 <button class="btn btn-danger">
@@ -350,22 +423,17 @@ Kembali ke Website
 
 <i class="bi bi-box-arrow-right"></i>
 
+
 Logout
 
 
 </button>
 
 
+
 </form>
 
 
-</div>
-
-
-
-
-
-
 
 </div>
 
@@ -375,19 +443,24 @@ Logout
 
 
 
+</div>
 
 
-<!-- CONTENT -->
+
+
 
 
 
 <div class="content">
 
 
+
 @yield('content')
 
 
+
 </div>
+
 
 
 
