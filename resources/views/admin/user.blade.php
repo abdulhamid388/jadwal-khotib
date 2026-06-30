@@ -7,9 +7,25 @@
 <div class="container mt-5">
 
 
-<h2>
+<div class="card shadow">
+
+
+<div class="card-header bg-primary text-white">
+
+
+<h4 class="mb-0">
+
 Data User
-</h2>
+
+</h4>
+
+
+</div>
+
+
+
+
+<div class="card-body">
 
 
 
@@ -28,19 +44,35 @@ Data User
 
 
 
-<table class="table table-bordered">
+<table class="table table-bordered table-striped">
 
 
-<thead>
+<thead class="table-dark">
 
 
 <tr>
 
-<th>No</th>
 
-<th>Email</th>
+<th width="80">
 
-<th>Aksi</th>
+No
+
+</th>
+
+
+<th>
+
+Email
+
+</th>
+
+
+
+<th width="200">
+
+Aksi
+
+</th>
 
 
 </tr>
@@ -52,10 +84,13 @@ Data User
 
 
 
+
 <tbody>
 
 
+
 @foreach($users as $u)
+
 
 
 <tr>
@@ -69,11 +104,13 @@ Data User
 
 
 
+
 <td>
 
 {{$u->email}}
 
 </td>
+
 
 
 
@@ -85,7 +122,7 @@ Data User
 
 <a href="{{route('admin.user.edit',$u->id)}}"
 
-class="btn btn-warning">
+class="btn btn-warning btn-sm">
 
 Edit
 
@@ -97,11 +134,15 @@ Edit
 
 
 
-<form action="{{route('admin.user.delete',$u->id)}}"
+
+<form 
+
+action="{{route('admin.user.delete',$u->id)}}"
 
 method="POST"
 
 style="display:inline">
+
 
 
 @csrf
@@ -109,9 +150,11 @@ style="display:inline">
 @method('DELETE')
 
 
+
+
 <button
 
-class="btn btn-danger"
+class="btn btn-danger btn-sm"
 
 onclick="return confirm('Hapus user ini?')">
 
@@ -120,6 +163,7 @@ Hapus
 
 
 </button>
+
 
 
 
@@ -133,7 +177,10 @@ Hapus
 </tr>
 
 
+
 @endforeach
+
+
 
 
 
@@ -142,6 +189,12 @@ Hapus
 
 </table>
 
+
+
+</div>
+
+
+</div>
 
 
 </div>

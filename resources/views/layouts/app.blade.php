@@ -1,70 +1,55 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="id">
 
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>
-{{ config('app.name','Jadwal Khotib Jumat') }}
+Jadwal Khotib
 </title>
 
 
-<meta name="csrf-token" content="{{ csrf_token() }}">
+<link 
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+rel="stylesheet">
 
 
 
-<!-- CSS -->
-
-@vite([
-'resources/css/app.css',
-'resources/js/app.js'
-])
-
+@vite(['resources/css/app.css','resources/js/app.js'])
 
 
 </head>
 
 
 
-
-<body class="font-sans antialiased bg-gray-100">
-
-
-
-<div class="min-h-screen">
+<body class="bg-light">
 
 
 
-    <!-- NAVBAR ADMIN -->
-
-    @include('layouts.navigation')
+@include('layouts.navigation')
 
 
 
 
 
-
-    <!-- CONTENT -->
-
-    <main>
+<div class="container-fluid mt-4">
 
 
-        @yield('content')
-
-
-    </main>
-
-
-
+@yield('content')
 
 
 </div>
 
 
+
+
+
+<script 
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
 
 
 
