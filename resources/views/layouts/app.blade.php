@@ -11,9 +11,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+
 <title>
 Jadwal Khotib Admin
 </title>
+
+
+
+
+<!-- FAVICON SAMA DENGAN WEBSITE -->
+
+<link 
+rel="icon"
+type="image/png"
+href="{{ asset('favicon.png') }}?v=3">
+
+
+<link 
+rel="shortcut icon"
+type="image/png"
+href="{{ asset('favicon.png') }}?v=3">
+
+
+
 
 
 
@@ -26,11 +46,14 @@ rel="stylesheet">
 
 
 
+
+
 <!-- Bootstrap Icon -->
 
 <link 
 href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
 rel="stylesheet">
+
 
 
 
@@ -46,6 +69,9 @@ rel="stylesheet">
 
 
 
+
+
+
 <style>
 
 
@@ -53,8 +79,15 @@ body{
 
     background:#f1f5f9;
 
+    margin:0;
+
 }
 
+
+
+
+
+/* SIDEBAR */
 
 
 .sidebar{
@@ -72,24 +105,38 @@ body{
 
     background:#0f172a;
 
-    padding-top:20px;
+    padding-top:25px;
+
+    z-index:999;
+
 
 }
+
+
 
 
 
 .sidebar a{
 
 
-    display:block;
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
 
     color:white;
 
-    padding:14px 20px;
+    padding:14px 22px;
 
     text-decoration:none;
 
+    font-size:15px;
+
+
 }
+
+
 
 
 
@@ -98,17 +145,19 @@ body{
 
     background:#2563eb;
 
+    transition:.3s;
+
 
 }
 
 
 
-.content{
 
 
-    margin-left:240px;
+.sidebar i{
 
-    padding:25px;
+
+    font-size:18px;
 
 
 }
@@ -126,12 +175,73 @@ body{
 
     font-size:22px;
 
-    font-weight:bold;
+    font-weight:700;
 
-    margin-bottom:30px;
+    margin-bottom:35px;
 
 
 }
+
+
+
+
+
+/* CONTENT */
+
+
+.content{
+
+
+    margin-left:240px;
+
+    padding:30px;
+
+
+}
+
+
+
+
+
+
+
+.logout-btn{
+
+
+    border:none;
+
+    background:none;
+
+    color:white;
+
+    width:100%;
+
+    padding:14px 22px;
+
+    text-align:left;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+
+}
+
+
+
+
+
+.logout-btn:hover{
+
+
+    background:#dc2626;
+
+
+}
+
+
 
 
 
@@ -156,6 +266,7 @@ body{
 
 
 
+
 <!-- SIDEBAR ADMIN -->
 
 
@@ -163,9 +274,13 @@ body{
 
 
 
+
+
 <div class="logo-admin">
 
+
 Jadwal Khotib
+
 
 </div>
 
@@ -173,24 +288,40 @@ Jadwal Khotib
 
 
 
+
+
+
 <a href="{{ route('admin.jadwal.index') }}">
 
-<i class="bi bi-calendar"></i>
+
+<i class="bi bi-calendar-event"></i>
+
 
 Jadwal
 
+
 </a>
+
+
+
+
 
 
 
 
 <a href="{{ route('admin.masjid.index') }}">
 
+
 <i class="bi bi-building"></i>
+
 
 Masjid
 
+
 </a>
+
+
+
 
 
 
@@ -198,11 +329,16 @@ Masjid
 
 <a href="{{ route('admin.khotib.index') }}">
 
+
 <i class="bi bi-person"></i>
+
 
 Khotib
 
+
 </a>
+
+
 
 
 
@@ -211,11 +347,15 @@ Khotib
 
 <a href="{{ route('admin.user') }}">
 
+
 <i class="bi bi-people"></i>
+
 
 User
 
+
 </a>
+
 
 
 
@@ -225,11 +365,17 @@ User
 
 <a href="{{ route('admin.website') }}">
 
+
 <i class="bi bi-globe"></i>
+
 
 Website
 
+
 </a>
+
+
+
 
 
 
@@ -243,11 +389,11 @@ Website
 
 
 
-<button 
-class="btn text-white w-100 text-start px-3 mt-3">
+<button class="logout-btn">
 
 
 <i class="bi bi-box-arrow-right"></i>
+
 
 Logout
 
@@ -261,6 +407,8 @@ Logout
 
 
 
+
+
 </div>
 
 
@@ -270,7 +418,8 @@ Logout
 
 
 
-<!-- CONTENT -->
+
+<!-- HALAMAN -->
 
 
 <div class="content">
@@ -290,6 +439,7 @@ Logout
 
 
 
+
 <script 
 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
 </script>
@@ -297,6 +447,7 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.j
 
 
 </body>
+
 
 
 </html>
