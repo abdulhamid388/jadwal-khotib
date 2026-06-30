@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="id">
 
+
 <head>
+
 
 <meta charset="UTF-8">
 
@@ -15,17 +17,42 @@ Jadwal Khotib Jumat
 
 
 
-<!-- BOOTSTRAP DULU -->
+<!-- FAVICON WEBSITE -->
+
+<link 
+rel="icon"
+type="image/png"
+href="{{ asset('favicon.png') }}?v=2">
+
+
+
+<link 
+rel="shortcut icon"
+type="image/png"
+href="{{ asset('favicon.png') }}?v=2">
+
+
+
+
+
+<!-- BOOTSTRAP -->
 
 <link 
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 rel="stylesheet">
 
 
-<!-- CSS KAMU TERAKHIR -->
 
-<link rel="stylesheet"
+
+
+<!-- CSS -->
+
+<link 
+rel="stylesheet"
 href="{{ asset('landing/css/style.css') }}">
+
+
+
 
 
 <!-- FONT -->
@@ -36,7 +63,10 @@ rel="stylesheet">
 
 
 
+
+
 </head>
+
 
 
 
@@ -48,7 +78,8 @@ rel="stylesheet">
 
 
 
-<!-- ================= NAVBAR ================= -->
+
+<!-- NAVBAR -->
 
 
 <nav id="navbar">
@@ -65,12 +96,14 @@ Jadwal Khotib
 
 
 
-<button class="menu-toggle"
+<button 
+class="menu-toggle"
 onclick="bukaMenu()">
 
 ☰
 
 </button>
+
 
 
 
@@ -142,14 +175,14 @@ Kontak
 
 
 
-
-
-<!-- ================= CONTENT ================= -->
+<!-- CONTENT -->
 
 
 <main>
 
+
 @yield('content')
+
 
 </main>
 
@@ -161,7 +194,7 @@ Kontak
 
 
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 
 
 <footer>
@@ -180,6 +213,7 @@ Website Jadwal Khotib Jumat
 
 
 
+
 <p>
 
 Informasi jadwal khutbah Jumat masjid
@@ -190,7 +224,9 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
+
 <div class="footer-line"></div>
+
 
 
 
@@ -220,8 +256,6 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
-
-
 <!-- BOOTSTRAP JS -->
 
 
@@ -237,12 +271,14 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.j
 
 
 
+
 <script>
 
 
-// =================
+
+
+
 // NAVBAR SCROLL
-// =================
 
 
 window.addEventListener("scroll",()=>{
@@ -279,11 +315,7 @@ navbar.classList.remove("scrolled");
 
 
 
-
-
-// =================
 // MENU MOBILE
-// =================
 
 
 function bukaMenu(){
@@ -299,25 +331,44 @@ menu.classList.toggle("aktif");
 }
 
 
-// =================
-// AUTO CAROUSEL SLIDE
-// =================
 
-const carousel = document.getElementById('sliderMasjid');
-if(carousel) {
-    const bootstrapCarousel = new bootstrap.Carousel(carousel, {
-        interval: 3000,
-        wrap: true,
-        keyboard: true
-    });
+
+
+
+
+
+
+// AUTO CAROUSEL
+
+
+const carousel =
+document.getElementById('sliderMasjid');
+
+
+if(carousel){
+
+
+const bootstrapCarousel =
+new bootstrap.Carousel(carousel, {
+
+
+interval:3000,
+
+wrap:true,
+
+keyboard:true
+
+
+});
+
+
 }
 
 
 
 
-
-
 </script>
+
 
 
 
