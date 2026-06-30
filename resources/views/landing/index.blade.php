@@ -27,7 +27,6 @@ src="{{asset('landing/img/masjid3.jpeg')}}"
 class="d-block w-100">
 
 
-
 <div class="carousel-caption">
 
 
@@ -61,7 +60,6 @@ Lihat Jadwal
 <img 
 src="{{asset('landing/img/masjid2.jpg')}}"
 class="d-block w-100">
-
 
 
 <div class="carousel-caption">
@@ -122,6 +120,7 @@ id="kalenderWrapper">
 
 
 
+
 <div class="kalender-box">
 
 
@@ -142,7 +141,6 @@ id="kalenderWrapper">
 <button onclick="bulanMaju()">
 >
 </button>
-
 
 
 </div>
@@ -194,7 +192,6 @@ id="kalender">
 <div class="detail-container">
 
 
-
 <button 
 class="kembali"
 onclick="kembaliKalender()">
@@ -206,10 +203,12 @@ onclick="kembaliKalender()">
 
 
 
+<h3 id="judulDetail">
 
-<h3>
 Detail Khotib
+
 </h3>
+
 
 
 
@@ -228,8 +227,11 @@ return $item->tanggal->format('Y-m-d');
 
 
 
-<div class="tanggal-detail"
+<div 
+class="tanggal-detail"
 id="detail-{{$tanggal}}">
+
+
 
 
 
@@ -248,6 +250,7 @@ id="detail-{{$tanggal}}">
 {{$index+1}}
 
 </div>
+
 
 
 
@@ -274,6 +277,7 @@ id="detail-{{$tanggal}}">
 
 
 
+
 <div class="detail-info">
 
 
@@ -285,9 +289,10 @@ id="detail-{{$tanggal}}">
 
 
 
+
 <p>
 
-{{$j->masjid->nama_masjid ?? '-'}}
+{{$j->masjid->nama_masjid ?? '-' }}
 
 </p>
 
@@ -311,9 +316,8 @@ id="detail-{{$tanggal}}">
 
 
 
+
 @endforeach
-
-
 
 
 
@@ -323,13 +327,16 @@ id="detail-{{$tanggal}}">
 
 
 
+
+
 @endforeach
 
 
 
 
-
 </div>
+
+
 
 
 
@@ -361,16 +368,10 @@ Galeri Khotib
 
 
 
-
 <div class="cards">
 
 
-
-
-
 @foreach($jadwals->unique('khotib_id') as $j)
-
-
 
 
 
@@ -378,27 +379,20 @@ Galeri Khotib
 
 
 
-
-
-
 @if($j->khotib && $j->khotib->foto)
 
 
-<img 
-src="{{asset('storage/'.$j->khotib->foto)}}">
+<img src="{{asset('storage/'.$j->khotib->foto)}}">
 
 
 @else
 
 
-<img 
-src="{{asset('landing/img/default.png')}}">
+<img src="{{asset('landing/img/default.png')}}">
 
 
 
 @endif
-
-
 
 
 
@@ -418,24 +412,14 @@ src="{{asset('landing/img/default.png')}}">
 </p>
 
 
-
-
-
-
 </div>
-
-
 
 
 
 @endforeach
 
 
-
-
-
 </div>
-
 
 
 </section>
@@ -450,7 +434,6 @@ src="{{asset('landing/img/default.png')}}">
 
 <!-- TENTANG -->
 
-
 <section id="tentang">
 
 
@@ -459,12 +442,14 @@ Tentang Website
 </h2>
 
 
+
 <p>
 
 Website ini dibuat untuk membantu jamaah melihat jadwal khutbah Jumat,
 informasi khotib, dan masjid tempat pelaksanaan.
 
 </p>
+
 
 
 </section>
@@ -489,12 +474,10 @@ Informasi Kegiatan
 
 
 
-
 <div class="cards">
 
 
 <div class="card">
-
 
 <h3>
 Kajian Masjid
@@ -505,15 +488,12 @@ Kajian Masjid
 Kajian rutin dan pembelajaran agama bersama jamaah.
 </p>
 
-
 </div>
 
 
 
 
-
 <div class="card">
-
 
 <h3>
 Kegiatan Sosial
@@ -530,9 +510,7 @@ Program sosial masjid untuk membantu masyarakat.
 
 
 
-
 <div class="card">
-
 
 <h3>
 Jumat Rutin
@@ -561,51 +539,29 @@ Informasi khutbah Jumat setiap minggu.
 
 
 
-<!-- KONTAK -->
-
-
-<section id="kontak">
-
-
-<h2>
-Kontak Admin
-</h2>
-
-
-
-<p>
-085806203202
-</p>
-
-
-<p>
-Indonesia
-</p>
-
-
-</section>
-
-
-
-
-
-
-
-
-
 <script>
 
 
-let bulan = 6;
+// =======================
+// KALENDER OTOMATIS
+// =======================
 
-let tahun = 2026;
+
+
+let sekarang = new Date();
+
+
+let bulan = sekarang.getMonth();
+
+
+let tahun = sekarang.getFullYear();
+
 
 
 
 
 
 function tampilKalender(){
-
 
 
 let bulanNama=[
@@ -629,9 +585,10 @@ let bulanNama=[
 
 
 
-
 document.getElementById("judulBulan").innerHTML =
+
 bulanNama[bulan]+" "+tahun;
+
 
 
 
@@ -640,6 +597,7 @@ bulanNama[bulan]+" "+tahun;
 
 let kalender=document.getElementById("kalender");
 
+
 kalender.innerHTML="";
 
 
@@ -647,16 +605,25 @@ kalender.innerHTML="";
 
 
 
+let awal = 
+new Date(
+tahun,
+bulan,
+1
+).getDay();
 
-let awal =
-new Date(tahun,bulan,1).getDay();
 
 
 
 
+let jumlah = 
+new Date(
+tahun,
+bulan+1,
+0
+).getDate();
 
-let jumlah =
-new Date(tahun,bulan+1,0).getDate();
+
 
 
 
@@ -668,6 +635,7 @@ for(let i=0;i<awal;i++){
 kalender.innerHTML += "<div></div>";
 
 }
+
 
 
 
@@ -690,9 +658,10 @@ String(i).padStart(2,'0');
 
 
 
-// cek hari Jumat
 
-let cekHari = new Date(
+
+let hari =
+new Date(
 tahun,
 bulan,
 i
@@ -701,14 +670,14 @@ i
 
 
 
-let classJumat = "";
+
+let warna = "";
 
 
-// Jumat = 5
 
-if(cekHari === 5){
+if(hari===5){
 
-classJumat = "jumat";
+warna="jumat";
 
 }
 
@@ -720,7 +689,8 @@ classJumat = "jumat";
 kalender.innerHTML += `
 
 
-<div class="tanggal ${classJumat}"
+
+<div class="tanggal ${warna}"
 
 onclick="lihatTanggal('${tanggal}')">
 
@@ -731,12 +701,12 @@ ${i}
 </div>
 
 
+
 `;
 
 
 
 }
-
 
 
 }
@@ -761,7 +731,54 @@ document
 
 
 
+
+let format = new Date(tanggal);
+
+
+
+
+
+let namaBulan=[
+
+"Januari",
+"Februari",
+"Maret",
+"April",
+"Mei",
+"Juni",
+"Juli",
+"Agustus",
+"September",
+"Oktober",
+"November",
+"Desember"
+
+];
+
+
+
+
+
+document.getElementById("judulDetail").innerHTML =
+
+
+"Detail Khotib / "+
+format.getDate()+
+" "+
+namaBulan[format.getMonth()]+
+" "+
+format.getFullYear();
+
+
+
+
+
+
+
+
+
 document.querySelectorAll(".tanggal-detail")
+
 .forEach(e=>{
 
 e.style.display="none";
@@ -773,10 +790,9 @@ e.style.display="none";
 
 
 
-let detail=document.getElementById(
+let detail = document.getElementById(
 "detail-"+tanggal
 );
-
 
 
 
@@ -789,9 +805,7 @@ detail.style.display="grid";
 }
 
 
-
 }
-
 
 
 
@@ -817,8 +831,6 @@ document
 
 
 
-
-
 function bulanMaju(){
 
 
@@ -834,12 +846,10 @@ tahun++;
 }
 
 
-
 tampilKalender();
 
 
 }
-
 
 
 
@@ -861,7 +871,6 @@ bulan=11;
 tahun--;
 
 }
-
 
 
 tampilKalender();
