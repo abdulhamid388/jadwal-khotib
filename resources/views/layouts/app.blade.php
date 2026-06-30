@@ -19,40 +19,25 @@ Admin Jadwal Khotib
 
 
 
-
-<!-- ================= FAVICON ================= -->
-
+<!-- FAVICON -->
 
 <link 
 rel="icon"
 type="image/png"
-sizes="32x32"
-href="{{ asset('favicon.png') }}?v=999">
-
-
-<link 
-rel="icon"
-type="image/png"
-sizes="16x16"
-href="{{ asset('favicon.png') }}?v=999">
+href="{{ asset('favicon.png') }}?v={{ time() }}">
 
 
 <link 
 rel="shortcut icon"
-href="{{ asset('favicon.png') }}?v=999">
-
-
-
-<link 
-rel="apple-touch-icon"
-href="{{ asset('favicon.png') }}?v=999">
+type="image/png"
+href="{{ asset('favicon.png') }}?v={{ time() }}">
 
 
 
 
 
-<!-- BOOTSTRAP -->
 
+<!-- Bootstrap -->
 
 <link 
 href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -62,8 +47,7 @@ rel="stylesheet">
 
 
 
-<!-- ICON -->
-
+<!-- Bootstrap Icon -->
 
 <link 
 href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
@@ -72,9 +56,6 @@ rel="stylesheet">
 
 
 
-
-
-<!-- LARAVEL -->
 
 
 @vite([
@@ -86,66 +67,53 @@ rel="stylesheet">
 
 
 
-
 <style>
 
 
 body{
 
-    background:#f1f5f9;
-
-    margin:0;
+background:#f1f5f9;
+margin:0;
 
 }
 
-
-
-
-/* SIDEBAR */
 
 
 .sidebar{
 
 
-    width:240px;
+width:240px;
 
-    height:100vh;
+height:100vh;
 
-    position:fixed;
+position:fixed;
 
-    left:0;
+left:0;
 
-    top:0;
+top:0;
 
-    background:#0f172a;
+background:#0f172a;
 
-    padding-top:25px;
-
-    z-index:1000;
-
+padding-top:25px;
 
 }
-
-
 
 
 
 .logo-admin{
 
 
-    color:white;
+color:white;
 
-    text-align:center;
+text-align:center;
 
-    font-size:22px;
+font-size:22px;
 
-    font-weight:700;
+font-weight:bold;
 
-    margin-bottom:35px;
-
+margin-bottom:30px;
 
 }
-
 
 
 
@@ -153,51 +121,30 @@ body{
 .sidebar a{
 
 
-    display:flex;
+display:flex;
 
-    align-items:center;
+align-items:center;
 
-    gap:12px;
+gap:10px;
 
-    color:white;
+padding:14px 20px;
 
-    padding:14px 22px;
+color:white;
 
-    text-decoration:none;
-
-    font-size:15px;
+text-decoration:none;
 
 
 }
-
-
 
 
 
 .sidebar a:hover{
 
 
-    background:#2563eb;
-
-    transition:.3s;
+background:#2563eb;
 
 
 }
-
-
-
-
-
-.sidebar i{
-
-
-    font-size:18px;
-
-
-}
-
-
-
 
 
 
@@ -205,14 +152,12 @@ body{
 .content{
 
 
-    margin-left:240px;
+margin-left:240px;
 
-    padding:30px;
+padding:30px;
 
 
 }
-
-
 
 
 
@@ -220,40 +165,30 @@ body{
 .logout-btn{
 
 
-    width:100%;
+width:100%;
 
-    background:none;
+border:none;
 
-    border:none;
+background:none;
 
-    color:white;
+color:white;
 
-    padding:14px 22px;
+padding:14px 20px;
 
-    display:flex;
+display:flex;
 
-    align-items:center;
-
-    gap:12px;
-
-    text-align:left;
+gap:10px;
 
 
 }
-
 
 
 
 .logout-btn:hover{
 
-
-    background:#dc2626;
-
+background:#dc2626;
 
 }
-
-
-
 
 
 </style>
@@ -267,8 +202,6 @@ body{
 
 
 
-
-
 <body>
 
 
@@ -276,106 +209,67 @@ body{
 
 
 
-
-
-<!-- SIDEBAR ADMIN -->
-
-
 <div class="sidebar">
-
-
-
 
 
 <div class="logo-admin">
 
-
 Jadwal Khotib
-
 
 </div>
 
 
 
 
-
-
-<a href="{{ route('admin.jadwal.index') }}">
-
+<a href="{{route('admin.jadwal.index')}}">
 
 <i class="bi bi-calendar-event"></i>
 
-
 Jadwal
-
 
 </a>
 
 
 
 
-
-
-
-<a href="{{ route('admin.masjid.index') }}">
-
+<a href="{{route('admin.masjid.index')}}">
 
 <i class="bi bi-building"></i>
 
-
 Masjid
-
 
 </a>
 
 
 
 
-
-
-
-<a href="{{ route('admin.khotib.index') }}">
-
+<a href="{{route('admin.khotib.index')}}">
 
 <i class="bi bi-person"></i>
 
-
 Khotib
-
 
 </a>
 
 
 
 
-
-
-
-<a href="{{ route('admin.user') }}">
-
+<a href="{{route('admin.user')}}">
 
 <i class="bi bi-people"></i>
 
-
 User
-
 
 </a>
 
 
 
 
-
-
-
-<a href="{{ route('admin.website') }}">
-
+<a href="{{route('admin.website')}}">
 
 <i class="bi bi-globe"></i>
 
-
 Website
-
 
 </a>
 
@@ -383,14 +277,9 @@ Website
 
 
 
-
-
-
-<form method="POST" action="{{ route('logout') }}">
-
+<form method="POST" action="{{route('logout')}}">
 
 @csrf
-
 
 
 <button class="logout-btn">
@@ -398,12 +287,10 @@ Website
 
 <i class="bi bi-box-arrow-right"></i>
 
-
 Logout
 
 
 </button>
-
 
 
 </form>
@@ -411,33 +298,21 @@ Logout
 
 
 
-
-
-
 </div>
 
 
 
 
 
-
-
-
-
-<!-- CONTENT -->
 
 
 <div class="content">
 
 
-
 @yield('content')
 
 
-
 </div>
-
-
 
 
 
@@ -453,7 +328,6 @@ src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.j
 
 
 </body>
-
 
 
 </html>

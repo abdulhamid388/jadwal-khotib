@@ -13,6 +13,7 @@ use Illuminate\View\View;
 class AuthenticatedSessionController extends Controller
 {
 
+
     /**
      * Display the login view.
      */
@@ -22,6 +23,7 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
 
     }
+
 
 
 
@@ -44,13 +46,15 @@ class AuthenticatedSessionController extends Controller
 
 
 
-        // setelah login langsung ke admin jadwal
+        // setelah login langsung masuk admin
         return redirect()
             ->route('admin.jadwal.index');
 
 
-
     }
+
+
+
 
 
 
@@ -63,21 +67,29 @@ class AuthenticatedSessionController extends Controller
     {
 
 
+        // logout user
         Auth::guard('web')->logout();
 
 
 
+
+        // hapus session
         $request->session()->invalidate();
 
 
 
+
+        // buat token baru
         $request->session()->regenerateToken();
 
 
 
 
-        return redirect('/');
 
+
+        // setelah logout kembali ke halaman login
+        return redirect()
+            ->route('login');
 
 
     }

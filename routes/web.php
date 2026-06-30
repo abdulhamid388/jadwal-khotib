@@ -16,11 +16,13 @@ use App\Http\Controllers\KhotibController;
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 | AUTH
 |--------------------------------------------------------------------------
 */
+
 
 require __DIR__.'/auth.php';
 
@@ -102,7 +104,6 @@ Route::middleware('auth')
 
 
 
-
     /*
     |--------------------------------------------------------------------------
     | JADWAL
@@ -111,11 +112,8 @@ Route::middleware('auth')
 
 
     Route::resource(
-
         'jadwal',
-
         JadwalController::class
-
     );
 
 
@@ -133,11 +131,8 @@ Route::middleware('auth')
 
 
     Route::resource(
-
         'masjid',
-
         MasjidController::class
-
     );
 
 
@@ -156,13 +151,9 @@ Route::middleware('auth')
 
 
     Route::resource(
-
         'khotib',
-
         KhotibController::class
-
     );
-
 
 
 
@@ -184,21 +175,17 @@ Route::middleware('auth')
 
     // tampil user
 
+
     Route::get('/user', function(){
 
 
         $users = \App\Models\User::all();
 
 
-
         return view(
-
             'admin.user',
-
             compact('users')
-
         );
-
 
 
     })
@@ -212,11 +199,11 @@ Route::middleware('auth')
 
 
 
-    // halaman edit user
+
+    // edit user
 
 
     Route::get('/user/{id}/edit', function($id){
-
 
 
         $user = \App\Models\User::findOrFail($id);
@@ -224,11 +211,8 @@ Route::middleware('auth')
 
 
         return view(
-
             'admin.user-edit',
-
             compact('user')
-
         );
 
 
@@ -273,8 +257,6 @@ Route::middleware('auth')
 
 
 
-
-
         $user->email = $request->email;
 
 
@@ -282,20 +264,15 @@ Route::middleware('auth')
 
 
 
-        if($request->password){
-
+        if($request->filled('password')){
 
 
             $user->password = Hash::make(
-
                 $request->password
-
             );
 
 
-
         }
-
 
 
 
@@ -309,19 +286,14 @@ Route::middleware('auth')
 
 
 
-
         return redirect()
 
         ->route('admin.user')
 
         ->with(
-
             'success',
-
             'User berhasil diperbarui'
-
         );
-
 
 
 
@@ -340,7 +312,6 @@ Route::middleware('auth')
     // hapus user
 
 
-
     Route::delete('/user/{id}', function($id){
 
 
@@ -349,7 +320,9 @@ Route::middleware('auth')
 
 
 
+
         $user->delete();
+
 
 
 
@@ -360,13 +333,9 @@ Route::middleware('auth')
         ->route('admin.user')
 
         ->with(
-
             'success',
-
             'User berhasil dihapus'
-
         );
-
 
 
 
@@ -410,6 +379,7 @@ Route::middleware('auth')
 
 
 
+
 });
 
 
@@ -444,8 +414,6 @@ Route::get('/storage/{filename}', function($filename){
 
 
 
-
-
     if(!file_exists($path)){
 
 
@@ -458,9 +426,7 @@ Route::get('/storage/{filename}', function($filename){
 
 
 
-
     return Response::file($path);
-
 
 
 
