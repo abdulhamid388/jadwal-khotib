@@ -3,54 +3,32 @@
 
 <head>
 
-    <meta charset="utf-8">
+<meta charset="utf-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
-    <title>Jadwal Khotib Jumat</title>
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-
-    <!-- FAVICON WEBSITE -->
-
-    <link rel="icon" type="image/png" href="{{ asset('landing/img/icon.png') }}">
+<title>Jadwal Khotib Jumat</title>
 
 
+<link rel="icon" href="/favicon.png" type="image/png">
 
 
-
-    <!-- Fonts -->
-
-    <link rel="preconnect" href="https://fonts.bunny.net">
+<link rel="shortcut icon" href="/favicon.png" type="image/png">
 
 
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+<link rel="apple-touch-icon" href="/favicon.png">
 
 
 
+<link rel="preconnect" href="https://fonts.bunny.net">
+
+<link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
 
-    <!-- Bootstrap Icon (opsional) -->
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-
-
-
-
-
-    <!-- Scripts -->
-
-    @vite([
-
-        'resources/css/app.css',
-
-        'resources/js/app.js'
-
-    ])
-
+@vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
 </head>
