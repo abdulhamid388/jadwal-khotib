@@ -4,197 +4,202 @@
 @section('content')
 
 
-<div class="container mt-5">
+<div class="container-fluid px-4 mt-4">
 
 
-<div class="card shadow">
+    <div class="card shadow border-0">
 
 
-<div class="card-header bg-primary text-white">
+        <div class="card-header bg-white">
 
+            <h4 class="mb-0 fw-bold">
+                Data User
+            </h4>
 
-<h4 class="mb-0">
+        </div>
 
-Data User
 
-</h4>
 
 
-</div>
 
+        <div class="card-body">
 
 
 
-<div class="card-body">
+            @if(session('success'))
 
+            <div class="alert alert-success">
 
+                {{ session('success') }}
 
-@if(session('success'))
+            </div>
 
-<div class="alert alert-success">
+            @endif
 
-{{session('success')}}
 
-</div>
 
-@endif
 
 
 
 
+            <div class="table-responsive">
 
 
-<table class="table table-bordered table-striped">
+            <table class="table table-hover align-middle">
 
 
-<thead class="table-dark">
+                <thead class="table-primary">
 
 
-<tr>
+                    <tr>
 
 
-<th width="80">
+                        <th width="80">
+                            No
+                        </th>
 
-No
 
-</th>
+                        <th>
+                            Email
+                        </th>
 
 
-<th>
+                        <th width="220">
+                            Aksi
+                        </th>
 
-Email
 
-</th>
+                    </tr>
 
 
+                </thead>
 
-<th width="200">
 
-Aksi
 
-</th>
 
 
-</tr>
+                <tbody>
 
 
-</thead>
 
+                @foreach($users as $u)
 
 
 
+                <tr>
 
 
-<tbody>
+                    <td>
 
+                        {{ $loop->iteration }}
 
+                    </td>
 
-@foreach($users as $u)
 
 
 
-<tr>
 
+                    <td>
 
-<td>
+                        {{ $u->email }}
 
-{{$loop->iteration}}
+                    </td>
 
-</td>
 
 
 
 
-<td>
 
-{{$u->email}}
 
-</td>
+                    <td>
 
 
 
+                        <a href="{{ route('admin.user.edit',$u->id) }}"
 
+                        class="btn btn-warning btn-sm">
 
 
-<td>
+                            <i class="bi bi-pencil"></i>
 
+                            Edit
 
 
-<a href="{{route('admin.user.edit',$u->id)}}"
+                        </a>
 
-class="btn btn-warning btn-sm">
 
-Edit
 
-</a>
 
 
 
 
 
+                        <form
 
+                        action="{{ route('admin.user.delete',$u->id) }}"
 
+                        method="POST"
 
-<form 
+                        class="d-inline">
 
-action="{{route('admin.user.delete',$u->id)}}"
 
-method="POST"
+                            @csrf
 
-style="display:inline">
+                            @method('DELETE')
 
 
 
-@csrf
+                            <button
 
-@method('DELETE')
+                            class="btn btn-danger btn-sm"
 
+                            onclick="return confirm('Hapus user ini?')">
 
 
+                                Hapus
 
-<button
 
-class="btn btn-danger btn-sm"
+                            </button>
 
-onclick="return confirm('Hapus user ini?')">
 
 
-Hapus
+                        </form>
 
 
-</button>
 
 
+                    </td>
 
 
-</form>
 
+                </tr>
 
 
-</td>
 
+                @endforeach
 
-</tr>
 
 
 
-@endforeach
 
+                </tbody>
 
 
 
+            </table>
 
-</tbody>
 
 
-</table>
+            </div>
 
 
 
-</div>
+        </div>
 
 
-</div>
+
+    </div>
+
 
 
 </div>
