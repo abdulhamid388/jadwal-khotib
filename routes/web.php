@@ -3,6 +3,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 
 use App\Http\Controllers\LandingController;
@@ -21,6 +23,8 @@ use App\Http\Controllers\KhotibController;
 */
 
 require __DIR__.'/auth.php';
+
+
 
 
 
@@ -48,6 +52,8 @@ Route::get('/', [
 
 
 
+
+
 /*
 |--------------------------------------------------------------------------
 | DASHBOARD
@@ -58,7 +64,8 @@ Route::get('/', [
 Route::get('/dashboard', function(){
 
 
-    return view('dashboard');
+    return redirect()
+        ->route('admin.jadwal.index');
 
 
 })
@@ -77,7 +84,7 @@ Route::get('/dashboard', function(){
 
 /*
 |--------------------------------------------------------------------------
-| ADMIN
+| ADMIN AREA
 |--------------------------------------------------------------------------
 */
 
@@ -98,16 +105,18 @@ Route::middleware('auth')
 
     /*
     |--------------------------------------------------------------------------
-    | JADWAL KHOTIB
+    | JADWAL
     |--------------------------------------------------------------------------
     */
 
 
     Route::resource(
+
         'jadwal',
+
         JadwalController::class
-    );
 
+    );
 
 
 
@@ -118,14 +127,17 @@ Route::middleware('auth')
 
     /*
     |--------------------------------------------------------------------------
-    | DAFTAR MASJID
+    | MASJID
     |--------------------------------------------------------------------------
     */
 
 
     Route::resource(
+
         'masjid',
+
         MasjidController::class
+
     );
 
 
@@ -138,15 +150,21 @@ Route::middleware('auth')
 
     /*
     |--------------------------------------------------------------------------
-    | DAFTAR KHOTIB
+    | KHOTIB
     |--------------------------------------------------------------------------
     */
 
 
     Route::resource(
+
         'khotib',
+
         KhotibController::class
+
     );
+
+
+
 
 
 
@@ -158,10 +176,13 @@ Route::middleware('auth')
 
     /*
     |--------------------------------------------------------------------------
-    | DATA USER
+    | USER
     |--------------------------------------------------------------------------
     */
 
+
+
+    // tampil user
 
     Route::get('/user', function(){
 
@@ -171,9 +192,13 @@ Route::middleware('auth')
 
 
         return view(
+
             'admin.user',
+
             compact('users')
+
         );
+
 
 
     })
@@ -187,10 +212,182 @@ Route::middleware('auth')
 
 
 
+    // halaman edit user
+
+
+    Route::get('/user/{id}/edit', function($id){
+
+
+
+        $user = \App\Models\User::findOrFail($id);
+
+
+
+        return view(
+
+            'admin.user-edit',
+
+            compact('user')
+
+        );
+
+
+
+    })
+
+    ->name('user.edit');
+
+
+
+
+
+
+
+
+
+    // update user
+
+
+    Route::put('/user/{id}', function(Request $request,$id){
+
+
+
+        $user = \App\Models\User::findOrFail($id);
+
+
+
+
+        $request->validate([
+
+
+            'email'=>'required|email',
+
+
+            'password'=>'nullable|min:6'
+
+
+        ]);
+
+
+
+
+
+
+
+
+        $user->email = $request->email;
+
+
+
+
+
+
+        if($request->password){
+
+
+
+            $user->password = Hash::make(
+
+                $request->password
+
+            );
+
+
+
+        }
+
+
+
+
+
+
+
+        $user->save();
+
+
+
+
+
+
+
+        return redirect()
+
+        ->route('admin.user')
+
+        ->with(
+
+            'success',
+
+            'User berhasil diperbarui'
+
+        );
+
+
+
+
+    })
+
+    ->name('user.update');
+
+
+
+
+
+
+
+
+
+    // hapus user
+
+
+
+    Route::delete('/user/{id}', function($id){
+
+
+
+        $user = \App\Models\User::findOrFail($id);
+
+
+
+        $user->delete();
+
+
+
+
+
+        return redirect()
+
+        ->route('admin.user')
+
+        ->with(
+
+            'success',
+
+            'User berhasil dihapus'
+
+        );
+
+
+
+
+    })
+
+    ->name('user.delete');
+
+
+
+
+
+
+
+
+
+
+
 
     /*
     |--------------------------------------------------------------------------
-    | KEMBALI KE WEBSITE
+    | KEMBALI WEBSITE
     |--------------------------------------------------------------------------
     */
 
@@ -198,7 +395,9 @@ Route::middleware('auth')
     Route::get('/website', function(){
 
 
+
         return redirect('/');
+
 
 
     })
@@ -210,7 +409,11 @@ Route::middleware('auth')
 
 
 
+
 });
+
+
+
 
 
 
@@ -241,6 +444,8 @@ Route::get('/storage/{filename}', function($filename){
 
 
 
+
+
     if(!file_exists($path)){
 
 
@@ -253,7 +458,10 @@ Route::get('/storage/{filename}', function($filename){
 
 
 
+
     return Response::file($path);
+
+
 
 
 

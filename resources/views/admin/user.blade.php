@@ -1,48 +1,46 @@
-@extends('admin.layout')
+@extends('layouts.app')
 
 
 @section('content')
 
 
-<div class="mb-4">
+<div class="container mt-5">
+
 
 <h2>
-Daftar User
+Data User
 </h2>
 
 
-<p class="text-muted">
 
-User yang dapat mengakses admin
+@if(session('success'))
 
-</p>
+<div class="alert alert-success">
 
+{{session('success')}}
 
 </div>
 
+@endif
 
 
 
 
-<div class="card border-0 shadow-sm">
 
 
-<div class="card-body">
+<table class="table table-bordered">
 
 
-<table class="table">
-
-
-<thead class="table-light">
+<thead>
 
 
 <tr>
 
 <th>No</th>
 
-<th>Nama</th>
-
 <th>Email</th>
+
+<th>Aksi</th>
 
 
 </tr>
@@ -52,11 +50,12 @@ User yang dapat mengakses admin
 
 
 
+
+
 <tbody>
 
 
 @foreach($users as $u)
-
 
 
 <tr>
@@ -64,7 +63,7 @@ User yang dapat mengakses admin
 
 <td>
 
-{{ $loop->iteration }}
+{{$loop->iteration}}
 
 </td>
 
@@ -72,22 +71,66 @@ User yang dapat mengakses admin
 
 <td>
 
-{{ $u->name }}
+{{$u->email}}
 
 </td>
+
+
 
 
 
 <td>
 
-{{ $u->email }}
+
+
+<a href="{{route('admin.user.edit',$u->id)}}"
+
+class="btn btn-warning">
+
+Edit
+
+</a>
+
+
+
+
+
+
+
+<form action="{{route('admin.user.delete',$u->id)}}"
+
+method="POST"
+
+style="display:inline">
+
+
+@csrf
+
+@method('DELETE')
+
+
+<button
+
+class="btn btn-danger"
+
+onclick="return confirm('Hapus user ini?')">
+
+
+Hapus
+
+
+</button>
+
+
+
+</form>
+
+
 
 </td>
-
 
 
 </tr>
-
 
 
 @endforeach
@@ -97,11 +140,8 @@ User yang dapat mengakses admin
 </tbody>
 
 
-
 </table>
 
-
-</div>
 
 
 </div>
