@@ -973,3 +973,31 @@ section{
     }
 
 }
+/* =====================================
+   TANGGAL KHUSUS HARI JUMAT
+===================================== */
+
+
+.tanggal.jumat{
+
+    background:#2563eb;
+
+    color:white;
+
+    font-weight:700;
+
+    border:1px solid #2563eb;
+
+}
+
+
+
+.tanggal.jumat:hover{
+
+    background:#1d4ed8;
+
+    color:white;
+
+    transform:scale(1.05);
+
+}

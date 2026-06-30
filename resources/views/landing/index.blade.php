@@ -98,6 +98,8 @@ Kegiatan dan informasi masjid
 
 
 
+
+
 <!-- JADWAL -->
 
 
@@ -149,6 +151,8 @@ id="kalenderWrapper">
 
 
 
+
+
 <div class="hari">
 
 <span>Min</span>
@@ -160,6 +164,8 @@ id="kalenderWrapper">
 <span>Sab</span>
 
 </div>
+
+
 
 
 
@@ -211,6 +217,7 @@ Detail Khotib
 
 
 
+
 @foreach($jadwals->groupBy(function($item){
 
 return $item->tanggal->format('Y-m-d');
@@ -246,6 +253,7 @@ id="detail-{{$tanggal}}">
 
 
 
+
 @if($j->khotib && $j->khotib->foto)
 
 
@@ -258,7 +266,9 @@ id="detail-{{$tanggal}}">
 <img src="{{asset('landing/img/default.png')}}">
 
 
+
 @endif
+
 
 
 
@@ -370,6 +380,7 @@ Galeri Khotib
 
 
 
+
 @if($j->khotib && $j->khotib->foto)
 
 
@@ -410,6 +421,7 @@ src="{{asset('landing/img/default.png')}}">
 
 
 
+
 </div>
 
 
@@ -427,7 +439,6 @@ src="{{asset('landing/img/default.png')}}">
 
 
 </section>
-
 
 
 
@@ -457,6 +468,7 @@ informasi khotib, dan masjid tempat pelaksanaan.
 
 
 </section>
+
 
 
 
@@ -548,6 +560,7 @@ Informasi khutbah Jumat setiap minggu.
 
 
 
+
 <!-- KONTAK -->
 
 
@@ -616,8 +629,10 @@ let bulanNama=[
 
 
 
+
 document.getElementById("judulBulan").innerHTML =
 bulanNama[bulan]+" "+tahun;
+
 
 
 
@@ -626,6 +641,8 @@ bulanNama[bulan]+" "+tahun;
 let kalender=document.getElementById("kalender");
 
 kalender.innerHTML="";
+
+
 
 
 
@@ -645,6 +662,7 @@ new Date(tahun,bulan+1,0).getDate();
 
 
 
+
 for(let i=0;i<awal;i++){
 
 kalender.innerHTML += "<div></div>";
@@ -659,6 +677,7 @@ kalender.innerHTML += "<div></div>";
 for(let i=1;i<=jumlah;i++){
 
 
+
 let tanggal =
 
 tahun+
@@ -671,10 +690,37 @@ String(i).padStart(2,'0');
 
 
 
+// cek hari Jumat
+
+let cekHari = new Date(
+tahun,
+bulan,
+i
+).getDay();
+
+
+
+
+let classJumat = "";
+
+
+// Jumat = 5
+
+if(cekHari === 5){
+
+classJumat = "jumat";
+
+}
+
+
+
+
+
+
 kalender.innerHTML += `
 
 
-<div class="tanggal"
+<div class="tanggal ${classJumat}"
 
 onclick="lihatTanggal('${tanggal}')">
 
@@ -687,11 +733,14 @@ ${i}
 
 `;
 
+
+
 }
 
 
 
 }
+
 
 
 
@@ -711,6 +760,7 @@ document
 
 
 
+
 document.querySelectorAll(".tanggal-detail")
 .forEach(e=>{
 
@@ -722,9 +772,11 @@ e.style.display="none";
 
 
 
+
 let detail=document.getElementById(
 "detail-"+tanggal
 );
+
 
 
 
@@ -747,6 +799,7 @@ detail.style.display="grid";
 
 
 
+
 function kembaliKalender(){
 
 
@@ -755,8 +808,9 @@ document
 .classList.remove("aktif");
 
 
-
 }
+
+
 
 
 
@@ -785,6 +839,7 @@ tampilKalender();
 
 
 }
+
 
 
 
