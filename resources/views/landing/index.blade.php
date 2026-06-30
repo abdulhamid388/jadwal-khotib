@@ -555,7 +555,7 @@ Informasi khutbah Jumat setiap minggu.
 
 
 <h2>
-Kontak Masjid
+Kontak Admin
 </h2>
 
 
