@@ -232,11 +232,14 @@ Informasi jadwal khutbah Jumat masjid
 
 
 
+
+
 <p>
 
-© 2026 pasmu.id X Majelis Tablig PDM Kota Pasuruan | Semua Hak Dilindungi
+© {{ date('Y') }} pasmu.id X Majelis Tablig PDM Kota Pasuruan | Semua Hak Dilindungi
 
 </p>
+
 
 
 
