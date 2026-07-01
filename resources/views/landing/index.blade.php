@@ -204,7 +204,7 @@ onclick="kembaliKalender()">
 
 
 <h3 id="judulDetail" class="judul-detail">
-    Detail Khotib
+    Detail Khotib - Pilih Tanggal
 </h3>
 
 
@@ -704,92 +704,57 @@ ${i}
 
 function lihatTanggal(tanggal){
 
+    document
+    .getElementById("kalenderWrapper")
+    .classList.add("aktif");
 
+    let format = new Date(tanggal);
 
-document
-.getElementById("kalenderWrapper")
-.classList.add("aktif");
+    let namaBulan=[
 
+        "Januari",
+        "Februari",
+        "Maret",
+        "April",
+        "Mei",
+        "Juni",
+        "Juli",
+        "Agustus",
+        "September",
+        "Oktober",
+        "November",
+        "Desember"
 
+    ];
 
+    // Ubah "/" menjadi "-"
+    document.getElementById("judulDetail").innerHTML =
 
+    "Detail Khotib - " +
+    format.getDate() + " " +
+    namaBulan[format.getMonth()] + " " +
+    format.getFullYear();
 
+    // Sembunyikan semua detail
+    document.querySelectorAll(".tanggal-detail")
+    .forEach(function(e){
+        e.style.display="none";
+    });
 
-let format = new Date(tanggal);
+    let detail = document.getElementById("detail-"+tanggal);
 
+    if(detail){
 
+        detail.style.display="grid";
 
+    }else{
 
+        document.getElementById("judulDetail").innerHTML =
+        "Detail Khotib - Tidak ada jadwal";
 
-let namaBulan=[
-
-"Januari",
-"Februari",
-"Maret",
-"April",
-"Mei",
-"Juni",
-"Juli",
-"Agustus",
-"September",
-"Oktober",
-"November",
-"Desember"
-
-];
-
-
-
-
-
-document.getElementById("judulDetail").innerHTML =
-
-
-"Detail Khotib / "+
-format.getDate()+
-" "+
-namaBulan[format.getMonth()]+
-" "+
-format.getFullYear();
-
-
-
-
-
-
-
-
-
-document.querySelectorAll(".tanggal-detail")
-
-.forEach(e=>{
-
-e.style.display="none";
-
-});
-
-
-
-
-
-
-let detail = document.getElementById(
-"detail-"+tanggal
-);
-
-
-
-
-
-if(detail){
-
-detail.style.display="grid";
+    }
 
 }
-
-
-}
-
 
 
 
