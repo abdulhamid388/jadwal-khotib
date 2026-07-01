@@ -203,10 +203,8 @@ onclick="kembaliKalender()">
 
 
 
-<h3 id="judulDetail">
-
-Detail Khotib
-
+<h3 id="judulDetail" class="judul-detail">
+    Detail Khotib
 </h3>
 
 
@@ -280,32 +278,17 @@ id="detail-{{$tanggal}}">
 
 <div class="detail-info">
 
+    <h4>
+        {{ $j->khotib->nama_khotib ?? '-' }}
+    </h4>
 
-<h4>
+    <p class="nama-masjid">
+        {{ $j->masjid->nama_masjid ?? '-' }}
+    </p>
 
-{{$j->khotib->nama_khotib ?? '-'}}
-
-</h4>
-
-
-
-
-<p>
-
-{{$j->masjid->nama_masjid ?? '-' }}
-
-</p>
-
-
-
-
-<span>
-
-{{$j->tanggal->translatedFormat('d F Y')}}
-
-</span>
-
-
+    <span class="tanggal-detail-text">
+        {{ $j->tanggal->translatedFormat('d F Y') }}
+    </span>
 
 </div>
 

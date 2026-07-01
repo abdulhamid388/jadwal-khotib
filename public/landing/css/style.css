@@ -477,191 +477,103 @@ h2{
 
 
 
-/* ================= DETAIL ================= */
-
+/* ================= DETAIL KHOTIB ================= */
 
 .detail-container{
-
     display:none;
-
     flex:1;
-
 }
-
-
 
 .kalender-wrapper.aktif .detail-container{
-
     display:block;
-
 }
 
-
+.detail-container h3{
+    font-size:28px;
+    font-weight:600;
+    color:#1e3a5f;
+    margin-bottom:25px;
+}
 
 .tanggal-detail{
-
     display:none;
-
     grid-template-columns:repeat(4,1fr);
-
-    gap:10px;
-
-    grid-auto-rows:92px;
-
-    max-height:calc(92px * 4 + 12px * 3);
-
-    overflow:auto;
-
-    padding:8px;
-
+    gap:18px;
 }
-
-
 
 .detail-card{
-
-    background:white;
-
-    height:88px;
-
-    border-radius:14px;
-
-    padding:10px;
-
+    background:#fff;
+    border-radius:20px;
+    padding:18px;
+    min-height:130px;
     display:flex;
-
     align-items:center;
-
-    gap:10px;
-
+    gap:16px;
     position:relative;
-
-    box-shadow:0 8px 18px rgba(2,6,23,.08);
-
-    overflow:hidden;
-
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transition:.3s;
 }
 
-
-
+.detail-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
 
 .detail-card img{
-
-    width:45px;
-
-    height:45px;
-
-    border-radius:8px;
-
+    width:72px;
+    height:72px;
     object-fit:cover;
-
+    border-radius:12px;
     flex-shrink:0;
-
+    border:1px solid #e5e7eb;
 }
-
-
-
 
 .detail-info{
-
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
     text-align:left;
-
     overflow:hidden;
-
 }
-
-
 
 .detail-info h4{
-
-
-    color:#2563eb;
-
-    font-size:10px;
-
+    font-size:13px;
     font-weight:700;
-
-    line-height:1.2;
-
-    margin:0;
-
-    text-align:left;
-
-
+    color:#2563eb;
+    line-height:1.4;
+    margin-bottom:6px;
 }
-
-
 
 .detail-info p{
-
-
-    font-size:9px;
-
+    margin:0;
+    font-size:12px;
     color:#475569;
-
-    line-height:1.2;
-
-    margin:3px 0;
-
+    line-height:1.5;
     text-align:left;
-
-
 }
-
-
 
 .detail-info span{
-
-
-    font-size:8px;
-
+    margin-top:6px;
+    font-size:11px;
     color:#94a3b8;
-
-    line-height:1;
-
     text-align:left;
-
-
 }
-
-
 
 .angka{
-
-
     position:absolute;
-
-    top:8px;
-
-    left:8px;
-
-    width:22px;
-
-    height:22px;
-
+    top:12px;
+    left:12px;
+    width:34px;
+    height:34px;
     border-radius:50%;
-
     background:#2563eb;
-
-    color:white;
-
-    font-size:12px;
-
+    color:#fff;
     display:flex;
-
-    align-items:center;
-
     justify-content:center;
-
-
+    align-items:center;
+    font-weight:700;
+    font-size:16px;
 }
-
-
-
-
-
-
-
 
 /* ================= KEGIATAN ================= */
 
@@ -965,12 +877,24 @@ section{
 
 
 .tanggal-detail{
-
-    grid-template-columns:1fr;
-
+    grid-template-columns:repeat(2,1fr);
 }
 
+.detail-card{
+    min-height:120px;
+}
 
+.detail-info h4{
+    font-size:12px;
+}
+
+.detail-info p{
+    font-size:11px;
+}
+
+.detail-info span{
+    font-size:10px;
+}
 
 .cards{
 
@@ -1040,13 +964,8 @@ section{
 
 }
 .detail-container h3{
-
+    font-size:26px;
+    font-weight:600;
     color:#334155;
-
-    font-size:32px;
-
-    font-weight:500;
-
     margin-bottom:25px;
-
 }
